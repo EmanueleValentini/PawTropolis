@@ -56,7 +56,9 @@ public class Zoo {
         }
     }
 
-    public Lion highest(List<Lion> lions){
+
+    //Lion
+    public Lion getHighestLion(List<Lion> lions){
         if(lions.size()==0){
             return null;
         }
@@ -71,7 +73,7 @@ public class Zoo {
         return tallestLion;
     }
 
-    public Lion shortest(List<Lion> lions){
+    public Lion getShortestLion(List<Lion> lions){
         if(lions.size()==0){
             return null;
         }
@@ -79,10 +81,162 @@ public class Zoo {
         Lion shortestLion = lions.get(0);
 
         for (Lion lion:lions) {
-            if(lion.getHeight() > shortestLion.getHeight()){
+            if(lion.getHeight() < shortestLion.getHeight()){
                 shortestLion = lion;
             }
         }
         return shortestLion;
+    }
+
+    public Lion getHeavierLion(List<Lion> lions){
+        if(lions.size()==0){
+            return null;
+        }
+
+        Lion heaviestLion = lions.get(0);
+
+        for (Lion lion:lions) {
+            if(lion.getHeight() > heaviestLion.getHeight()){
+                heaviestLion = lion;
+            }
+        }
+        return heaviestLion;
+    }
+
+    public Lion getLighterLion(List<Lion> lions){
+        if(lions.size()==0){
+            return null;
+        }
+
+        Lion lightestLion = lions.get(0);
+
+        for (Lion lion:lions) {
+            if(lion.getHeight() < lightestLion.getHeight()){
+                lightestLion = lion;
+            }
+        }
+        return lightestLion;
+    }
+
+    //Tiger
+    public Tiger getHighestTiger(List<Tiger> tigers){
+        if(tigers.size()==0){
+            return null;
+        }
+
+        Tiger tallestTiger = tigers.get(0);
+
+        for (Tiger tiger:tigers) {
+            if(tiger.getHeight() > tallestTiger.getHeight()){
+                tallestTiger = tiger;
+            }
+        }
+        return tallestTiger;
+    }
+
+    public Tiger getShortestTiger(List<Tiger> tigers){
+        if(tigers.size()==0){
+            return null;
+        }
+
+        Tiger shortestTiger = tigers.get(0);
+
+        for (Tiger tiger:tigers) {
+            if(tiger.getHeight() < shortestTiger.getHeight()){
+                shortestTiger = tiger;
+            }
+        }
+        return shortestTiger;
+    }
+
+    public Tiger getHeavierTiger(List<Tiger> tigers){
+        if(tigers.size()==0){
+            return null;
+        }
+
+        Tiger heaviestTiger = tigers.get(0);
+
+        for (Tiger tiger:tigers) {
+            if(tiger.getHeight() > heaviestTiger.getHeight()){
+                heaviestTiger = tiger;
+            }
+        }
+        return heaviestTiger;
+    }
+
+    public Tiger getLighterTiger(List<Tiger> tigers){
+        if(tigers.size()==0){
+            return null;
+        }
+
+        Tiger lightestTiger = tigers.get(0);
+
+        for (Tiger tiger:tigers) {
+            if(tiger.getHeight() < lightestTiger.getHeight()){
+                lightestTiger = tiger;
+            }
+        }
+        return lightestTiger;
+    }
+
+    //Eagle
+    public Eagle getHighestEagle(List<Eagle> eagles){
+        if(eagles.size()==0){
+            return null;
+        }
+
+        Eagle tallestEagle = eagles.get(0);
+
+        for (Eagle eagle:eagles) {
+            if(eagle.getHeight() > tallestEagle.getHeight()){
+                tallestEagle = eagle;
+            }
+        }
+        return tallestEagle;
+    }
+
+    public Eagle getShortestEagle(List<Eagle> tigers){
+        if(eagles.size()==0){
+            return null;
+        }
+
+        Eagle shortestEagle = eagles.get(0);
+
+        for (Eagle eagle:eagles) {
+            if(eagle.getHeight() < shortestEagle.getHeight()){
+                shortestEagle = eagle;
+            }
+        }
+        return shortestEagle;
+    }
+
+    public Eagle getHeavierEagle(List<Eagle> tigers){
+        if(eagles.size()==0){
+            return null;
+        }
+
+        Eagle heaviestEagle = eagles.get(0);
+
+        for (Eagle eagle:eagles) {
+            if(eagle.getHeight() > heaviestEagle.getHeight()){
+                heaviestEagle = eagle;
+            }
+        }
+        return heaviestEagle;
+    }
+
+    public Eagle getLighterEagle(List<Eagle> tigers){
+        if(eagles.size()==0){
+            return null;
+        }
+
+        Eagle lightestEagle = eagles.get(0);
+
+        for (Eagle eagle:eagles) {
+            if(eagle.getHeight() < lightestEagle.getHeight()){
+                lightestEagle = eagle;
+            }
+        }
+        return lightestEagle;
     }
 }
