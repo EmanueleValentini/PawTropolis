@@ -11,4 +11,12 @@ public class Eagle extends Animal{
         super(name, favouriteFood, age, dateOfJoin, weight, height);
         this.wingspan = wingspan;
     }
+
+    public Double getWingspan() {
+        return wingspan;
+    }
+
+    public void setWingspan(Double wingspan) {
+        this.wingspan = wingspan;
+    }
 }

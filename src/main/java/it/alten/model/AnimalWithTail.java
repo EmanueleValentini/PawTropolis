@@ -10,4 +10,12 @@ public abstract class AnimalWithTail extends Animal{
         super(name, favouriteFood, age, dateOfJoin, weight, height);
         this.tailLenght = tailLenght;
     }
+
+    public Double getTailLenght() {
+        return tailLenght;
+    }
+
+    public void setTailLenght(Double tailLenght) {
+        this.tailLenght = tailLenght;
+    }
 }
