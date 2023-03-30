@@ -1,4 +1,4 @@
-package it.alten;
+package it.alten.controller;
 
 import it.alten.model.*;
 
@@ -83,7 +83,7 @@ public class Zoo {
         return animalWithLongestTail;
     }
 
-    public AnimalWithWings getEagleWithWidestWingspan() {
+    public AnimalWithWings getAnimalWithWidestWingspan() {
         List<AnimalWithWings> animalsWithWings = getAllAnimalsWithWings();
         if (animalsWithWings.size()==0) {
             return null;
@@ -101,7 +101,7 @@ public class Zoo {
 
 
     //Lion
-    public Lion getHighestLion(List<Lion> lions){
+    public Lion getHighestLion(){
         if(lions.size()==0){
             return null;
         }
@@ -116,7 +116,7 @@ public class Zoo {
         return tallestLion;
     }
 
-    public Lion getShortestLion(List<Lion> lions){
+    public Lion getShortestLion(){
         if(lions.size()==0){
             return null;
         }
@@ -131,7 +131,7 @@ public class Zoo {
         return shortestLion;
     }
 
-    public Lion getHeavierLion(List<Lion> lions){
+    public Lion getHeaviestLion(){
         if(lions.size()==0){
             return null;
         }
@@ -146,7 +146,7 @@ public class Zoo {
         return heaviestLion;
     }
 
-    public Lion getLighterLion(List<Lion> lions){
+    public Lion getLightestLion(){
         if(lions.size()==0){
             return null;
         }
@@ -162,7 +162,7 @@ public class Zoo {
     }
 
     //Tiger
-    public Tiger getHighestTiger(List<Tiger> tigers){
+    public Tiger getHighestTiger(){
         if(tigers.size()==0){
             return null;
         }
@@ -177,7 +177,7 @@ public class Zoo {
         return tallestTiger;
     }
 
-    public Tiger getShortestTiger(List<Tiger> tigers){
+    public Tiger getShortestTiger(){
         if(tigers.size()==0){
             return null;
         }
@@ -192,7 +192,7 @@ public class Zoo {
         return shortestTiger;
     }
 
-    public Tiger getHeavierTiger(List<Tiger> tigers){
+    public Tiger getHeaviestTiger(){
         if(tigers.size()==0){
             return null;
         }
@@ -207,7 +207,7 @@ public class Zoo {
         return heaviestTiger;
     }
 
-    public Tiger getLighterTiger(List<Tiger> tigers){
+    public Tiger getLightestTiger(){
         if(tigers.size()==0){
             return null;
         }
@@ -223,7 +223,7 @@ public class Zoo {
     }
 
     //Eagle
-    public Eagle getHighestEagle(List<Eagle> eagles){
+    public Eagle getHighestEagle(){
         if(eagles.size()==0){
             return null;
         }
@@ -238,7 +238,7 @@ public class Zoo {
         return tallestEagle;
     }
 
-    public Eagle getShortestEagle(List<Eagle> eagles){
+    public Eagle getShortestEagle(){
         if(eagles.size()==0){
             return null;
         }
@@ -253,7 +253,7 @@ public class Zoo {
         return shortestEagle;
     }
 
-    public Eagle getHeavierEagle(List<Eagle> eagles){
+    public Eagle getHeaviestEagle(){
         if(eagles.size()==0){
             return null;
         }
@@ -268,7 +268,7 @@ public class Zoo {
         return heaviestEagle;
     }
 
-    public Eagle getLighterEagle(List<Eagle> eagles){
+    public Eagle getLightestEagle(){
         if(eagles.size()==0){
             return null;
         }
