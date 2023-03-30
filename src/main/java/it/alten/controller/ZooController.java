@@ -5,7 +5,7 @@ import it.alten.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zoo {
+public class ZooController {
 
     private List<Lion> lions;
 
@@ -13,7 +13,7 @@ public class Zoo {
 
     private List<Eagle> eagles;
 
-    public Zoo() {
+    public ZooController() {
         this.lions = new ArrayList<>();
         this.tigers = new ArrayList<>();
         this.eagles = new ArrayList<>();

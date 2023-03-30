@@ -1,6 +1,6 @@
 package it.alten;
 
-import it.alten.controller.Zoo;
+import it.alten.controller.ZooController;
 import it.alten.model.*;
 
 import java.time.LocalDate;
@@ -10,7 +10,7 @@ public class Main {
         testZoo();
     }
     private static void testZoo() {
-        Zoo zoo = new Zoo();
+        ZooController zoo = new ZooController();
 
         Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
         Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13.0, 0.7, 0.9);

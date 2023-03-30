@@ -1,4 +1,4 @@
-import it.alten.controller.Zoo;
+import it.alten.controller.ZooController;
 import it.alten.model.*;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -7,12 +7,12 @@ import java.time.LocalDate;
 
 
 public class TestZoo extends TestCase {
-    Zoo zoo;
+    ZooController zoo;
 
     @Override
     protected void setUp() throws Exception{
         super.setUp();
-        zoo = new Zoo();
+        zoo = new ZooController();
         Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
         Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13.0, 0.7, 0.9);
         Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8.0, 1.1, 6.21);
