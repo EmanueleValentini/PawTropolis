@@ -2,7 +2,7 @@ package it.alten.model;
 
 import java.time.LocalDate;
 
-public class AnimalWithWings extends Animal{
+public abstract class AnimalWithWings extends Animal{
 
     public Double wingspan;
 
