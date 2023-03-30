@@ -5,6 +5,7 @@ import it.alten.model.Eagle;
 import it.alten.model.Lion;
 import it.alten.model.Tiger;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,18 +18,16 @@ public class Zoo {
     private List<Eagle> eagles;
 
     public Zoo(List<Lion> lions, List<Tiger> tigers, List<Eagle> eagles) {
-        this.lions = lions;
-        this.tigers = tigers;
-        this.eagles = eagles;
+        this.lions = new ArrayList<Lion>();
+        this.tigers = new ArrayList<Tiger>();
+        this.eagles = new ArrayList<Eagle>();
     }
 
     public List<Lion> getLions() {
         return lions;
     }
 
-    public void setLions(List<Lion> lions) {
-        this.lions = lions;
-    }
+    public void setLions(List<Lion> lions) {this.lions = lions;}
 
     public List<Tiger> getTigers() {
         return tigers;
@@ -195,7 +194,7 @@ public class Zoo {
         return tallestEagle;
     }
 
-    public Eagle getShortestEagle(List<Eagle> tigers){
+    public Eagle getShortestEagle(List<Eagle> eagles){
         if(eagles.size()==0){
             return null;
         }
@@ -210,7 +209,7 @@ public class Zoo {
         return shortestEagle;
     }
 
-    public Eagle getHeavierEagle(List<Eagle> tigers){
+    public Eagle getHeavierEagle(List<Eagle> eagles){
         if(eagles.size()==0){
             return null;
         }
@@ -225,7 +224,7 @@ public class Zoo {
         return heaviestEagle;
     }
 
-    public Eagle getLighterEagle(List<Eagle> tigers){
+    public Eagle getLighterEagle(List<Eagle> eagles){
         if(eagles.size()==0){
             return null;
         }
