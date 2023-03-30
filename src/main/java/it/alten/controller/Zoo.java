@@ -139,7 +139,7 @@ public class Zoo {
         Lion heaviestLion = lions.get(0);
 
         for (Lion lion:lions) {
-            if(lion.getHeight() > heaviestLion.getHeight()){
+            if(lion.getWeight() > heaviestLion.getWeight()){
                 heaviestLion = lion;
             }
         }
@@ -154,7 +154,7 @@ public class Zoo {
         Lion lightestLion = lions.get(0);
 
         for (Lion lion:lions) {
-            if(lion.getHeight() < lightestLion.getHeight()){
+            if(lion.getWeight() < lightestLion.getWeight()){
                 lightestLion = lion;
             }
         }
@@ -200,7 +200,7 @@ public class Zoo {
         Tiger heaviestTiger = tigers.get(0);
 
         for (Tiger tiger:tigers) {
-            if(tiger.getHeight() > heaviestTiger.getHeight()){
+            if(tiger.getWeight() > heaviestTiger.getWeight()){
                 heaviestTiger = tiger;
             }
         }
@@ -215,7 +215,7 @@ public class Zoo {
         Tiger lightestTiger = tigers.get(0);
 
         for (Tiger tiger:tigers) {
-            if(tiger.getHeight() < lightestTiger.getHeight()){
+            if(tiger.getWeight() < lightestTiger.getWeight()){
                 lightestTiger = tiger;
             }
         }
@@ -261,7 +261,7 @@ public class Zoo {
         Eagle heaviestEagle = eagles.get(0);
 
         for (Eagle eagle:eagles) {
-            if(eagle.getHeight() > heaviestEagle.getHeight()){
+            if(eagle.getWeight() > heaviestEagle.getWeight()){
                 heaviestEagle = eagle;
             }
         }
@@ -276,7 +276,7 @@ public class Zoo {
         Eagle lightestEagle = eagles.get(0);
 
         for (Eagle eagle:eagles) {
-            if(eagle.getHeight() < lightestEagle.getHeight()){
+            if(eagle.getWeight() < lightestEagle.getWeight()){
                 lightestEagle = eagle;
             }
         }
