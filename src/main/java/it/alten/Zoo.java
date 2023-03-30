@@ -1,9 +1,6 @@
 package it.alten;
 
-import it.alten.model.Animal;
-import it.alten.model.Eagle;
-import it.alten.model.Lion;
-import it.alten.model.Tiger;
+import it.alten.model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,10 +14,10 @@ public class Zoo {
 
     private List<Eagle> eagles;
 
-    public Zoo(List<Lion> lions, List<Tiger> tigers, List<Eagle> eagles) {
-        this.lions = new ArrayList<Lion>();
-        this.tigers = new ArrayList<Tiger>();
-        this.eagles = new ArrayList<Eagle>();
+    public Zoo() {
+        this.lions = new ArrayList<>();
+        this.tigers = new ArrayList<>();
+        this.eagles = new ArrayList<>();
     }
 
     public List<Lion> getLions() {
@@ -50,9 +47,57 @@ public class Zoo {
             tigers.add((Tiger) animal);
         } else if (animal instanceof Lion) {
             lions.add((Lion) animal);
-        } else {
+        } else if (animal instanceof Eagle){
             eagles.add((Eagle) animal);
+        } else {
+            System.out.println("Species not recognized");
         }
+    }
+
+    public List<AnimalWithTail> getAllAnimalsWithTail(){
+        List<AnimalWithTail> animalsWithTail = new ArrayList<>();
+        animalsWithTail.addAll(lions);
+        animalsWithTail.addAll(tigers);
+        return animalsWithTail;
+    }
+
+    public List<AnimalWithWings> getAllAnimalsWithWings(){
+        List<AnimalWithWings> animasWithWings = new ArrayList<>();
+        animasWithWings.addAll(eagles);
+        return animasWithWings;
+    }
+
+    public AnimalWithTail getAnimalWithLongestTail() {
+        List<AnimalWithTail> animalsWithTail = getAllAnimalsWithTail();
+
+        if (animalsWithTail.size()==0) {
+            return null;
+        }
+
+        AnimalWithTail animalWithLongestTail = animalsWithTail.get(0);
+
+        for (AnimalWithTail currentAnimal : animalsWithTail) {
+            if (currentAnimal.getTailLength() > animalWithLongestTail.getTailLength()) {
+                animalWithLongestTail = currentAnimal;
+            }
+        }
+        return animalWithLongestTail;
+    }
+
+    public AnimalWithWings getEagleWithWidestWingspan() {
+        List<AnimalWithWings> animalsWithWings = getAllAnimalsWithWings();
+        if (animalsWithWings.size()==0) {
+            return null;
+        }
+
+        AnimalWithWings animalWithWidestWingspan = animalsWithWings.get(0);
+
+        for (AnimalWithWings animalWithWings : animalsWithWings) {
+            if (animalWithWings.getWingspan() > animalWithWidestWingspan.getWingspan()) {
+                animalWithWidestWingspan = animalWithWings;
+            }
+        }
+        return animalWithWidestWingspan;
     }
 
 

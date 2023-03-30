@@ -11,11 +11,11 @@ public abstract class AnimalWithTail extends Animal{
         this.tailLenght = tailLenght;
     }
 
-    public Double getTailLenght() {
+    public Double getTailLength() {
         return tailLenght;
     }
 
-    public void setTailLenght(Double tailLenght) {
+    public void setTailLength(Double tailLenght) {
         this.tailLenght = tailLenght;
     }
 }
