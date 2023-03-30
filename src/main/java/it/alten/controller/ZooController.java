@@ -101,7 +101,7 @@ public class ZooController {
 
 
     //Lion
-    public Lion getHighestLion(){
+    public Lion getTallestLion(){
         if(lions.size()==0){
             return null;
         }
@@ -162,7 +162,7 @@ public class ZooController {
     }
 
     //Tiger
-    public Tiger getHighestTiger(){
+    public Tiger getTallestTiger(){
         if(tigers.size()==0){
             return null;
         }
@@ -223,7 +223,7 @@ public class ZooController {
     }
 
     //Eagle
-    public Eagle getHighestEagle(){
+    public Eagle getTallestEagle(){
         if(eagles.size()==0){
             return null;
         }

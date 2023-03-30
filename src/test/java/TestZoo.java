@@ -70,21 +70,21 @@ public class TestZoo extends TestCase {
     }
 
     @Test
-    public void testHighestLion(){
-        Lion highestLion = zoo.getHighestLion();
-        assertEquals ("Simba",highestLion.getName());
+    public void testTallestLion(){
+        Lion tallestLion = zoo.getTallestLion();
+        assertEquals ("Simba",tallestLion.getName());
     }
 
     @Test
-    public void testHighestTiger(){
-        Tiger highestTiger = zoo.getHighestTiger();
-        assertEquals("Man",highestTiger.getName());
+    public void testTallestTiger(){
+        Tiger tallestTiger = zoo.getTallestTiger();
+        assertEquals("Man",tallestTiger.getName());
     }
 
     @Test
-    public void testHighestEagle(){
-        Eagle highestEagle = zoo.getHighestEagle();
-        assertEquals("Daily Eagle",highestEagle.getName());
+    public void testTallestEagle(){
+        Eagle tallestEagle = zoo.getTallestEagle();
+        assertEquals("Daily Eagle",tallestEagle.getName());
     }
 
     @Test

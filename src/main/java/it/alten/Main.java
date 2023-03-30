@@ -14,7 +14,7 @@ public class Main {
 
         Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
         Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13.0, 0.7, 0.9);
-        Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8.0, 1.1, 6.21);
+        Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8.0, 1.2, 6.21);
 
         zoo.addAnimal(lion1);
         zoo.addAnimal(lion2);
@@ -42,19 +42,19 @@ public class Main {
         AnimalWithWings animalWithWidestWingspan = zoo.getAnimalWithWidestWingspan();
         System.out.println("Eagle with widest wingspan: " + animalWithWidestWingspan.getName());
 
-        Tiger tallestTiger = zoo.getHighestTiger();
+        Tiger tallestTiger = zoo.getTallestTiger();
         System.out.println("Tallest tiger: " + tallestTiger.getName());
 
         Tiger shortestTiger = zoo.getShortestTiger();
         System.out.println("Shortest tiger: " + shortestTiger.getName());
 
-        Lion tallestLion = zoo.getHighestLion();
+        Lion tallestLion = zoo.getTallestLion();
         System.out.println("Tallest lion: " + tallestLion.getName());
 
         Lion shortestLion = zoo.getShortestLion();
         System.out.println("Shortest lion: " + shortestLion.getName());
 
-        Eagle tallestEagle = zoo.getHighestEagle();
+        Eagle tallestEagle = zoo.getTallestEagle();
         System.out.println("Tallest eagle: " + tallestEagle.getName());
 
         Eagle shortestEagle = zoo.getShortestEagle();
