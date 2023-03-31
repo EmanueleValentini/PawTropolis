@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class AnimalWithWings extends Animal{
 
-    public double wingspan;
+    private double wingspan;
 
     public AnimalWithWings(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight, Double height, Double wingspan) {
         super(name, favouriteFood, age, dateOfJoin, weight, height);

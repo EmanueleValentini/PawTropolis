@@ -4,17 +4,17 @@ import java.time.LocalDate;
 
 public abstract class Animal {
 
-    public String name;
+    private String name;
 
-    public String favouriteFood;
+    private String favouriteFood;
 
-    public int age;
+    private int age;
 
-    public LocalDate dateOfJoin;
+    private LocalDate dateOfJoin;
 
-    public double weight;
+    private double weight;
 
-    public double height;
+    private double height;
 
     public Animal(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight, Double height) {
         this.name = name;

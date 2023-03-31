@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class AnimalWithTail extends Animal{
 
-    public double tailLenght;
+    private double tailLenght;
     public AnimalWithTail(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight,
                           Double height, double tailLenght) {
         super(name, favouriteFood, age, dateOfJoin, weight, height);
