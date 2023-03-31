@@ -8,13 +8,13 @@ public abstract class Animal {
 
     public String favouriteFood;
 
-    public Integer age;
+    public int age;
 
     public LocalDate dateOfJoin;
 
-    public Double weight;
+    public double weight;
 
-    public Double height;
+    public double height;
 
     public Animal(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight, Double height) {
         this.name = name;

@@ -85,6 +85,7 @@ public class ZooController {
 
     public AnimalWithWings getAnimalWithWidestWingspan() {
         List<AnimalWithWings> animalsWithWings = getAllAnimalsWithWings();
+
         if (animalsWithWings.size()==0) {
             return null;
         }

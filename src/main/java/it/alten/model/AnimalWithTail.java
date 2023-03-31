@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public abstract class AnimalWithTail extends Animal{
 
-    public Double tailLenght;
+    public double tailLenght;
     public AnimalWithTail(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight,
-                          Double height, Double tailLenght) {
+                          Double height, double tailLenght) {
         super(name, favouriteFood, age, dateOfJoin, weight, height);
         this.tailLenght = tailLenght;
     }
 
-    public Double getTailLength() {
+    public double getTailLength() {
         return tailLenght;
     }
 
