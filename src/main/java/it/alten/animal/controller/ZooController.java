@@ -1,6 +1,8 @@
-package it.alten.controller;
+package it.alten.animal.controller;
 
-import it.alten.model.*;
+import it.alten.animal.model.Animal;
+import it.alten.animal.model.AnimalWithTail;
+import it.alten.animal.model.AnimalWithWings;
 
 import java.util.*;
 import java.util.stream.Collectors;

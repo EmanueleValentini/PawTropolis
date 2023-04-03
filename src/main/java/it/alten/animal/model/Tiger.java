@@ -1,4 +1,4 @@
-package it.alten.model;
+package it.alten.animal.model;
 
 import java.time.LocalDate;
 

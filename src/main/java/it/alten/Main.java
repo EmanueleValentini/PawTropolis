@@ -1,6 +1,8 @@
 package it.alten;
 
-import it.alten.controller.ZooController;
+import it.alten.animal.controller.ZooController;
+import it.alten.animal.controller.model.*;
+import it.alten.animal.model.*;
 import it.alten.model.*;
 
 import java.time.LocalDate;
