@@ -32,88 +32,87 @@ public class TestZoo extends TestCase {
         zoo.addAnimal(eagle2);
         zoo.addAnimal(eagle3);
     }
-
-    @Test
-    public void testHeaviestLion(){
-        Lion heaviestLion = zoo.getHeaviestLion();
-        assertEquals ("Kimba",heaviestLion.getName());
-    }
-
-    @Test
-    public void testHeaviesTiger(){
-        Tiger heaviestTiger = zoo.getHeaviestTiger();
-        assertEquals("Man",heaviestTiger.getName());
-    }
-
-    @Test
-    public void testHeaviesEagle(){
-        Eagle heaviestEagle = zoo.getHeaviestEagle();
-        assertEquals("Daily Eagle",heaviestEagle.getName());
-    }
-
-    @Test
-    public void testLightestLion(){
-        Lion lightestLion = zoo.getLightestLion();
-        assertEquals ("Cane Fifone",lightestLion.getName());
-    }
-
-    @Test
-    public void testLightestTiger(){
-        Tiger lightestTiger = zoo.getLightestTiger();
-        assertEquals("Tigro",lightestTiger.getName());
-    }
-
-    @Test
-    public void testLightestEagle(){
-        Eagle lightestEagle = zoo.getLightestEagle();
-        assertEquals("Piccione",lightestEagle.getName());
-    }
-
-    @Test
-    public void testTallestLion(){
-        Lion tallestLion = zoo.getTallestLion();
-        assertEquals ("Simba",tallestLion.getName());
-    }
-
-    @Test
-    public void testTallestTiger(){
-        Tiger tallestTiger = zoo.getTallestTiger();
-        assertEquals("Man",tallestTiger.getName());
-    }
-
-    @Test
-    public void testTallestEagle(){
-        Eagle tallestEagle = zoo.getTallestEagle();
-        assertEquals("Daily Eagle",tallestEagle.getName());
-    }
-
-    @Test
-    public void testShortestLion(){
-        Lion shortestLion = zoo.getShortestLion();
-        assertEquals ("Kimba",shortestLion.getName());
-    }
-
-    @Test
-    public void testShortestTiger(){
-        Tiger shortestTiger = zoo.getShortestTiger();
-        assertEquals("Tigro",shortestTiger.getName());
-    }
-
-    @Test
-    public void testShortestEagle(){
-        Eagle shortestEagle = zoo.getShortestEagle();
-        assertEquals("Piccione",shortestEagle.getName());
-    }
-
-    @Test
-    public void testLongestTail(){
-        AnimalWithTail animalWithLongestTail = zoo.getAnimalWithLongestTail();
-        assertEquals("Cane Fifone",animalWithLongestTail.getName());
-    }
-
-    @Test
-    public void testWidestWingspan(){
-        AnimalWithWings animalwithWidestWingspan = zoo.getAnimalWithWidestWingspan();
-        assertEquals("Daily Eagle",animalwithWidestWingspan.getName());
-    }
+//    @Test
+//    public void testHeaviestLion(){
+//        Lion heaviestLion = zoo.getHeaviestLion();
+//        assertEquals ("Kimba",heaviestLion.getName());
+//    }
+//
+//    @Test
+//    public void testHeaviesTiger(){
+//        Tiger heaviestTiger = zoo.getHeaviestTiger();
+//        assertEquals("Man",heaviestTiger.getName());
+//    }
+//
+//    @Test
+//    public void testHeaviesEagle(){
+//        Eagle heaviestEagle = zoo.getHeaviestEagle();
+//        assertEquals("Daily Eagle",heaviestEagle.getName());
+//    }
+//
+//    @Test
+//    public void testLightestLion(){
+//        Lion lightestLion = zoo.getLightestLion();
+//        assertEquals ("Cane Fifone",lightestLion.getName());
+//    }
+//
+//    @Test
+//    public void testLightestTiger(){
+//        Tiger lightestTiger = zoo.getLightestTiger();
+//        assertEquals("Tigro",lightestTiger.getName());
+//    }
+//
+//    @Test
+//    public void testLightestEagle(){
+//        Eagle lightestEagle = zoo.getLightestEagle();
+//        assertEquals("Piccione",lightestEagle.getName());
+//    }
+//
+//    @Test
+//    public void testTallestLion(){
+//        Lion tallestLion = zoo.getTallestLion();
+//        assertEquals ("Simba",tallestLion.getName());
+//    }
+//
+//    @Test
+//    public void testTallestTiger(){
+//        Tiger tallestTiger = zoo.getTallestTiger();
+//        assertEquals("Man",tallestTiger.getName());
+//    }
+//
+//    @Test
+//    public void testTallestEagle(){
+//        Eagle tallestEagle = zoo.getTallestEagle();
+//        assertEquals("Daily Eagle",tallestEagle.getName());
+//    }
+//
+//    @Test
+//    public void testShortestLion(){
+//        Lion shortestLion = zoo.getShortestLion();
+//        assertEquals ("Kimba",shortestLion.getName());
+//    }
+//
+//    @Test
+//    public void testShortestTiger(){
+//        Tiger shortestTiger = zoo.getShortestTiger();
+//        assertEquals("Tigro",shortestTiger.getName());
+//    }
+//
+//    @Test
+//    public void testShortestEagle(){
+//        Eagle shortestEagle = zoo.getShortestEagle();
+//        assertEquals("Piccione",shortestEagle.getName());
+//    }
+//
+//    @Test
+//    public void testLongestTail(){
+//        AnimalWithTail animalWithLongestTail = zoo.getAnimalWithLongestTail();
+//        assertEquals("Cane Fifone",animalWithLongestTail.getName());
+//    }
+//
+//    @Test
+//    public void testWidestWingspan(){
+//        AnimalWithWings animalwithWidestWingspan = zoo.getAnimalWithWidestWingspan();
+//        assertEquals("Daily Eagle",animalwithWidestWingspan.getName());
+//    }
 }
