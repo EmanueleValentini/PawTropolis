@@ -46,6 +46,17 @@ public class Bag {
 
     }
 
+    public Item removeItem(Item item) {
+        if (!inventory.contains(item)) {
+            System.out.println("Bro ma sei cieco, non ce l'hai sto coso");
+            return null;
+        } else {
+            inventory.remove(item);
+            return item;
+        }
+
+    }
+
     public boolean isFull() {
 
         return inventory.size() == maxSlots;
