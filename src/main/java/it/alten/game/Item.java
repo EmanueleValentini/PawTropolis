@@ -1,4 +1,4 @@
 package it.alten.game;
 
-public class Itam {
+public class Item {
 }
