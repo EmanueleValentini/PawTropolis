@@ -1,4 +1,4 @@
-package it.alten.game;
+package it.alten.game.model;
 
 import it.alten.animal.model.Animal;
 

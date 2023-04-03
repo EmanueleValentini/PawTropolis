@@ -1,4 +1,4 @@
-package it.alten.game;
+package it.alten.game.model;
 
 public class Item {
     private String name;

@@ -1,12 +1,12 @@
-package it.alten.game;
+package it.alten.game.model;
 
 public class Player {
     private String name;
-    private int points;
+    private int lifePoints;
 
-    public Player(String name, int points) {
+    public Player(String name, int lifePoints) {
         this.name = name;
-        this.points = points;
+        this.lifePoints = lifePoints;
     }
 
     public String getName() {
@@ -18,10 +18,12 @@ public class Player {
     }
 
     public int getPoints() {
-        return points;
+        return lifePoints;
     }
 
     public void setPoints(int points) {
-        this.points = points;
+        this.lifePoints = points;
     }
+
+
 }
