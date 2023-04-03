@@ -1,4 +1,4 @@
-package it.alten.animal.model;
+package it.alten.game;
 
 public class Player {
     private String name;

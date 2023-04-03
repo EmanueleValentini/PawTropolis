@@ -1,6 +1,6 @@
-package it.alten.animal.model;
+package it.alten.game;
 
-import it.alten.game.Item;
+import it.alten.animal.model.Animal;
 
 import java.util.List;
 import java.util.Map;
