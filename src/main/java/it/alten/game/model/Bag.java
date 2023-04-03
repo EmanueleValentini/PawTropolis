@@ -1,15 +1,18 @@
 package it.alten.game.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bag {
     private List<Item> inventory;
+    private int availableSlots;
+    private static final int DEFAULT_MAX_SLOTS = 10;
+    private final int maxSlots;
 
-    private int [] slots;
-
-    public Bag(List<Item> inventory) {
-        this.inventory = inventory;
-        this.slots = new int[10];
+    public Bag() {
+        this.maxSlots = DEFAULT_MAX_SLOTS;
+        this.availableSlots = maxSlots;
+        this.inventory = new ArrayList<>(maxSlots);
     }
 
     public List<Item> getInventory() {
@@ -20,11 +23,31 @@ public class Bag {
         this.inventory = inventory;
     }
 
-    public int[] getSlots() {
-        return slots;
+    public int getAvailableSlots() {
+        return availableSlots;
     }
 
-    public void setSlots(int [] slots) {
-        this.slots = slots;
+    public void setAvailableSlots(int availableSlots) {
+        this.availableSlots = availableSlots;
+    }
+
+    public int getMaxSlots() {
+        return maxSlots;
+    }
+
+    public Item addItem(Item item) {
+        if (!isFull()) {
+            inventory.add(item);
+            return item;
+        } else {
+            System.out.println("Hai la borsa piena coglione");
+            return null;
+        }
+
+    }
+
+    public boolean isFull() {
+
+        return inventory.size() == maxSlots;
     }
 }

@@ -18,11 +18,16 @@ public class GameController {
     List<Item> roomItems = new ArrayList<>();
     List<Item> gameItems = new ArrayList<>();
     List<Item> playerItems = new ArrayList<>();
-    Bag bag = new Bag(playerItems);
-    List<Room> adjacentRooms = new ArrayList<>();
-    Room actualRoom = new Room("1",roomItems, animalMap, adjacentRooms);
+    Bag bag = new Bag();
+    List<Room> rooms = new ArrayList<>();
 
 
+    public void playerMovement(String direction) {
+
+
+
+
+    }
 
 
 }

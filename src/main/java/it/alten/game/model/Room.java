@@ -8,7 +8,7 @@ import java.util.Map;
 public class Room {
     private String name;
 
-    private List<Item> itemList;
+    private List<Item> roomItemList;
 
     Map<Integer, Animal> animalMap;
 
@@ -16,7 +16,7 @@ public class Room {
 
     public Room(String name, List<Item> itemList, Map<Integer, Animal> animalMap, List<Room> adjacentRoomsList) {
         this.name = name;
-        this.itemList = itemList;
+        this.roomItemList = itemList;
         this.animalMap = animalMap;
         this.adjacentRoomsList = adjacentRoomsList;
     }
@@ -29,12 +29,12 @@ public class Room {
         this.name = name;
     }
 
-    public List<Item> getItemList() {
-        return itemList;
+    public List<Item> getRoomItemList() {
+        return roomItemList;
     }
 
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
+    public void setRoomItemList(List<Item> roomItemList) {
+        this.roomItemList = roomItemList;
     }
 
     public Map<Integer, Animal> getAnimalMap() {
