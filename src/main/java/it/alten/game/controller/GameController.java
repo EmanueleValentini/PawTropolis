@@ -22,7 +22,7 @@ public class GameController {
     List<Room> rooms = new ArrayList<>();
 
 
-    //  TODO: implementation of all controllers 
+    //  TODO: implementation of all controllers
 
     public void playerMovement(String direction) {
 

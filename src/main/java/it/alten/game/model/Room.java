@@ -53,5 +53,19 @@ public class Room {
         this.adjacentRoomsList = adjacentRoomsList;
     }
 
+    public Item removeItemFromRoom(Item item) {
+        roomItemList.remove(item);
+        return item;
+    }
 
+    public Item addItemToRoom(Item item) {
+        roomItemList.add(item);
+        return item;
+    }
+
+    public void roomDescription() {
+        System.out.println("Faggiano sei nella stanza " + this.name + "\n e ce sta: "
+            + getRoomItemList() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalMap()
+                + "\n se ti vuoi levare dalle palle puoi andare (oltre che a fanculo): " +getAdjacentRoomsList());
+    }
 }

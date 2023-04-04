@@ -58,7 +58,7 @@ public class Bag {
     }
 
     public boolean isFull() {
-
         return inventory.size() == maxSlots;
     }
+
 }
