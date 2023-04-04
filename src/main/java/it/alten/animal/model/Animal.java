@@ -72,4 +72,10 @@ public abstract class Animal {
     public void setHeight(Double height) {
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        return name;
+
+    }
 }

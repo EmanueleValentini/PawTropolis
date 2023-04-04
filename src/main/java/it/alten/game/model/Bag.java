@@ -61,4 +61,11 @@ public class Bag {
         return inventory.size() == maxSlots;
     }
 
+    @Override
+    public String toString() {
+        return "Bag" +
+                "inventory=" + inventory +
+                ", availableSlots=" + availableSlots +
+                ", maxSlots=" + maxSlots;
+    }
 }

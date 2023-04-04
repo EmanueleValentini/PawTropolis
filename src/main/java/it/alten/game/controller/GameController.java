@@ -24,12 +24,6 @@ public class GameController {
 
     //  TODO: implementation of all controllers
 
-    public void playerMovement(String direction) {
-
-
-
-
-    }
 
 
 }

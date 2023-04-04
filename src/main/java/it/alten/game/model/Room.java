@@ -65,7 +65,16 @@ public class Room {
 
     public void roomDescription() {
         System.out.println("Faggiano sei nella stanza " + this.name + "\n e ce sta: "
-            + getRoomItemList() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalMap()
-                + "\n se ti vuoi levare dalle palle puoi andare (oltre che a fanculo): " +getAdjacentRoomsList());
+            + getRoomItemList().toString() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalMap().values()
+                + "\n se ti vuoi levare dalle palle puoi andare (oltre che a fanculo): " +getAdjacentRoomsList().toString());
+    }
+
+    @Override
+    public String toString() {
+        return "Room" +
+                "name='" + name + '\'' +
+                ", roomItemList=" + roomItemList +
+                ", animalMap=" + animalMap +
+                ", adjacentRoomsList=" + adjacentRoomsList;
     }
 }

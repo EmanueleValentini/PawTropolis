@@ -34,4 +34,9 @@ public class Item {
     public void setRequestedSlots(int requestedSlots) {
         this.requestedSlots = requestedSlots;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

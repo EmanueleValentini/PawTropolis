@@ -5,7 +5,7 @@ import java.util.List;
 public class Player {
     private String name;
     private int lifePoints;
-    private Bag bag;
+    private final Bag bag;
 
     public Player(String name, int lifePoints) {
         this.name = name;

@@ -1,11 +1,18 @@
 package it.alten;
 
 import it.alten.animal.controller.ZooController;
-import it.alten.animal.controller.model.*;
 import it.alten.animal.model.*;
-import it.alten.model.*;
+import it.alten.game.model.Bag;
+import it.alten.game.model.Item;
+import it.alten.game.model.Player;
+import it.alten.game.model.Room;
+
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,10 +20,30 @@ public class Main {
     }
     private static void testZoo() {
         ZooController zooController = new ZooController();
+		Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
+		Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13.0, 0.7, 0.9);
+		Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8.0, 1.2, 6.21);
+		Map<Integer, Animal> animalMap = new HashMap<>();
+		Player player = new Player("paolo",3);
+		List<Item> roomItems = new ArrayList<>();
+		List<Item> gameItems = new ArrayList<>();
+		List<Item> playerItems = new ArrayList<>();
+		Bag bag = new Bag();
+		List<Room> rooms = new ArrayList<>();
+		Item item1 = new Item("palla","rotonda",2);
+		Item item2 = new Item("girandola","rombica",4);
+		roomItems.add(item1);
+		roomItems.add(item2);
+		animalMap.put(0, lion1);
+		animalMap.put(1, lion2);
+		animalMap.put(2,lion3);
+		Room room = new Room("1",roomItems,animalMap,rooms);
 
-        Lion lion1 = new Lion("Simba", "mango", 3, LocalDate.now(), 10.9, 1.1, 0.5);
-        Lion lion2 = new Lion("Kimba", "caffè Kimbo", 5, LocalDate.now(), 13.0, 0.7, 0.9);
-        Lion lion3 = new Lion("Cane Fifone", "Torta di Marilù", 10, LocalDate.now(), 8.0, 1.2, 6.21);
+
+
+
+		room.roomDescription();
+
 
         zooController.addAnimal(lion1);
         zooController.addAnimal(lion2);
