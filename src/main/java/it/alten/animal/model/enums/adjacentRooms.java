@@ -1,6 +1,5 @@
 package it.alten.animal.model.enums;
 
-import java.util.Arrays;
 
 public enum adjacentRooms {
     NORTH("north"),
@@ -12,8 +11,20 @@ public enum adjacentRooms {
     private final String name;
 
     adjacentRooms(String name) {
+
         this.name = name;
     }
 
-   
+    public static adjacentRooms availableDirections(String s) {
+        for (adjacentRooms d : values()) {
+            if (s.equalsIgnoreCase(d.getName())) {
+                return d;
+            }
+        }
+        return NOT_VALID;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
