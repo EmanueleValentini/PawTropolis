@@ -37,7 +37,7 @@ public class Main {
 		animalMap.put(0, lion1);
 		animalMap.put(1, lion2);
 		animalMap.put(2,lion3);
-		Room room = new Room("1",roomItems,animalMap,rooms);
+		Room room = new Room("1");
 
 
 

@@ -10,7 +10,7 @@ public class Room {
 
     private List<Item> roomItemList;
 
-    Map<Integer, Animal> animalMap;
+    List<Animal> animalList;
 
     EnumMap<AdjacentRooms, Room> adjacentRoomsList;
 
@@ -18,7 +18,7 @@ public class Room {
 
         this.name = name;
         this.roomItemList = new ArrayList<>();
-        this.animalMap = new HashMap<>();
+        this.animalList = new ArrayList<>();
         this.adjacentRoomsList = new EnumMap<>(AdjacentRooms.class);
 
     }
@@ -40,12 +40,12 @@ public class Room {
         this.roomItemList = roomItemList;
     }
 
-    public Map<Integer, Animal> getAnimalMap() {
-        return animalMap;
+    public List<Animal> getAnimalList() {
+        return animalList;
     }
 
-    public void setAnimalMap(Map<Integer, Animal> animalMap) {
-        this.animalMap = animalMap;
+    public void setAnimalList(List<Animal> animalList) {
+        this.animalList = animalList;
     }
 
     public EnumMap<AdjacentRooms, Room> getAdjacentRoomsList() {
@@ -61,14 +61,19 @@ public class Room {
         return item;
     }
 
-    public Item addItemToRoom(Item item) {
+    public Animal addAnimalToRoom(Animal animal) {
+
+        animalList.add(animal);
+        return animal;
+    }
+
+    public void addItemToRoom(Item item) {
         roomItemList.add(item);
-        return item;
     }
 
     public void roomDescription() {
         System.out.println("Faggiano sei nella stanza " + this.name + "\n e ce sta: "
-            + getRoomItemList().toString() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalMap().values()
+            + getRoomItemList().toString() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalList().toString()
                 + "\n se ti vuoi levare dalle palle puoi andare (oltre che a fanculo): " +getAdjacentRoomsList().toString());
     }
 
@@ -77,7 +82,7 @@ public class Room {
         return "Room" +
                 "name='" + name + '\'' +
                 ", roomItemList=" + roomItemList +
-                ", animalMap=" + animalMap +
+                ", animalMap=" + animalList +
                 ", adjacentRoomsList=" + adjacentRoomsList;
     }
 }
