@@ -48,11 +48,11 @@ public class Room {
         this.animalMap = animalMap;
     }
 
-    public List<Room> getAdjacentRoomsList() {
+    public EnumMap<AdjacentRooms, Room> getAdjacentRoomsList() {
         return adjacentRoomsList;
     }
 
-    public void setAdjacentRoomsList(List<Room> adjacentRoomsList) {
+    public void setAdjacentRoomsList(EnumMap<AdjacentRooms, Room> adjacentRoomsList) {
         this.adjacentRoomsList = adjacentRoomsList;
     }
 
