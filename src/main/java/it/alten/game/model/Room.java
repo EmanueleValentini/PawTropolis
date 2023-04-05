@@ -1,9 +1,9 @@
 package it.alten.game.model;
 
 import it.alten.animal.model.Animal;
+import it.alten.game.model.enums.AdjacentRooms;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Room {
     private String name;
@@ -12,14 +12,17 @@ public class Room {
 
     Map<Integer, Animal> animalMap;
 
-    List<Room> adjacentRoomsList;
+    EnumMap<AdjacentRooms, Room> adjacentRoomsList;
 
-    public Room(String name, List<Item> itemList, Map<Integer, Animal> animalMap, List<Room> adjacentRoomsList) {
+    public Room(String name){
+
         this.name = name;
-        this.roomItemList = itemList;
-        this.animalMap = animalMap;
-        this.adjacentRoomsList = adjacentRoomsList;
+        this.roomItemList = new ArrayList<>();
+        this.animalMap = new HashMap<>();
+        this.adjacentRoomsList = new EnumMap<>(AdjacentRooms.class);
+
     }
+
 
     public String getName() {
         return name;

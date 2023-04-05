@@ -1,22 +1,22 @@
-package it.alten.animal.model.enums;
+package it.alten.game.model.enums;
 
 
-public enum adjacentRooms {
+public enum AdjacentRooms {
     NORTH("north"),
     WEST("west"),
-    EST("est"),
+    EAST("east"),
     SOUTH("south"),
     NOT_VALID("not valid");
 
     private final String name;
 
-    adjacentRooms(String name) {
+    AdjacentRooms(String name) {
 
         this.name = name;
     }
 
-    public static adjacentRooms availableDirections(String s) {
-        for (adjacentRooms d : values()) {
+    public static AdjacentRooms availableDirections(String s) {
+        for (AdjacentRooms d : values()) {
             if (s.equalsIgnoreCase(d.getName())) {
                 return d;
             }
