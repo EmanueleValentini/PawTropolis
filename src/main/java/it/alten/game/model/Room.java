@@ -22,7 +22,20 @@ public class Room {
         this.adjacentRoomsList = new EnumMap<>(AdjacentRooms.class);
 
     }
+    public Room connectRoom(Room room, AdjacentRooms direction) {
 
+        return adjacentRoomsList.put(direction,room);
+    }
+
+    public Room unconnectRoom(Room room) {
+
+        return adjacentRoomsList.values().remove(room)?room:null;
+    }
+
+    public Room unconnectRoom(AdjacentRooms direction) {
+
+        return adjacentRoomsList.remove(direction);
+    }
 
     public String getName() {
         return name;
@@ -56,6 +69,7 @@ public class Room {
         this.adjacentRoomsList = adjacentRoomsList;
     }
 
+
     public Item removeItemFromRoom(Item item) {
         roomItemList.remove(item);
         return item;
@@ -79,10 +93,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room" +
-                "name='" + name + '\'' +
-                ", roomItemList=" + roomItemList +
-                ", animalMap=" + animalList +
-                ", adjacentRoomsList=" + adjacentRoomsList;
+        return name;
     }
 }
