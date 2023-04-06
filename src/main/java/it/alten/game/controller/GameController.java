@@ -14,15 +14,19 @@ import java.util.Map;
 
 public class GameController {
 
-    Map<Integer, Animal> animalMap = new HashMap<>();
-    Player player = new Player("paolo",3);
-    List<Item> roomItems = new ArrayList<>();
-    List<Item> gameItems = new ArrayList<>();
-    List<Item> playerItems = new ArrayList<>();
-    Bag bag = new Bag();
-    List<Room> rooms = new ArrayList<>();
+    private static final int DEFAULT_STARTING_LIFE_POINTS = 8000;
+    private static GameController instance;
 
-    public boolean changeRoom(AdjacentRooms direction) {
+    private final RoomController roomController;
+    private Player player;
+
+    private boolean playerQuit;
+
+    public GameController(RoomController roomController) {
+        this.roomController = new RoomController();
+    }
+
+    public Room changeRoom(AdjacentRooms direction) {
         return RoomController.changeRoom(direction);
     }
 
