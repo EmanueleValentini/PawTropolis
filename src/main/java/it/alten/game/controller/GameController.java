@@ -17,9 +17,16 @@ public class GameController {
 
     private Player player;
 
+    private boolean quit;
+
 
     public GameController() {
         this.roomController = new RoomController();
+        this.quit = false;
+    }
+
+    public void setQuit(boolean quit) {
+        this.quit = quit;
     }
 
     public Player getPlayer() {
@@ -40,8 +47,10 @@ public class GameController {
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
         System.out.println(roomController.getCurrentRoom().roomDescription());
-        System.out.println("Che vuoi fare?");
-        String command = scanner.nextLine();
-        commandController.commandProcessing(command);
+        while (quit == true) {
+            System.out.println("Che vuoi fare?");
+            String command = scanner.nextLine();
+            commandController.commandProcessing(command);
+        }
     }
 }
