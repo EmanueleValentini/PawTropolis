@@ -1,6 +1,5 @@
 package it.alten.game.controller;
 
-import it.alten.animal.model.Animal;
 import it.alten.animal.model.Eagle;
 import it.alten.animal.model.Lion;
 import it.alten.animal.model.Tiger;
@@ -13,13 +12,20 @@ import java.time.LocalDate;
 public class RoomController {
 
     // TODO: navigation between rooms
-    private Room room;
+    private Room currentRoom;
 
     public RoomController() {
 
-        room = createMap();
+        currentRoom = createMap();
     }
 
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
 
     private static Room createMap() {
 
@@ -88,5 +94,7 @@ public class RoomController {
         connectRooms(room1,room2,direction,connection);
 
     }
+
+    
 
 }
