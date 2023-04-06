@@ -12,7 +12,7 @@ public class CommandController {
 
     public CommandController() {
         this.roomController = new RoomController();
-        this.gameController = new GameController(roomController);
+        this.gameController = new GameController();
     }
 
     public String getCommand() {
