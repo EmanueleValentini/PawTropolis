@@ -11,9 +11,11 @@ public class CommandController {
 
     private final GameController gameController;
 
-    public CommandController() {
+    private String item;
+
+    public CommandController(GameController gameController) {
         this.roomController = new RoomController();
-        this.gameController = new GameController();
+        this.gameController = gameController;
     }
 
     public String getCommand() {
@@ -43,7 +45,7 @@ public class CommandController {
     }
 
     public void commandProcessing(String command) {
-        String item = "";
+
         if (command.equalsIgnoreCase("go north")) {
             if (gameController.changeRoom(AdjacentRooms.NORTH) == null) {
                 System.out.println("Coglione non c'è una porta su quel lato");
@@ -79,25 +81,31 @@ public class CommandController {
         } else if (command.equalsIgnoreCase("look")) {
             look();
         } else if (command.equalsIgnoreCase("bag")) {
-            if (gameController.getPlayer().getAllItemsInBag().isEmpty()){
+            if (gameController.getPlayer().getAllItemsInBag().isEmpty()) {
                 System.out.println("Non hai un cazzo");
             } else {
                 System.out.println(gameController.getPlayer().getAllItemsInBag());
             }
-        } else if (command.equalsIgnoreCase("drop " + item)) {
-            for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
-                if (itemInTheBag.getName().equalsIgnoreCase(item)){
-                    dropItem(itemInTheBag);
-                } else {
-                    System.out.println("Sei n'cojone nun ce l'hai!");
+        } else if (command.substring(0, 3).equalsIgnoreCase("drop")) {
+             if (command.equalsIgnoreCase("drop " + item)) {
+                for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
+                    if (itemInTheBag.getName().equalsIgnoreCase(item)) {
+                        dropItem(itemInTheBag);
+                        System.out.println("Hai droppato " + itemInTheBag.getName());
+                    } else {
+                        System.out.println("Sei n'cojone nun ce l'hai!");
+                    }
                 }
             }
-        } else if (command.equalsIgnoreCase("get" + item)) {
-            for (Item itemInTheRoom : roomController.getCurrentRoom().getRoomItemList()) {
-                if (itemInTheRoom.getName().equalsIgnoreCase(item)) {
-                    getItem(itemInTheRoom);
-                } else {
-                    System.out.println("Ma ndo cazzo lo vedi??");
+        } else if (command.substring(0,2).equalsIgnoreCase("get")) {
+            if (command.equalsIgnoreCase("get" + item)) {
+                for (Item itemInTheRoom : roomController.getCurrentRoom().getRoomItemList()) {
+                    if (itemInTheRoom.getName().equalsIgnoreCase(item)) {
+                        getItem(itemInTheRoom);
+                        System.out.println("Hai gettato " + itemInTheRoom.getName());
+                    } else {
+                        System.out.println("E da ndo cazzo li piji?");
+                    }
                 }
             }
         } else if (command.equalsIgnoreCase("quit")) {
