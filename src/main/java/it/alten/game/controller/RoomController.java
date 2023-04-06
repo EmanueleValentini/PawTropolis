@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class RoomController {
 
-    // TODO: navigation between room
+    // TODO: navigation between rooms
     private Room room;
 
     public RoomController() {
