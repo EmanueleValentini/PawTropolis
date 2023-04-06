@@ -79,7 +79,11 @@ public class CommandController {
         } else if (command.equalsIgnoreCase("look")) {
             look();
         } else if (command.equalsIgnoreCase("bag")) {
-            System.out.println(gameController.getPlayer().getAllItemsInBag());
+            if (gameController.getPlayer().getAllItemsInBag().isEmpty()){
+                System.out.println("Non hai un cazzo");
+            } else {
+                System.out.println(gameController.getPlayer().getAllItemsInBag());
+            }
         } else if (command.equalsIgnoreCase("drop " + item)) {
             for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
                 if (itemInTheBag.getName().equalsIgnoreCase(item)){
@@ -96,7 +100,8 @@ public class CommandController {
                     System.out.println("Ma ndo cazzo lo vedi??");
                 }
             }
-
+        } else if (command.equalsIgnoreCase("quit")) {
+            gameController.setQuit(true);
         }
     }
 }
