@@ -15,8 +15,15 @@ public class GameController {
 
     private final RoomController roomController;
 
+    private Player player;
+
+
     public GameController() {
         this.roomController = new RoomController();
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public Room changeRoom(AdjacentRooms direction) {
@@ -26,12 +33,15 @@ public class GameController {
     //  TODO: implementation of all controllers
 
     public void runGame() {
+        CommandController commandController = new CommandController();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
-        Player player = new Player(playerName,DEFAULT_STARTING_LIFE_POINTS);
+        player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
+        System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
         System.out.println(roomController.getCurrentRoom().roomDescription());
         System.out.println("Che vuoi fare?");
         String command = scanner.nextLine();
+        commandController.commandProcessing(command);
     }
 }
