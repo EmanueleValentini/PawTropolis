@@ -2,6 +2,7 @@ package it.alten.game.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Bag {
     private List<Item> inventory;
@@ -67,5 +68,18 @@ public class Bag {
                 "inventory=" + inventory +
                 ", availableSlots=" + availableSlots +
                 ", maxSlots=" + maxSlots;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bag bag = (Bag) o;
+        return availableSlots == bag.availableSlots && maxSlots == bag.maxSlots && Objects.equals(inventory, bag.inventory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(inventory, availableSlots, maxSlots);
     }
 }
