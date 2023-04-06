@@ -7,18 +7,15 @@ import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.AdjacentRooms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameController {
 
-    private static final int DEFAULT_STARTING_LIFE_POINTS = 8;
+    private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
     private final RoomController roomController;
 
-    public GameController(RoomController roomController) {
+    public GameController() {
         this.roomController = new RoomController();
     }
 
@@ -28,8 +25,13 @@ public class GameController {
 
     //  TODO: implementation of all controllers
 
-    public void 
-
-
-
+    public void runGame() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Benvenuto a Pawtropolis come ti chiami?");
+        String playerName = scanner.nextLine();
+        Player player = new Player(playerName,DEFAULT_STARTING_LIFE_POINTS);
+        System.out.println(roomController.getCurrentRoom().roomDescription());
+        System.out.println("Che vuoi fare?");
+        String command = scanner.nextLine();
+    }
 }
