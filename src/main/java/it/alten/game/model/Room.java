@@ -65,6 +65,10 @@ public class Room {
         return adjacentRoomsList;
     }
 
+    public Room getAdjacentRoom(AdjacentRooms direction) {
+        return adjacentRoomsList.get(direction);
+    }
+
     public void setAdjacentRoomsList(EnumMap<AdjacentRooms, Room> adjacentRoomsList) {
         this.adjacentRoomsList = adjacentRoomsList;
     }
@@ -85,10 +89,19 @@ public class Room {
         roomItemList.add(item);
     }
 
-    public void roomDescription() {
-        System.out.println("Faggiano sei nella stanza " + this.name + "\n e ce sta: "
-            + getRoomItemList().toString() + "\n in più ci sono sti tipi che te vojono mena': " + getAnimalList().toString()
-                + "\n se ti vuoi levare dalle palle puoi andare (oltre che a fanculo): " +getAdjacentRoomsList().toString());
+    public String roomDescription() {
+        String message = "Sei nella stanza " + this.getName();
+        if(!this.getRoomItemList().isEmpty()){
+            message += "\nCi sono questi oggetti: " + this.getRoomItemList();
+        }
+        if (!this.getAnimalList().isEmpty()){
+            message += "\nCi sono questi npc: " + this.getAnimalList();
+        }
+        if (!this.getAdjacentRoomsList().isEmpty()){
+            message += "\nPuoi spostarti verso: " + this.getAdjacentRoomsList();
+        }
+
+        return message;
     }
 
     @Override
