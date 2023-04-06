@@ -1,11 +1,7 @@
 package it.alten.game.controller;
 
-import it.alten.game.model.Bag;
 import it.alten.game.model.Item;
-import it.alten.game.model.Player;
 import it.alten.game.model.enums.AdjacentRooms;
-
-import java.util.function.Function;
 
 public class CommandController {
 
@@ -36,12 +32,18 @@ public class CommandController {
         if (gameController.getPlayer().getAllItemsInBag().contains(item)) {
             gameController.getPlayer().removeItemFromBag(item);
             roomController.getCurrentRoom().addItemToRoom(item);
-        } else {
-            System.out.println("Sei n'cojone nun ce l'hai!");
+        }
+    }
+
+    public void getItem(Item item) {
+        if (roomController.getCurrentRoom().getRoomItemList().contains(item)) {
+            roomController.getCurrentRoom().removeItemFromRoom(item);
+            gameController.getPlayer().addItemToBag(item);
         }
     }
 
     public void commandProcessing(String command) {
+        String item = "";
         if (command.equalsIgnoreCase("go north")) {
             if (gameController.changeRoom(AdjacentRooms.NORTH) == null) {
                 System.out.println("Coglione non c'è una porta su quel lato");
@@ -78,7 +80,22 @@ public class CommandController {
             look();
         } else if (command.equalsIgnoreCase("bag")) {
             System.out.println(gameController.getPlayer().getAllItemsInBag());
-        } else if (command.equalsIgnoreCase("drop " + roomController.getCurrentRoom().getRoomItemList()) {
+        } else if (command.equalsIgnoreCase("drop " + item)) {
+            for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
+                if (itemInTheBag.getName().equalsIgnoreCase(item)){
+                    dropItem(itemInTheBag);
+                } else {
+                    System.out.println("Sei n'cojone nun ce l'hai!");
+                }
+            }
+        } else if (command.equalsIgnoreCase("get" + item)) {
+            for (Item itemInTheRoom : roomController.getCurrentRoom().getRoomItemList()) {
+                if (itemInTheRoom.getName().equalsIgnoreCase(item)) {
+                    getItem(itemInTheRoom);
+                } else {
+                    System.out.println("Ma ndo cazzo lo vedi??");
+                }
+            }
 
         }
     }
