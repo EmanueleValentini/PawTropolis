@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 public class RoomController {
 
-    // TODO: navigation between rooms
     private static Room currentRoom;
 
     public RoomController() {
@@ -95,13 +94,13 @@ public class RoomController {
 
     }
 
-    public static boolean changeRoom(AdjacentRooms direction) {
+    public static Room changeRoom(AdjacentRooms direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
-            return true;
+            return currentRoom;
         }
-        return false;
+        return null;
     }
 
 }
