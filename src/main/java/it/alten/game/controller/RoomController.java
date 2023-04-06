@@ -95,6 +95,19 @@ public class RoomController {
 
     }
 
-    
+    private StringBuilder roomDescription() {
+        StringBuilder message = new StringBuilder();
+        message.append("Sei nella stanza " + currentRoom.getName());
+        if(!currentRoom.getRoomItemList().isEmpty()){
+            message.append("\nCi sono questi oggetti: " + currentRoom.getRoomItemList());
+        }
+        if (!currentRoom.getAnimalList().isEmpty()){
+            message.append("\nCi sono questi npc: " + currentRoom.getAnimalList());
+        }
+        if (!currentRoom.getAdjacentRoomsList().isEmpty()){
+            message.append("\nPuoi spostarti verso: " + currentRoom.getAdjacentRoomsList());
+        }
+        return message;
+    }
 
 }
