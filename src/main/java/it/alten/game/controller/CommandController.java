@@ -11,7 +11,8 @@ public class CommandController {
     private GameController gameController;
 
     public CommandController() {
-
+        this.roomController = new RoomController();
+        this.gameController = new GameController(roomController);
     }
 
     public String getCommand() {
