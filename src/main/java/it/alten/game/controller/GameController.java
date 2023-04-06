@@ -5,6 +5,7 @@ import it.alten.game.model.Bag;
 import it.alten.game.model.Item;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
+import it.alten.game.model.enums.AdjacentRooms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,9 @@ public class GameController {
     Bag bag = new Bag();
     List<Room> rooms = new ArrayList<>();
 
+    public boolean changeRoom(AdjacentRooms direction) {
+        return RoomController.changeRoom(direction);
+    }
 
     //  TODO: implementation of all controllers
 
