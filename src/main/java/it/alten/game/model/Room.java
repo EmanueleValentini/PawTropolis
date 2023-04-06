@@ -90,17 +90,16 @@ public class Room {
     }
 
     public String roomDescription() {
-        String message = "Sei nella stanza " + this.getName();
-        if(!this.getRoomItemList().isEmpty()){
-            message += "\nCi sono questi oggetti: " + this.getRoomItemList();
+        String message = "Sei nella stanza " + getName();
+        if(!getRoomItemList().isEmpty()){
+            message += "\nCi sono questi oggetti: " + getRoomItemList();
         }
-        if (!this.getAnimalList().isEmpty()){
-            message += "\nCi sono questi npc: " + this.getAnimalList();
+        if (!getAnimalList().isEmpty()){
+            message += "\nCi sono questi npc: " + getAnimalList();
         }
-        if (!this.getAdjacentRoomsList().isEmpty()){
-            message += "\nPuoi spostarti verso: " + this.getAdjacentRoomsList();
+        if (!getAdjacentRoomsList().isEmpty()){
+            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
         }
-
         return message;
     }
 
