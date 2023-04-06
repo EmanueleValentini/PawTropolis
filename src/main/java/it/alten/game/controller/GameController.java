@@ -14,13 +14,9 @@ import java.util.Map;
 
 public class GameController {
 
-    private static final int DEFAULT_STARTING_LIFE_POINTS = 8000;
-    private static GameController instance;
+    private static final int DEFAULT_STARTING_LIFE_POINTS = 8;
 
     private final RoomController roomController;
-    private Player player;
-
-    private boolean playerQuit;
 
     public GameController(RoomController roomController) {
         this.roomController = new RoomController();
@@ -31,6 +27,8 @@ public class GameController {
     }
 
     //  TODO: implementation of all controllers
+
+    public void 
 
 
 

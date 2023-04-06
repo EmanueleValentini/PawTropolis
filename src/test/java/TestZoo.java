@@ -2,7 +2,6 @@ import it.alten.animal.controller.ZooController;
 import it.alten.animal.model.Eagle;
 import it.alten.animal.model.Lion;
 import it.alten.animal.model.Tiger;
-import it.alten.model.*;
 import junit.framework.TestCase;
 
 import java.time.LocalDate;
