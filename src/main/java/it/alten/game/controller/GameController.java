@@ -1,6 +1,7 @@
 package it.alten.game.controller;
 
 import it.alten.game.model.Player;
+import it.alten.game.model.Room;
 import it.alten.game.model.enums.AdjacentRooms;
 
 import java.util.*;
@@ -29,8 +30,8 @@ public class GameController {
         return player;
     }
 
-    public void changeRoom(AdjacentRooms direction) {
-        RoomController.changeRoom(direction);
+    public Room changeRoom(AdjacentRooms direction) {
+        return RoomController.changeRoom(direction);
     }
 
     public void runGame() {

@@ -94,11 +94,12 @@ public class RoomController {
 
     }
 
-    public static void changeRoom(AdjacentRooms direction) {
+    public static Room changeRoom(AdjacentRooms direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
         }
+        return currentRoom;
     }
 
 }
