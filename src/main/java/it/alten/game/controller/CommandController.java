@@ -11,6 +11,8 @@ public class CommandController {
 
     private final GameController gameController;
 
+    private String item;
+
     public CommandController(GameController gameController) {
         this.roomController = new RoomController();
         this.gameController = gameController;
@@ -77,6 +79,7 @@ public class CommandController {
                 gameController.changeRoom(AdjacentRooms.WEST);
                 look();
             }
+<<<<<<< HEAD
        } else if (command.equalsIgnoreCase("look")) {
            look();
        } else if (command.equalsIgnoreCase("bag")) {
@@ -119,6 +122,41 @@ public class CommandController {
            gameController.setQuit(true);
        } else {
            System.out.println("Nun ho capito, ripeti!");
+=======
+
+        } else if (command.equalsIgnoreCase("look")) {
+            look();
+        } else if (command.equalsIgnoreCase("bag")) {
+            if (gameController.getPlayer().getAllItemsInBag().isEmpty()) {
+                System.out.println("Non hai un cazzo");
+            } else {
+                System.out.println(gameController.getPlayer().getAllItemsInBag());
+            }
+        } else if (command.substring(0, 3).equalsIgnoreCase("drop")) {
+             if (command.equalsIgnoreCase("drop " + item)) {
+                for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
+                    if (itemInTheBag.getName().equalsIgnoreCase(item)) {
+                        dropItem(itemInTheBag);
+                        System.out.println("Hai droppato " + itemInTheBag.getName());
+                    } else {
+                        System.out.println("Sei n'cojone nun ce l'hai!");
+                    }
+                }
+            }
+        } else if (command.substring(0,2).equalsIgnoreCase("get")) {
+            if (command.equalsIgnoreCase("get" + item)) {
+                for (Item itemInTheRoom : roomController.getCurrentRoom().getRoomItemList()) {
+                    if (itemInTheRoom.getName().equalsIgnoreCase(item)) {
+                        getItem(itemInTheRoom);
+                        System.out.println("Hai gettato " + itemInTheRoom.getName());
+                    } else {
+                        System.out.println("E da ndo cazzo li piji?");
+                    }
+                }
+            }
+        } else if (command.equalsIgnoreCase("quit")) {
+            gameController.setQuit(true);
+>>>>>>> parent of 3cd1fad (Game controller 100% working, DAJE ROMA DAJE)
         }
     }
 }
