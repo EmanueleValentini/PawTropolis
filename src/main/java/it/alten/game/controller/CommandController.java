@@ -42,37 +42,37 @@ public class CommandController {
         }
     }
 
+    public void noDoor() {
+        System.out.println("Coglione non c'è una porta su quel lato");
+    }
+
     public void commandProcessing(String command) {
 
         if (command.equalsIgnoreCase("go north")) {
             if (gameController.changeRoom(AdjacentRooms.NORTH) == null) {
-                System.out.println("Coglione non c'è una porta su quel lato");
+                noDoor();
             } else {
-                gameController.changeRoom(AdjacentRooms.NORTH);
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go south")) {
             if (gameController.changeRoom(AdjacentRooms.SOUTH) == null) {
-                System.out.println("Coglione non c'è una porta su quel lato");
+                noDoor();
             } else {
-                gameController.changeRoom(AdjacentRooms.SOUTH);
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go east")) {
             if (gameController.changeRoom(AdjacentRooms.EAST) == null) {
-                System.out.println("Coglione non c'è una porta su quel lato");
+                noDoor();
             } else {
-                gameController.changeRoom(AdjacentRooms.EAST);
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go west")) {
             if (gameController.changeRoom(AdjacentRooms.WEST) == null) {
-                System.out.println("Coglione non c'è una porta su quel lato");
+                noDoor();
             } else {
-                gameController.changeRoom(AdjacentRooms.WEST);
                 look();
             }
 

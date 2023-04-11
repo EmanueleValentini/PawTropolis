@@ -59,15 +59,12 @@ public class RoomController {
         connectRooms(terminiStation, bossRoom, AdjacentRooms.EAST,AdjacentRooms.WEST);
         connectRooms(thiefCity, healingFountain, AdjacentRooms.WEST,AdjacentRooms.EAST);
         connectRooms(bossRoom, exit, AdjacentRooms.NORTH,AdjacentRooms.SOUTH);
-        entrance.roomDescription();
-        terminiStation.roomDescription();
-        thiefCity.roomDescription();
         return entrance;
     }
 
     private static void connectRooms(Room room1, Room room2, AdjacentRooms direction1, AdjacentRooms direction2){
         room1.connectRoom(room2, direction1);
-        room2.connectRoom(room1,direction2);
+        room2.connectRoom(room1, direction2);
     }
 
     private static void connectRooms(Room room1, Room room2, AdjacentRooms direction) {
