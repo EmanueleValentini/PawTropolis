@@ -22,9 +22,9 @@ public class Room {
         this.adjacentRoomsList = new EnumMap<>(AdjacentRooms.class);
 
     }
-    public Room connectRoom(Room room, AdjacentRooms direction) {
+    public void connectRoom(Room room, AdjacentRooms direction) {
 
-        return adjacentRoomsList.put(direction,room);
+        adjacentRoomsList.put(direction, room);
     }
 
     public Room unconnectRoom(Room room) {
@@ -74,15 +74,13 @@ public class Room {
     }
 
 
-    public Item removeItemFromRoom(Item item) {
+    public void removeItemFromRoom(Item item) {
         roomItemList.remove(item);
-        return item;
     }
 
-    public Animal addAnimalToRoom(Animal animal) {
+    public void addAnimalToRoom(Animal animal) {
 
         animalList.add(animal);
-        return animal;
     }
 
     public void addItemToRoom(Item item) {
