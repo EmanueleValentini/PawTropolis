@@ -34,8 +34,6 @@ public class GameController {
         return RoomController.changeRoom(direction);
     }
 
-    //  TODO: implementation of all controllers
-
     public void runGame() {
         CommandController commandController = new CommandController(this);
         Scanner scanner = new Scanner(System.in);

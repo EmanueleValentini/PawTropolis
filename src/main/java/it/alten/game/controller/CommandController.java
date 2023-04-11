@@ -85,13 +85,15 @@ public class CommandController {
                 System.out.println(gameController.getPlayer().getAllItemsInBag());
             }
         } else if (command.startsWith("drop")) {
-            String itemToDrop = command.substring(5);
+            String itemToDrop = command.substring(5).trim();
             if (itemToDrop != null) {
                 for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
                     if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                         dropItem(itemInTheBag);
                         System.out.println("Hai droppato " + itemInTheBag.getName());
                         break;
+                    } else {
+                        System.out.println("Scrivi bene!");
                     }
                 }
             } else {
@@ -99,13 +101,15 @@ public class CommandController {
             }
 
         } else if (command.startsWith("get")) {
-            String itemToGet = command.substring(4);
+            String itemToGet = command.substring(4).trim();
             if (itemToGet != null) {
                 for (Item itemInTheRoom : roomController.getCurrentRoom().getRoomItemList()) {
                     if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
                         getItem(itemInTheRoom);
                         System.out.println("Hai preso " + itemInTheRoom.getName());
                         break;
+                    } else {
+                        System.out.println("Scrivi bene!");
                     }
                 }
             } else {
