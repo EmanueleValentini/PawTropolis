@@ -34,6 +34,8 @@ public class GameController {
         return RoomController.changeRoom(direction);
     }
 
+    //  TODO: implementation of all controllers
+
     public void runGame() {
         CommandController commandController = new CommandController(this);
         Scanner scanner = new Scanner(System.in);
@@ -42,7 +44,7 @@ public class GameController {
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
         System.out.println(roomController.getCurrentRoom().roomDescription());
-        while (!quit) {
+        while (quit != true) {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
             commandController.commandProcessing(command);

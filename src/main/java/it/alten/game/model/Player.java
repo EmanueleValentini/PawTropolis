@@ -29,12 +29,12 @@ public class Player {
         this.lifePoints = points;
     }
 
-    public void addItemToBag(Item item) {
-        bag.addItem(item);
+    public Item addItemToBag(Item item) {
+        return bag.addItem(item);
     }
 
-    public void removeItemFromBag(Item item) {
-        bag.removeItem(item);
+    public Item removeItemFromBag(Item item) {
+        return bag.removeItem(item);
     }
 
     public List<Item> getAllItemsInBag() {

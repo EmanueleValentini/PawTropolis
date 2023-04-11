@@ -98,8 +98,9 @@ public class RoomController {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
+            return currentRoom;
         }
-        return currentRoom;
+        return null;
     }
 
 }

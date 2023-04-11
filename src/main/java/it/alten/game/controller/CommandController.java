@@ -46,7 +46,7 @@ public class CommandController {
 
         if (command.equalsIgnoreCase("go north")) {
             if (gameController.changeRoom(AdjacentRooms.NORTH) == null) {
-                System.out.println("Coglione non c'Ã¨ una porta su quel lato");
+                System.out.println("Coglione non c'è una porta su quel lato");
             } else {
                 gameController.changeRoom(AdjacentRooms.NORTH);
                 look();
@@ -54,7 +54,7 @@ public class CommandController {
 
         } else if (command.equalsIgnoreCase("go south")) {
             if (gameController.changeRoom(AdjacentRooms.SOUTH) == null) {
-                System.out.println("Coglione non c'Ã¨ una porta su quel lato");
+                System.out.println("Coglione non c'è una porta su quel lato");
             } else {
                 gameController.changeRoom(AdjacentRooms.SOUTH);
                 look();
@@ -62,7 +62,7 @@ public class CommandController {
 
         } else if (command.equalsIgnoreCase("go east")) {
             if (gameController.changeRoom(AdjacentRooms.EAST) == null) {
-                System.out.println("Coglione non c'Ã¨ una porta su quel lato");
+                System.out.println("Coglione non c'è una porta su quel lato");
             } else {
                 gameController.changeRoom(AdjacentRooms.EAST);
                 look();
@@ -70,7 +70,7 @@ public class CommandController {
 
         } else if (command.equalsIgnoreCase("go west")) {
             if (gameController.changeRoom(AdjacentRooms.WEST) == null) {
-                System.out.println("Coglione non c'Ã¨ una porta su quel lato");
+                System.out.println("Coglione non c'è una porta su quel lato");
             } else {
                 gameController.changeRoom(AdjacentRooms.WEST);
                 look();
