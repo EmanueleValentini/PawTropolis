@@ -15,14 +15,7 @@ public enum AdjacentRooms {
         this.name = name;
     }
 
-    public static AdjacentRooms availableDirections(String s) {
-        for (AdjacentRooms d : values()) {
-            if (s.equalsIgnoreCase(d.getName())) {
-                return d;
-            }
-        }
-        return NOT_VALID;
-    }
+
 
     public String getName() {
         return name;
