@@ -66,31 +66,7 @@ public class RoomController {
         room1.connectRoom(room2, direction1);
         room2.connectRoom(room1, direction2);
     }
-
-    private static void connectRooms(Room room1, Room room2, AdjacentRooms direction) {
-        AdjacentRooms connection;
-        switch (direction) {
-
-
-            case NORTH -> {
-                connection = AdjacentRooms.NORTH;
-            }
-            case EAST -> {
-                connection = AdjacentRooms.EAST;
-            }
-            case WEST -> {
-                connection = AdjacentRooms.WEST;
-            }
-            case SOUTH -> {
-                connection = AdjacentRooms.SOUTH;
-            }
-            default -> connection = AdjacentRooms.NOT_VALID;
-
-        }
-        connectRooms(room1,room2,direction,connection);
-
-    }
-
+    
     public static Room changeRoom(AdjacentRooms direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
