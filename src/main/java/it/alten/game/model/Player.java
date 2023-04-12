@@ -41,7 +41,5 @@ public class Player {
         return bag.getInventory();
     }
 
-    public Bag getBag() {
-        return bag;
-    }
+
 }
