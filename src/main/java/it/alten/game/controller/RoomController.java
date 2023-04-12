@@ -66,7 +66,7 @@ public class RoomController {
         room1.connectRoom(room2, direction1);
         room2.connectRoom(room1, direction2);
     }
-    
+
     public static Room changeRoom(AdjacentRooms direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {

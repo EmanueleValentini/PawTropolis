@@ -10,9 +10,9 @@ public class Room {
 
     private List<Item> roomItemList;
 
-    List<Animal> animalList;
+    private List<Animal> animalList;
 
-    EnumMap<AdjacentRooms, Room> adjacentRoomsList;
+    private EnumMap<AdjacentRooms, Room> adjacentRoomsList;
 
     public Room(String name){
 
