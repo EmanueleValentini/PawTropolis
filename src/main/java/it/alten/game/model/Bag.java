@@ -39,7 +39,6 @@ public class Bag {
     public void addItem(Item item) {
         if (!isFull()) {
             inventory.add(item);
-            setAvailableSlots(getAvailableSlots() - item.getRequestedSlots());
         } else {
             System.out.println("Hai la borsa piena coglione");
         }
@@ -51,7 +50,6 @@ public class Bag {
             System.out.println("Bro ma sei cieco, non ce l'hai sto coso");
         } else {
             inventory.remove(item);
-            setAvailableSlots(getAvailableSlots() + item.getRequestedSlots());
         }
 
     }
