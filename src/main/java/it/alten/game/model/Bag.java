@@ -36,24 +36,20 @@ public class Bag {
         return maxSlots;
     }
 
-    public Item addItem(Item item) {
+    public void addItem(Item item) {
         if (!isFull()) {
             inventory.add(item);
-            return item;
         } else {
             System.out.println("Hai la borsa piena coglione");
-            return null;
         }
 
     }
 
-    public Item removeItem(Item item) {
+    public void removeItem(Item item) {
         if (!inventory.contains(item)) {
             System.out.println("Bro ma sei cieco, non ce l'hai sto coso");
-            return null;
         } else {
             inventory.remove(item);
-            return item;
         }
 
     }
