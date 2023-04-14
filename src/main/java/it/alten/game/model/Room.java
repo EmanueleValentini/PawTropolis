@@ -1,7 +1,7 @@
 package it.alten.game.model;
 
 import it.alten.animal.model.Animal;
-import it.alten.game.model.enums.AdjacentRooms;
+import it.alten.game.model.enums.Direction;
 
 import java.util.*;
 
@@ -12,17 +12,17 @@ public class Room {
 
     private List<Animal> animalList;
 
-    private EnumMap<AdjacentRooms, Room> adjacentRoomsList;
+    private EnumMap<Direction, Room> adjacentRoomsList;
 
     public Room(String name){
 
         this.name = name;
         this.roomItemList = new ArrayList<>();
         this.animalList = new ArrayList<>();
-        this.adjacentRoomsList = new EnumMap<>(AdjacentRooms.class);
+        this.adjacentRoomsList = new EnumMap<>(Direction.class);
 
     }
-    public void connectRoom(Room room, AdjacentRooms direction) {
+    public void connectRoom(Room room, Direction direction) {
 
         adjacentRoomsList.put(direction, room);
     }
@@ -32,7 +32,7 @@ public class Room {
         return adjacentRoomsList.values().remove(room)?room:null;
     }
 
-    public Room unconnectRoom(AdjacentRooms direction) {
+    public Room unconnectRoom(Direction direction) {
 
         return adjacentRoomsList.remove(direction);
     }
@@ -61,15 +61,15 @@ public class Room {
         this.animalList = animalList;
     }
 
-    public EnumMap<AdjacentRooms, Room> getAdjacentRoomsList() {
+    public EnumMap<Direction, Room> getAdjacentRoomsList() {
         return adjacentRoomsList;
     }
 
-    public Room getAdjacentRoom(AdjacentRooms direction) {
+    public Room getAdjacentRoom(Direction direction) {
         return adjacentRoomsList.get(direction);
     }
 
-    public void setAdjacentRoomsList(EnumMap<AdjacentRooms, Room> adjacentRoomsList) {
+    public void setAdjacentRoomsList(EnumMap<Direction, Room> adjacentRoomsList) {
         this.adjacentRoomsList = adjacentRoomsList;
     }
 

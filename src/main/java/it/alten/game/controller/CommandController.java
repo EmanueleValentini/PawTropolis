@@ -1,7 +1,7 @@
 package it.alten.game.controller;
 
 import it.alten.game.model.Item;
-import it.alten.game.model.enums.AdjacentRooms;
+import it.alten.game.model.enums.Direction;
 
 public class CommandController {
 
@@ -49,28 +49,28 @@ public class CommandController {
     public void commandProcessing(String command) {
 
         if (command.equalsIgnoreCase("go north")) {
-            if (gameController.changeRoom(AdjacentRooms.NORTH) == null) {
+            if (gameController.changeRoom(Direction.NORTH) == null) {
                 noDoor();
             } else {
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go south")) {
-            if (gameController.changeRoom(AdjacentRooms.SOUTH) == null) {
+            if (gameController.changeRoom(Direction.SOUTH) == null) {
                 noDoor();
             } else {
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go east")) {
-            if (gameController.changeRoom(AdjacentRooms.EAST) == null) {
+            if (gameController.changeRoom(Direction.EAST) == null) {
                 noDoor();
             } else {
                 look();
             }
 
         } else if (command.equalsIgnoreCase("go west")) {
-            if (gameController.changeRoom(AdjacentRooms.WEST) == null) {
+            if (gameController.changeRoom(Direction.WEST) == null) {
                 noDoor();
             } else {
                 look();

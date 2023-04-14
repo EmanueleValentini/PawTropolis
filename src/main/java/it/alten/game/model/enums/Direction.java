@@ -1,7 +1,7 @@
 package it.alten.game.model.enums;
 
 
-public enum AdjacentRooms {
+public enum Direction {
     NORTH("north"),
     WEST("west"),
     EAST("east"),
@@ -10,12 +10,10 @@ public enum AdjacentRooms {
 
     private final String name;
 
-    AdjacentRooms(String name) {
+    Direction(String name) {
 
         this.name = name;
     }
-
-
 
     public String getName() {
         return name;

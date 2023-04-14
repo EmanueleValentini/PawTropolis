@@ -5,7 +5,7 @@ import it.alten.animal.model.Lion;
 import it.alten.animal.model.Tiger;
 import it.alten.game.model.Item;
 import it.alten.game.model.Room;
-import it.alten.game.model.enums.AdjacentRooms;
+import it.alten.game.model.enums.Direction;
 
 import java.time.LocalDate;
 
@@ -54,20 +54,20 @@ public class RoomController {
 
         exit.addAnimalToRoom(new Lion("Salvatore", "Er Sambucone Molinari", 67, LocalDate.now(), 8.5, 9.0, 7.9));
 
-        connectRooms(entrance, terminiStation, AdjacentRooms.EAST, AdjacentRooms.WEST);
-        connectRooms(entrance, thiefCity, AdjacentRooms.SOUTH,AdjacentRooms.NORTH);
-        connectRooms(terminiStation, bossRoom, AdjacentRooms.EAST,AdjacentRooms.WEST);
-        connectRooms(thiefCity, healingFountain, AdjacentRooms.WEST,AdjacentRooms.EAST);
-        connectRooms(bossRoom, exit, AdjacentRooms.NORTH,AdjacentRooms.SOUTH);
+        connectRooms(entrance, terminiStation, Direction.EAST, Direction.WEST);
+        connectRooms(entrance, thiefCity, Direction.SOUTH, Direction.NORTH);
+        connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
+        connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
+        connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH);
         return entrance;
     }
 
-    private static void connectRooms(Room room1, Room room2, AdjacentRooms direction1, AdjacentRooms direction2){
+    private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
         room1.connectRoom(room2, direction1);
         room2.connectRoom(room1, direction2);
     }
 
-    public static Room changeRoom(AdjacentRooms direction) {
+    public static Room changeRoom(Direction direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
