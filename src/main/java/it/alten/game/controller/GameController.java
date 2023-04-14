@@ -42,7 +42,7 @@ public class GameController {
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
         System.out.println(roomController.getCurrentRoom().roomDescription());
-        while (quit != true) {
+        while (!quit) {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
             commandController.commandProcessing(command);
