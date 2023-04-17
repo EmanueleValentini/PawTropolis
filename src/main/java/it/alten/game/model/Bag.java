@@ -54,6 +54,7 @@ public class Bag {
 
     }
 
+    // TODO: rifallo con l'avaiableSlots
     public boolean isFull() {
         return inventory.size() == maxSlots;
     }
