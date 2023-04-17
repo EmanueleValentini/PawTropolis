@@ -102,7 +102,15 @@ public class Room {
     }
 
     @Override
-    public String toString() {
-        return name;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(name, room.name) && Objects.equals(roomItemList, room.roomItemList) && Objects.equals(animalList, room.animalList) && Objects.equals(adjacentRoomsList, room.adjacentRoomsList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, roomItemList, animalList, adjacentRoomsList);
     }
 }

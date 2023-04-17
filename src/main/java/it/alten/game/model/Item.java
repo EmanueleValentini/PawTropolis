@@ -1,5 +1,7 @@
 package it.alten.game.model;
 
+import java.util.Objects;
+
 public class Item {
     private String name;
     private String description;
@@ -35,8 +37,17 @@ public class Item {
         this.requestedSlots = requestedSlots;
     }
 
+
     @Override
-    public String toString() {
-        return name;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return requestedSlots == item.requestedSlots && Objects.equals(name, item.name) && Objects.equals(description, item.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, requestedSlots);
     }
 }

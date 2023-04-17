@@ -7,11 +7,11 @@ import java.util.Objects;
 public class Bag {
     private List<Item> inventory;
     private int availableSlots;
-    private static final int DEFAULT_MAX_SLOTS = 10;
+    private static final int MAX_SLOTS = 10;
     private final int maxSlots;
 
     public Bag() {
-        this.maxSlots = DEFAULT_MAX_SLOTS;
+        this.maxSlots = MAX_SLOTS;
         this.availableSlots = maxSlots;
         this.inventory = new ArrayList<>(maxSlots);
     }
@@ -54,18 +54,10 @@ public class Bag {
 
     }
 
-    // TODO: rifallo con l'avaiableSlots
     public boolean isFull() {
-        return inventory.size() == maxSlots;
+        return availableSlots == 0;
     }
 
-    @Override
-    public String toString() {
-        return "Bag" +
-                "inventory=" + inventory +
-                ", availableSlots=" + availableSlots +
-                ", maxSlots=" + maxSlots;
-    }
 
     @Override
     public boolean equals(Object o) {
