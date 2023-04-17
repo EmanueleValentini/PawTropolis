@@ -2,14 +2,17 @@ package it.alten.game.controller;
 
 import it.alten.game.model.Item;
 import it.alten.game.model.enums.Direction;
+import it.alten.game.model.factory.Command;
 
-public class CommandController {
+public class CommandController{
 
     private String command;
 
     private final RoomController roomController;
 
     private final GameController gameController;
+
+    private Command commandTrue;
 
     public CommandController(GameController gameController) {
         this.roomController = new RoomController();
@@ -79,11 +82,7 @@ public class CommandController {
         } else if (command.equalsIgnoreCase("look")) {
             look();
         } else if (command.equalsIgnoreCase("bag")) {
-            if (gameController.getPlayer().getAllItemsInBag().isEmpty()) {
-                System.out.println("Non hai un cazzo");
-            } else {
-                System.out.println(gameController.getPlayer().getAllItemsInBag());
-            }
+            commandTrue.execute();
         } else if (command.startsWith("drop")) {
             String itemToDrop = command.substring(5).trim();
             for (Item itemInTheBag : gameController.getPlayer().getAllItemsInBag()) {
@@ -109,4 +108,6 @@ public class CommandController {
             System.out.println("Nun ho capito, ripeti!");
         }
     }
+
+
 }

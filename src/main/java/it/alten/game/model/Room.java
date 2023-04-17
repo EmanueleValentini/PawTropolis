@@ -113,4 +113,9 @@ public class Room {
     public int hashCode() {
         return Objects.hash(name, roomItemList, animalList, adjacentRoomsList);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

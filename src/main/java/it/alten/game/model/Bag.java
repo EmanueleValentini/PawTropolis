@@ -71,4 +71,6 @@ public class Bag {
     public int hashCode() {
         return Objects.hash(inventory, availableSlots, maxSlots);
     }
+
+
 }
