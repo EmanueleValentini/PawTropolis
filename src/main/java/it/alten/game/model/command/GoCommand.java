@@ -6,21 +6,21 @@ import it.alten.game.model.enums.Direction;
 public class GoCommand extends ParametrizedCommand {
 
     private GameController gameController;
-    private LookCommand lookCommand;
+    private LookCommand lookCommand = new LookCommand();
     @Override
     public void execute(String parameter) {
-        String direction = parameter.replace("go","");
+        String direction = parameter.replace("go ","");
         if (direction.equalsIgnoreCase("north")){
-            gameController.changeRoom(Direction.NORTH);
+            getGameController().changeRoom(Direction.NORTH);
             lookCommand.execute(parameter);
         } else if (direction.equalsIgnoreCase("south")) {
-            gameController.changeRoom(Direction.SOUTH);
+            getGameController().changeRoom(Direction.SOUTH);
             lookCommand.execute(parameter);
         } else if (direction.equalsIgnoreCase("east")) {
-            gameController.changeRoom(Direction.EAST);
+            getGameController().changeRoom(Direction.EAST);
             lookCommand.execute(parameter);
         } else if (direction.equalsIgnoreCase("west")) {
-            gameController.changeRoom(Direction.WEST);
+            getGameController().changeRoom(Direction.WEST);
             lookCommand.execute(parameter);
         }
     }
