@@ -45,7 +45,6 @@ public class GameController {
     }
 
     public void runGame() {
-        CommandController commandController = new CommandController();
         CommandFactory commandFactory = new CommandFactory();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
@@ -56,8 +55,8 @@ public class GameController {
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
-            Command finale = commandFactory.createCommandFromString(command);
-            finale.execute(command);
+            Command effectiveCommand = commandFactory.createCommandFromString(command);
+            effectiveCommand.execute(command);
         }
     }
 }

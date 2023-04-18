@@ -8,10 +8,8 @@ public class CommandFactory {
         if (input.startsWith("go")) {
             return new GoCommand();
         } else if (input.startsWith("get")) {
-            String itemToGet = input.replace("get","");
             return new GetCommand();
         } else if (input.startsWith("drop")) {
-            String itemToDrop = input.replace("drop","");
             return new DropCommand();
         } else if (input.equalsIgnoreCase("look")) {
             return new LookCommand();
