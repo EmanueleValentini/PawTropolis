@@ -15,4 +15,16 @@ public class CommandController{
         this.gameController = GameController.getInstance();
         this.commandFactory = new CommandFactory();
     }
+
+    public RoomController getRoomController() {
+        return roomController;
+    }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public CommandFactory getCommandFactory() {
+        return commandFactory;
+    }
 }
