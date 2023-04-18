@@ -2,7 +2,7 @@ package it.alten.game.controller;
 
 import it.alten.game.model.Item;
 import it.alten.game.model.enums.Direction;
-import it.alten.game.model.factory.Command;
+import it.alten.game.model.command.Command;
 
 public class CommandController{
 

@@ -1,4 +1,4 @@
-package it.alten.game.model.factory;
+package it.alten.game.model.command;
 
 public class QuitCommand extends Command {
     @Override
