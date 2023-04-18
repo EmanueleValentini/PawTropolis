@@ -5,9 +5,4 @@ public class DropCommand extends ParametrizedCommand {
     public void execute(String parameter) {
 
     }
-
-    @Override
-    public void execute() {
-
-    }
 }

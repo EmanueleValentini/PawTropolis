@@ -4,12 +4,8 @@ import it.alten.game.model.command.*;
 
 public class CommandFactory {
 
-    private Command command;
-
-    private ParametrizedCommand parametrizedCommand;
     public Command createCommandFromString(String input) {
         if (input.startsWith("go")) {
-            String direction = input.replace("go","");
             return new GoCommand();
         } else if (input.startsWith("get")) {
             String itemToGet = input.replace("get","");

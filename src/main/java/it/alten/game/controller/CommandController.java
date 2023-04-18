@@ -22,7 +22,7 @@ public class CommandController{
     }
 
     public void commandProcesser (String input){
-        commandFactory.createCommandFromString(input).execute();
+        commandFactory.createCommandFromString(input).execute(input);
     }
 
 //

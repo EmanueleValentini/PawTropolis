@@ -9,18 +9,19 @@ public class GoCommand extends ParametrizedCommand {
     private LookCommand lookCommand;
     @Override
     public void execute(String parameter) {
-        if (parameter.equalsIgnoreCase("north")){
+        String direction = parameter.replace("go","");
+        if (direction.equalsIgnoreCase("north")){
             gameController.changeRoom(Direction.NORTH);
-            lookCommand.execute();
-        } else if (parameter.equalsIgnoreCase("south")) {
+            lookCommand.execute(parameter);
+        } else if (direction.equalsIgnoreCase("south")) {
             gameController.changeRoom(Direction.SOUTH);
-            lookCommand.execute();
-        } else if (parameter.equalsIgnoreCase("east")) {
+            lookCommand.execute(parameter);
+        } else if (direction.equalsIgnoreCase("east")) {
             gameController.changeRoom(Direction.EAST);
-            lookCommand.execute();
-        } else if (parameter.equalsIgnoreCase("west")) {
+            lookCommand.execute(parameter);
+        } else if (direction.equalsIgnoreCase("west")) {
             gameController.changeRoom(Direction.WEST);
-            lookCommand.execute();
+            lookCommand.execute(parameter);
         }
     }
 }

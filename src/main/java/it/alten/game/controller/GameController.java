@@ -1,7 +1,9 @@
 package it.alten.game.controller;
 
+import it.alten.game.model.CommandFactory;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
+import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
 
 import java.util.*;
@@ -44,6 +46,7 @@ public class GameController {
 
     public void runGame() {
         CommandController commandController = new CommandController();
+        CommandFactory commandFactory = new CommandFactory();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
@@ -53,7 +56,8 @@ public class GameController {
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
-            commandController.commandProcesser(command);
+            Command finale = commandFactory.createCommandFromString(command);
+            finale.execute(command);
         }
     }
 }
