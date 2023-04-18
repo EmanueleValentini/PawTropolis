@@ -16,10 +16,18 @@ public class GameController {
 
     private boolean quit;
 
+    private static GameController instance;
 
-    public GameController() {
-        this.roomController = new RoomController();
+    private GameController() {
+        this.roomController = RoomController.getInstance();
         this.quit = false;
+    }
+
+    public static GameController getInstance() {
+        if (instance == null) {
+            instance = new GameController();
+        }
+        return instance;
     }
 
     public void setQuit(boolean quit) {
@@ -35,7 +43,7 @@ public class GameController {
     }
 
     public void runGame() {
-        CommandController commandController = new CommandController(this);
+        CommandController commandController = new CommandController();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
@@ -45,7 +53,7 @@ public class GameController {
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
-            commandController.commandProcessing(command);
+            commandController.commandProcesser(command);
         }
     }
 }

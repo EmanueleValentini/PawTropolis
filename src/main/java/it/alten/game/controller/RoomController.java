@@ -13,9 +13,17 @@ public class RoomController {
 
     private static Room currentRoom;
 
-    public RoomController() {
+    private static RoomController instance;
 
+    private RoomController() {
         currentRoom = createMap();
+    }
+
+    public static RoomController getInstance() {
+        if (instance == null) {
+            instance = new RoomController();
+        }
+        return instance;
     }
 
     public Room getCurrentRoom() {
