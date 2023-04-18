@@ -5,10 +5,10 @@ import it.alten.game.controller.RoomController;
 
 public abstract class Command {
 
-    private RoomController roomController;
-    private GameController gameController;
+    private final RoomController roomController;
+    private final GameController gameController;
 
-    public Command() {
+    protected Command() {
         this.roomController = RoomController.getInstance();
         this.gameController = GameController.getInstance();
     }
