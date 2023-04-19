@@ -21,6 +21,6 @@ public abstract class Command {
         return gameController;
     }
 
-    public abstract void execute(String command);
+    public abstract void execute();
 
 }

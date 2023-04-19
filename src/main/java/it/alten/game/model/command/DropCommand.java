@@ -2,9 +2,12 @@ package it.alten.game.model.command;
 
 import it.alten.game.model.Item;
 
+import static it.alten.game.model.CommandFactory.getParameter;
+
 public class DropCommand extends ParametrizedCommand {
     @Override
-    public void execute(String parameter) {
+    public void execute() {
+        String parameter = getParameter();
         String itemToDrop = parameter.replace("drop ","");
         for (Item itemInTheBag : getGameController().getPlayer().getAllItemsInBag()) {
             if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {

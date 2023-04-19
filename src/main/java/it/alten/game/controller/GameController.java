@@ -56,7 +56,7 @@ public class GameController {
             System.out.println("Che vuoi fare?");
             String command = scanner.nextLine();
             Command effectiveCommand = commandFactory.createCommandFromString(command);
-            effectiveCommand.execute(command);
+            effectiveCommand.execute();
         }
     }
 }

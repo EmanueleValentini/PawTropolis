@@ -2,10 +2,13 @@ package it.alten.game.model.command;
 
 import it.alten.game.model.Item;
 
+import static it.alten.game.model.CommandFactory.getParameter;
+
 public class GetCommand extends ParametrizedCommand {
 
     @Override
-    public void execute(String parameter) {
+    public void execute() {
+        String parameter = getParameter();
         String itemToGet = parameter.replace("get ","");
         for (Item itemInTheRoom : getRoomController().getCurrentRoom().getRoomItemList()) {
                 if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
