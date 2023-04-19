@@ -9,6 +9,8 @@ import it.alten.game.model.enums.Direction;
 
 import java.time.LocalDate;
 
+import static it.alten.game.model.enums.Direction.getOppositeDirection;
+
 public class RoomController {
 
     private static Room currentRoom;
@@ -61,8 +63,8 @@ public class RoomController {
         healingFountain.addItemToRoom(new Item("Soldi", "i soldi quelli veri", 1));
 
         exit.addAnimalToRoom(new Lion("Salvatore", "Er Sambucone Molinari", 67, LocalDate.now(), 8.5, 9.0, 7.9));
-
-        connectRooms(entrance, terminiStation, Direction.EAST, Direction.WEST);
+        
+        connectRooms(entrance, terminiStation, Direction.EAST);
         connectRooms(entrance, thiefCity, Direction.SOUTH, Direction.NORTH);
         connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
         connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
@@ -73,6 +75,11 @@ public class RoomController {
     private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
         room1.connectRoom(room2, direction1);
         room2.connectRoom(room1, direction2);
+    }
+
+    private static void connectRooms(Room room1, Room room2, Direction direction) {
+        room1.connectRoom(room2, direction);
+        room2.connectRoom(room1, getOppositeDirection(direction));
     }
 
     public static Room changeRoom(Direction direction) {
