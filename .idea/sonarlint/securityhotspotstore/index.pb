@@ -10,11 +10,5 @@ Z
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-j
-:src/main/java/it/alten/game/model/command/LookCommand.java,2\b\2bb9fbc5f7443bb1dcf7051082842d1271baaee6
-m
-=src/main/java/it/alten/game/model/command/UnknownCommand.java,9\d\9d8d8f55b6bd82add113f3948b70faaa63e8e469
-j
-:src/main/java/it/alten/game/model/command/QuitCommand.java,6\d\6dce63e8c1b11be25402b37a2d6d721ce0a11795
 m
 =src/main/java/it/alten/game/controller/CommandController.java,5\d\5dc94e5bd53804856b940bc749c98a640f88fc8e
