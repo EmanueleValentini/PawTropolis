@@ -54,9 +54,9 @@ public class GameController {
         System.out.println(roomController.getCurrentRoom().roomDescription());
         while (!quit) {
             System.out.println("Che vuoi fare?");
-            String command = scanner.nextLine();
-            Command effectiveCommand = commandFactory.createCommandFromString(command);
-            effectiveCommand.execute();
+            String input = scanner.nextLine();
+            Command command = commandFactory.createCommandFromString(input);
+            command.execute();
         }
     }
 }
