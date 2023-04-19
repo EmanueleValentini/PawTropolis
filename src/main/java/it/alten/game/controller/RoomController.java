@@ -63,9 +63,9 @@ public class RoomController {
         healingFountain.addItemToRoom(new Item("Soldi", "i soldi quelli veri", 1));
 
         exit.addAnimalToRoom(new Lion("Salvatore", "Er Sambucone Molinari", 67, LocalDate.now(), 8.5, 9.0, 7.9));
-        
+
         connectRooms(entrance, terminiStation, Direction.EAST);
-        connectRooms(entrance, thiefCity, Direction.SOUTH, Direction.NORTH);
+        connectRooms(entrance, thiefCity, Direction.SOUTH);
         connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
         connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
         connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH);

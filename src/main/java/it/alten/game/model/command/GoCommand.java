@@ -6,7 +6,7 @@ import static it.alten.game.model.CommandFactory.getParameter;
 
 public class GoCommand extends Command {
 
-    private LookCommand lookCommand = new LookCommand();
+    private final LookCommand lookCommand = new LookCommand();
 
 
 
