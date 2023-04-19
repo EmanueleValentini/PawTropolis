@@ -1,7 +1,5 @@
 package it.alten.game.model.command;
 
-import it.alten.game.controller.GameController;
-
 public class BagCommand extends Command {
 
     @Override
