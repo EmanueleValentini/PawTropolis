@@ -1,6 +1,5 @@
 package it.alten.game.model.command;
 
-import it.alten.game.controller.RoomController;
 
 public class LookCommand extends Command {
 

@@ -5,10 +5,8 @@ import it.alten.game.model.enums.Direction;
 
 import static it.alten.game.model.CommandFactory.getParameter;
 
-public class GoCommand extends ParametrizedCommand {
+public class GoCommand extends Command {
 
-
-    private GameController gameController;
     private LookCommand lookCommand = new LookCommand();
 
 
@@ -28,6 +26,9 @@ public class GoCommand extends ParametrizedCommand {
             lookCommand.execute();
         } else if (direction.equalsIgnoreCase("west")) {
             getGameController().changeRoom(Direction.WEST);
+            lookCommand.execute();
+        } else {
+            System.out.println("E do la vedi la porta???");
             lookCommand.execute();
         }
     }

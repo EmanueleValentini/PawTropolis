@@ -4,7 +4,7 @@ import it.alten.game.model.Item;
 
 import static it.alten.game.model.CommandFactory.getParameter;
 
-public class GetCommand extends ParametrizedCommand {
+public class GetCommand extends Command {
 
     @Override
     public void execute() {

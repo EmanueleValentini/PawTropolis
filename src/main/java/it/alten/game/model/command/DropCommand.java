@@ -4,7 +4,7 @@ import it.alten.game.model.Item;
 
 import static it.alten.game.model.CommandFactory.getParameter;
 
-public class DropCommand extends ParametrizedCommand {
+public class DropCommand extends Command {
     @Override
     public void execute() {
         String parameter = getParameter();
@@ -14,6 +14,8 @@ public class DropCommand extends ParametrizedCommand {
                 dropItem(itemInTheBag);
                 System.out.println("Hai droppato " + itemInTheBag.getName());
                 break;
+            } else {
+                System.out.println("Nun ce l'hai faggiano!");
             }
         }
     }
