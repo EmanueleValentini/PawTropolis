@@ -1,6 +1,5 @@
 package it.alten.game.model.command;
 
-import it.alten.game.controller.GameController;
 import it.alten.game.model.enums.Direction;
 
 import static it.alten.game.model.CommandFactory.getParameter;
