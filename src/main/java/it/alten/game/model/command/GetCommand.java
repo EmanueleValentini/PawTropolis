@@ -15,6 +15,8 @@ public class GetCommand extends Command {
                     getItem(itemInTheRoom);
                     System.out.println("Hai preso " + itemInTheRoom.getName());
                     break;
+                } else {
+                    System.out.println("Dove cazzo lo hai visto??? Ti prego dimmelo!!!");
                 }
         }
     }
