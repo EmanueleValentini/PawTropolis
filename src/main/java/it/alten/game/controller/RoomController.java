@@ -44,25 +44,80 @@ public class RoomController {
         Room thiefCity = new Room("Napoli");
         Room terminiStation = new Room("Drug Ville");
         Room exit = new Room("Secco refresh");
+
         entrance.addItemToRoom(new Item("excalibur",
                 "la famosa spada nella roccia che re Artù dovette estrarre per diventare re di Camelot, per poi sposare Ginevra e farsela rubare da Lancillotto",
                 1));
-        entrance.addAnimalToRoom(new Lion("Giancarlo", "SUSHI", 45, LocalDate.now(), 1.7, 2.5, 4.5));
+        Lion lion1 = Lion.builder()
+                        .name("Giancarlo")
+                        .favouriteFood("Sushi")
+                        .age(45)
+                        .dateOfJoin(LocalDate.now())
+                        .weight(1.7)
+                        .height(2.5)
+                        .tailLength(1.0)
+                        .build();
+        entrance.addAnimalToRoom(lion1);
 
-        bossRoom.addAnimalToRoom(new Eagle("L'aquila assassina", "Umani", 1000000, LocalDate.now(), 400.5, 300.3, 34.5));
+        Eagle eagle1 = Eagle.builder()
+                .name("L'acquila assassina")
+                .favouriteFood("Umani")
+                .age(10000)
+                .dateOfJoin(LocalDate.now())
+                .weight(3.4)
+                .height(7.3)
+                .wingspan(1.2)
+                .build();
+        bossRoom.addAnimalToRoom(eagle1);
 
         terminiStation.addItemToRoom(new Item("scudo", "scudo rotondo", 3));
         terminiStation.addItemToRoom(new Item("siringa", "ti cura di 50hp e ti fa...forse non ti cura", 2));
-        terminiStation.addAnimalToRoom(new Tiger("Amal", "indiano", 24, LocalDate.now(), 70.5, 1.70, 23.0));
+        Tiger tiger1 = Tiger.builder()
+                .name("Amal")
+                .favouriteFood("indiano")
+                .age(24)
+                .dateOfJoin(LocalDate.now())
+                .weight(70.5)
+                .height(1.70)
+                .tailLength(2.1)
+                .build();
+        terminiStation.addAnimalToRoom(tiger1);
 
-        thiefCity.addAnimalToRoom(new Lion("Amal", "indiano", 24, LocalDate.now(), 70.5, 1.70, 23.0));
+        Lion lion2 = Lion.builder()
+                .name("Amal")
+                .favouriteFood("indiano")
+                .age(24)
+                .dateOfJoin(LocalDate.now())
+                .weight(70.5)
+                .height(1.70)
+                .tailLength(2.1)
+                .build();
+        thiefCity.addAnimalToRoom(lion2);
         thiefCity.addItemToRoom(new Item("orologio", "Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai", 2));
         thiefCity.addItemToRoom(new Item("elmo", "ti protegge dagli headshot", 1));
 
-        healingFountain.addAnimalToRoom(new Lion("Calogero", "Tè al limone", 100, LocalDate.now(), 4.5, 1.0, 6.7));
+        Lion lion3 = Lion.builder()
+                .name("Calogero")
+                .favouriteFood("Tè al limone")
+                .age(100)
+                .dateOfJoin(LocalDate.now())
+                .weight(4.5)
+                .height(1.0)
+                .tailLength(6.7)
+                .build();
+        healingFountain.addAnimalToRoom(lion3);
         healingFountain.addItemToRoom(new Item("Soldi", "i soldi quelli veri", 1));
 
-        exit.addAnimalToRoom(new Lion("Salvatore", "Er Sambucone Molinari", 67, LocalDate.now(), 8.5, 9.0, 7.9));
+        Lion lion4 = Lion.builder()
+                .name("Salvatore")
+                .favouriteFood("Er sambucone molinari")
+                .age(67)
+                .dateOfJoin(LocalDate.now())
+                .weight(8.5)
+                .height(9.0)
+                .tailLength(7.9)
+                .build();
+        exit.addAnimalToRoom(lion4);
 
         connectRooms(entrance, terminiStation, Direction.EAST);
         connectRooms(entrance, thiefCity, Direction.SOUTH);
