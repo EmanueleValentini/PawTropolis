@@ -20,8 +20,14 @@ public class Player {
     }
 
 
-    public void addItemToBag(Item item) {
-        bag.addItem(item);
+    public boolean addItemToBag(Item item) {
+        if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
+
+            bag.addItem(item);
+            return true;
+        }
+        return false;
+
     }
 
     public void removeItemFromBag(Item item) {

@@ -25,35 +25,41 @@ public class GetCommand extends Command {
             for (Item itemInTheRoom : itemList) {
 
                 if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
-                    if(getItem(itemInTheRoom)) {
+                    if (getItem(itemInTheRoom)) {
                         System.out.println("Hai preso " + itemInTheRoom.getName());
                         itemFound = itemInTheRoom;
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("Non ci entra");
                         itemFound = itemInTheRoom;
+
                     }
+
+                } else {
+                    System.out.println("Sei cieco ma non slovacco");
+
                 }
 
 
             }
+        } else {
+            System.out.println("La borsa è piena");
         }
 
-
-        if (itemFound == null) {
-            System.out.println("Dove cazzo lo hai visto??? Ti prego dimmelo!!!");
-        }
 
     }
 
     public boolean getItem(Item item) {
+        boolean hasHappened = false;
         if (getRoomController().getCurrentRoom().getRoomItemList().contains(item)) {
-            getRoomController().getCurrentRoom().removeItemFromRoom(item);
-            getGameController().getPlayer().addItemToBag(item);
-            return true;
+            hasHappened = getGameController().getPlayer().addItemToBag(item);
+
+            if (hasHappened) {
+                getRoomController().getCurrentRoom().removeItemFromRoom(item);
+            }
+
         }
 
-        return false;
+        return hasHappened;
     }
 }
