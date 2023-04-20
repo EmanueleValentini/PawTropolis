@@ -1,10 +1,12 @@
 package it.alten.animal.model;
 
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 import java.time.LocalDate;
 
-public class Lion extends AnimalWithTail{
+@Getter
+@SuperBuilder
+public class Lion extends AnimalWithTail {
 
-    public Lion(String name, String favouriteFood, Integer age, LocalDate dateOfJoin, Double weight, Double height, Double tailLenght) {
-        super(name, favouriteFood, age, dateOfJoin, weight, height, tailLenght);
-    }
 }
