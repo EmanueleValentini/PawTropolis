@@ -1,8 +1,13 @@
 package it.alten.game.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.Objects;
 
+@Getter
+@Setter
 public class Player {
     private String name;
     private int lifePoints;
@@ -14,21 +19,6 @@ public class Player {
         this.bag = new Bag();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPoints() {
-        return lifePoints;
-    }
-
-    public void setPoints(int points) {
-        this.lifePoints = points;
-    }
 
     public void addItemToBag(Item item) {
         bag.addItem(item);

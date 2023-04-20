@@ -1,9 +1,14 @@
 package it.alten.game.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
+@Setter
 public class Bag {
     private List<Item> inventory;
     private int availableSlots;
@@ -16,25 +21,7 @@ public class Bag {
         this.inventory = new ArrayList<>(maxSlots);
     }
 
-    public List<Item> getInventory() {
-        return inventory;
-    }
 
-    public void setInventory(List<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public int getAvailableSlots() {
-        return availableSlots;
-    }
-
-    public void setAvailableSlots(int availableSlots) {
-        this.availableSlots = availableSlots;
-    }
-
-    public int getMaxSlots() {
-        return maxSlots;
-    }
 
     public void addItem(Item item) {
         if (!isFull()) {

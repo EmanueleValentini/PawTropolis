@@ -2,9 +2,14 @@ package it.alten.game.model;
 
 import it.alten.animal.model.Animal;
 import it.alten.game.model.enums.Direction;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
+@Getter
+@Setter
 public class Room {
     private String name;
 
@@ -35,42 +40,6 @@ public class Room {
     public Room unconnectRoom(Direction direction) {
 
         return adjacentRoomsList.remove(direction);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Item> getRoomItemList() {
-        return roomItemList;
-    }
-
-    public void setRoomItemList(List<Item> roomItemList) {
-        this.roomItemList = roomItemList;
-    }
-
-    public List<Animal> getAnimalList() {
-        return animalList;
-    }
-
-    public void setAnimalList(List<Animal> animalList) {
-        this.animalList = animalList;
-    }
-
-    public Map<Direction, Room> getAdjacentRoomsList() {
-        return adjacentRoomsList;
-    }
-
-    public Room getAdjacentRoom(Direction direction) {
-        return adjacentRoomsList.get(direction);
-    }
-
-    public void setAdjacentRoomsList(Map<Direction, Room> adjacentRoomsList) {
-        this.adjacentRoomsList = adjacentRoomsList;
     }
 
 
