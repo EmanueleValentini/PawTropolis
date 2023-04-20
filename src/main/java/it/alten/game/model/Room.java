@@ -10,6 +10,7 @@ import java.util.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class Room {
     private String name;
 
@@ -40,6 +41,12 @@ public class Room {
     public Room unconnectRoom(Direction direction) {
 
         return adjacentRoomsList.remove(direction);
+    }
+
+
+
+    public Room getAdjacentRoom(Direction direction) {
+        return adjacentRoomsList.get(direction);
     }
 
 

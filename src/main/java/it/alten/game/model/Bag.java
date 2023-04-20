@@ -12,37 +12,33 @@ import java.util.Objects;
 public class Bag {
     private List<Item> inventory;
     private int availableSlots;
-    private static final int MAX_SLOTS = 10;
+    private static final int MAX_SLOTS = 2;
     private final int maxSlots;
 
     public Bag() {
         this.maxSlots = MAX_SLOTS;
         this.availableSlots = maxSlots;
-        this.inventory = new ArrayList<>(maxSlots);
+        this.inventory = new ArrayList<>(MAX_SLOTS);
     }
-
 
 
     public void addItem(Item item) {
-        if (!isFull()) {
+        if (!isFull() && availableSlots >= item.getRequestedSlots()) {
             inventory.add(item);
-        } else {
-            System.out.println("Hai la borsa piena coglione");
+            availableSlots -= item.getRequestedSlots();
         }
-
     }
 
     public void removeItem(Item item) {
-        if (!inventory.contains(item)) {
-            System.out.println("Bro ma sei cieco, non ce l'hai sto coso");
-        } else {
+        if (inventory.contains(item)) {
             inventory.remove(item);
+            availableSlots += item.getRequestedSlots();
         }
 
     }
 
     public boolean isFull() {
-        return availableSlots == 0;
+        return availableSlots <= 0;
     }
 
 

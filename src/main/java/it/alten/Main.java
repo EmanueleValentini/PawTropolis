@@ -7,5 +7,6 @@ public class Main {
 
         GameController.getInstance().runGame();
 
-    }
+
+   }
 }

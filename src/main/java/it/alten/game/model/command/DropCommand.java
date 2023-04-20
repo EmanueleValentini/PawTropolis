@@ -1,33 +1,32 @@
 package it.alten.game.model.command;
 
 import it.alten.game.model.Item;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class DropCommand extends Command {
 
     private String input;
 
-    public String getInput() {
-        return input;
-    }
 
-    public void setInput(String input) {
-        this.input = input;
-    }
-
-    public DropCommand(String input) {
-        this.input = input;
-    }
     @Override
     public void execute() {
-        String itemToDrop = input.replace("drop ","");
+        String itemToDrop = input.replace("drop ", "");
+        Item itemFound = null;
         for (Item itemInTheBag : getGameController().getPlayer().getAllItemsInBag()) {
             if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                 dropItem(itemInTheBag);
                 System.out.println("Hai droppato " + itemInTheBag.getName());
+                itemFound = itemInTheBag;
                 break;
-            } else {
-                System.out.println("Nun ce l'hai faggiano!");
             }
+        }
+        if (itemFound == null) {
+            System.out.println("Nun ce l'hai faggiano!");
         }
     }
 

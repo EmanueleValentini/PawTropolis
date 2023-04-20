@@ -1,41 +1,59 @@
 package it.alten.game.model.command;
 
 import it.alten.game.model.Item;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class GetCommand extends Command {
 
     private String input;
 
-    public String getInput() {
-        return input;
-    }
-
-    public void setInput(String input) {
-        this.input = input;
-    }
-
-    public GetCommand(String input) {
-        this.input = input;
-    }
 
     @Override
     public void execute() {
-        String itemToGet = input.replace("get ","");
-        for (Item itemInTheRoom : getRoomController().getCurrentRoom().getRoomItemList()) {
+        String itemToGet = input.replace("get ", "");
+        Item itemFound = null;
+        List<Item> itemList = getRoomController().getCurrentRoom().getRoomItemList();
+
+        if (!getGameController().getPlayer().getBag().isFull()) {
+            for (Item itemInTheRoom : itemList) {
+
                 if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
-                    getItem(itemInTheRoom);
-                    System.out.println("Hai preso " + itemInTheRoom.getName());
-                    break;
-                } else {
-                    System.out.println("Dove cazzo lo hai visto??? Ti prego dimmelo!!!");
+                    if(getItem(itemInTheRoom)) {
+                        System.out.println("Hai preso " + itemInTheRoom.getName());
+                        itemFound = itemInTheRoom;
+                        break;
+                    }
+                    else {
+                        System.out.println("Non ci entra");
+                        itemFound = itemInTheRoom;
+                    }
                 }
+
+
+            }
         }
+
+
+        if (itemFound == null) {
+            System.out.println("Dove cazzo lo hai visto??? Ti prego dimmelo!!!");
+        }
+
     }
 
-    public void getItem(Item item) {
-       if (getRoomController().getCurrentRoom().getRoomItemList().contains(item)) {
+    public boolean getItem(Item item) {
+        if (getRoomController().getCurrentRoom().getRoomItemList().contains(item)) {
             getRoomController().getCurrentRoom().removeItemFromRoom(item);
             getGameController().getPlayer().addItemToBag(item);
-       }
+            return true;
+        }
+
+        return false;
     }
 }
