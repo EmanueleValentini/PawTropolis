@@ -2,14 +2,25 @@ package it.alten.game.model.command;
 
 import it.alten.game.model.Item;
 
-import static it.alten.game.model.CommandFactory.getParameter;
-
 public class GetCommand extends Command {
+
+    private String input;
+
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
+    }
+
+    public GetCommand(String input) {
+        this.input = input;
+    }
 
     @Override
     public void execute() {
-        String parameter = getParameter();
-        String itemToGet = parameter.replace("get ","");
+        String itemToGet = input.replace("get ","");
         for (Item itemInTheRoom : getRoomController().getCurrentRoom().getRoomItemList()) {
                 if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
                     getItem(itemInTheRoom);
