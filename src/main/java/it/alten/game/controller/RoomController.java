@@ -70,8 +70,8 @@ public class RoomController {
                 .build();
         bossRoom.addAnimalToRoom(eagle1);
 
-        terminiStation.addItemToRoom(new Item("scudo", "scudo rotondo", 3));
-        terminiStation.addItemToRoom(new Item("siringa", "ti cura di 50hp e ti fa...forse non ti cura", 2));
+        terminiStation.addItemToRoom(new Item("scudo", "scudo rotondo", 2));
+        terminiStation.addItemToRoom(new Item("siringa", "ti cura di 50hp e ti fa...forse non ti cura", 1));
         Tiger tiger1 = Tiger.builder()
                 .name("Amal")
                 .favouriteFood("indiano")
