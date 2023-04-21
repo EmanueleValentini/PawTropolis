@@ -18,53 +18,42 @@ public class GetCommand extends Command {
     @Override
     public void execute() {
         String itemToGet = input.replace("get ", "");
-        Item itemFound = null;
-        List<Item> itemList = getRoomController().getCurrentRoom().getRoomItemList();
 
         if (!getGameController().getPlayer().getBag().isFull()) {
-            for (Item itemInTheRoom : itemList) {
-<<<<<<< HEAD
-                if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet) && (getItem(itemInTheRoom))) {
-                    itemFound = itemInTheRoom;
-                    break;
-=======
-
-                if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
-                    if (getItem(itemInTheRoom)) {
-                        System.out.println("Hai preso " + itemInTheRoom.getName());
-                        itemFound = itemInTheRoom;
-                        break;
-                    } else {
-                        System.out.println("Non ci entra");
-                        itemFound = itemInTheRoom;
-
-                    }
-
+            if (findItem(itemToGet) != null) {
+                Item itemPresentToGet = findItem(itemToGet);
+                if (getItem(itemPresentToGet)){
+                    System.out.println("Hai preso " + itemToGet);
                 } else {
-                    System.out.println("Sei cieco ma non slovacco");
-
->>>>>>> 1f985f978a1961987de91cc2a39f31a1c56a3d45
+                    System.out.println(itemToGet + " Non entra nella borsa");
                 }
+            } else {
+                System.out.println("Non c'è");
             }
-<<<<<<< HEAD
-            if (itemFound != null) {
-                System.out.println("Hai preso " + itemFound.getName());
-            } else if (itemFound == null) {
-                System.out.println("Dove lo hai visto??? Ti prego dimmelo!!!");
-            } else if (getGameController().getPlayer().getBag().isFull() && itemFound != null) {
-                System.out.println("Hai la borsa piena!");
-            }
+        } else {
+            System.out.println("La borsa è piena");
         }
 
     }
 
     public boolean getItem(Item item) {
-        if (getRoomController().getCurrentRoom().getRoomItemList().contains(item)) {
-            getRoomController().getCurrentRoom().removeItemFromRoom(item);
-            getGameController().getPlayer().addItemToBag(item);
-            return true;
+        if (getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
+                (getGameController().getPlayer().addItemToBag(item))){
+                getRoomController().getCurrentRoom().removeItemFromRoom(item);
+                return true;
         }
-
         return false;
+    }
+
+    public Item findItem(String itemToGet) {
+        Item itemFound = null;
+        List<Item> itemList = getRoomController().getCurrentRoom().getRoomItemList();
+        for (Item itemInTheRoom : itemList) {
+            if (itemInTheRoom.getName().equals(itemToGet)) {
+                itemFound = itemInTheRoom;
+                return itemFound;
+            }
+        }
+        return itemFound;
     }
 }
