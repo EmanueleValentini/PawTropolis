@@ -23,3 +23,16 @@ j
 :src/main/java/it/alten/game/controller/RoomController.java,a\3\a3a9884821ca17f5d009bd3b62e2f4a00417085c
 i
 9src/main/java/it/alten/game/model/command/BagCommand.java,0\6\0635d4951b6a9e3f0c0cd31394c1d4efc8bffb92
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+e
+5src/main/java/it/alten/game/model/CommandFactory.java,6\6\6629379063fd4aed3991973706e769e1a727f0f6
+f
+6src/main/java/it/alten/game/model/command/Command.java,2\e\2e461e4071b0ee218b6871aa7ca4adf5e05f70d0
+_
+/src/main/java/it/alten/animal/model/Animal.java,b\5\b52205e77ead1ab71a82d1a1aa05a3e4ec781b56
+g
+7src/main/java/it/alten/animal/model/AnimalWithTail.java,1\9\1915ea787dac149734f9c811541bccf9ce5fb42c
+]
+-src/main/java/it/alten/animal/model/Lion.java,3\2\3281aa3c5869210cb4f6e9d524bcfd058b1e5cf3

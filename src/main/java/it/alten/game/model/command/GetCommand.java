@@ -23,26 +23,18 @@ public class GetCommand extends Command {
 
         if (!getGameController().getPlayer().getBag().isFull()) {
             for (Item itemInTheRoom : itemList) {
-
-                if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
-                    if(getItem(itemInTheRoom)) {
-                        System.out.println("Hai preso " + itemInTheRoom.getName());
-                        itemFound = itemInTheRoom;
-                        break;
-                    }
-                    else {
-                        System.out.println("Non ci entra");
-                        itemFound = itemInTheRoom;
-                    }
+                if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet) && (getItem(itemInTheRoom))) {
+                    itemFound = itemInTheRoom;
+                    break;
                 }
-
-
             }
-        }
-
-
-        if (itemFound == null) {
-            System.out.println("Dove cazzo lo hai visto??? Ti prego dimmelo!!!");
+            if (itemFound != null) {
+                System.out.println("Hai preso " + itemFound.getName());
+            } else if (itemFound == null) {
+                System.out.println("Dove lo hai visto??? Ti prego dimmelo!!!");
+            } else if (getGameController().getPlayer().getBag().isFull() && itemFound != null) {
+                System.out.println("Hai la borsa piena!");
+            }
         }
 
     }
