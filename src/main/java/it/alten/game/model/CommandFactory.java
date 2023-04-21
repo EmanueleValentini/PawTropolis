@@ -2,7 +2,22 @@ package it.alten.game.model;
 
 import it.alten.game.model.command.*;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class CommandFactory {
+    private static CommandFactory instance;
+    private final Map<String,Command> commands;
+
+    private CommandFactory() {
+        Set<Class<? extends Command>> commandClasses = ClassLoader
+    }
+
+    public Set<Class<? extends Command>> init () {
+        Set<Class<? extends Command>> commandClasses = new HashSet<>();
+        commandClasses.add(Command);
+    }
 
     public Command createCommandFromString(String input) {
         input = input.toLowerCase();
