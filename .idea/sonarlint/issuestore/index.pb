@@ -16,8 +16,6 @@ i
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-e
-5src/main/java/it/alten/game/model/CommandFactory.java,6\6\6629379063fd4aed3991973706e769e1a727f0f6
 f
 6src/main/java/it/alten/game/model/command/Command.java,2\e\2e461e4071b0ee218b6871aa7ca4adf5e05f70d0
 _

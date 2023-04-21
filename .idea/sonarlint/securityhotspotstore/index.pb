@@ -15,8 +15,6 @@ i
 9src/main/java/it/alten/game/model/command/BagCommand.java,0\6\0635d4951b6a9e3f0c0cd31394c1d4efc8bffb92
 f
 6src/main/java/it/alten/game/model/command/Command.java,2\e\2e461e4071b0ee218b6871aa7ca4adf5e05f70d0
-e
-5src/main/java/it/alten/game/model/CommandFactory.java,6\6\6629379063fd4aed3991973706e769e1a727f0f6
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
