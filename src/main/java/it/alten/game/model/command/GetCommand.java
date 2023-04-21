@@ -47,8 +47,8 @@ public class GetCommand extends Command {
 
     public Item findItem(String itemToGet) {
         Item itemFound = null;
-        List<Item> itemList = getRoomController().getCurrentRoom().getRoomItemList();
-        for (Item itemInTheRoom : itemList) {
+        List<Item> roomItemList = getRoomController().getCurrentRoom().getRoomItemList();
+        for (Item itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equals(itemToGet)) {
                 itemFound = itemInTheRoom;
                 return itemFound;
