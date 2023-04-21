@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,17 +18,11 @@ public class DropCommand extends Command {
     @Override
     public void execute() {
         String itemToDrop = input.replace("drop ", "");
-        Item itemFound = null;
-        for (Item itemInTheBag : getGameController().getPlayer().getAllItemsInBag()) {
-            if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
-                dropItem(itemInTheBag);
-                System.out.println("Hai droppato " + itemInTheBag.getName());
-                itemFound = itemInTheBag;
-                break;
-            }
-        }
-        if (itemFound == null) {
-            System.out.println("Nun ce l'hai faggiano!");
+        if(findItem(itemToDrop) != null){
+            dropItem(findItem(itemToDrop));
+            System.out.println("Hai droppato " + itemToDrop);
+        } else {
+            System.out.println("E dove lo avresti?");
         }
     }
 
@@ -37,4 +33,16 @@ public class DropCommand extends Command {
             getRoomController().getCurrentRoom().addItemToRoom(item);
         }
     }
+    public Item findItem(String itemToDrop) {
+        Item itemFound = null;
+        List<Item> bagItemList = getGameController().getPlayer().getAllItemsInBag();
+        for (Item itemInTheBag : bagItemList) {
+            if (itemInTheBag.getName().equals(itemToDrop)) {
+                itemFound = itemInTheBag;
+                return itemFound;
+            }
+        }
+        return itemFound;
+    }
+
 }
