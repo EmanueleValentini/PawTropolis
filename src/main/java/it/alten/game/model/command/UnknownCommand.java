@@ -6,4 +6,9 @@ public class UnknownCommand extends Command {
         System.out.println("Nun ho capito!");
     }
 
+    @Override
+    public String getTriggerName() {
+        return null;
+    }
+
 }

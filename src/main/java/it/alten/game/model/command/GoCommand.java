@@ -34,4 +34,9 @@ public class GoCommand extends Command {
             lookCommand.execute();
         }
     }
+
+    @Override
+    public String getTriggerName() {
+        return "go";
+    }
 }

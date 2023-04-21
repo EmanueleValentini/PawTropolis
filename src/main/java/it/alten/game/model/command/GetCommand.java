@@ -36,6 +36,11 @@ public class GetCommand extends Command {
 
     }
 
+    @Override
+    public String getTriggerName() {
+        return "get";
+    }
+
     public boolean getItem(Item item) {
         if (getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
                 (getGameController().getPlayer().addItemToBag(item))){

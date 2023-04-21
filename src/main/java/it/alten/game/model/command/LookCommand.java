@@ -8,4 +8,9 @@ public class LookCommand extends Command {
         String description = getRoomController().getCurrentRoom().roomDescription() + "\n";
         System.out.println(description);
     }
+
+    @Override
+    public String getTriggerName() {
+        return "look";
+    }
 }

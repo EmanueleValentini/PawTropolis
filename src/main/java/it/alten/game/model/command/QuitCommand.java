@@ -5,4 +5,9 @@ public class QuitCommand extends Command {
     public void execute() {
         getGameController().setQuit(true);
     }
+
+    @Override
+    public String getTriggerName() {
+        return "quit";
+    }
 }

@@ -10,4 +10,9 @@ public class BagCommand extends Command {
             System.out.println(getGameController().getPlayer().getAllItemsInBag());
         }
     }
+
+    @Override
+    public String getTriggerName() {
+        return "bag";
+    }
 }

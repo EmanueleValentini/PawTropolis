@@ -26,6 +26,11 @@ public class DropCommand extends Command {
         }
     }
 
+    @Override
+    public String getTriggerName() {
+        return "drop";
+    }
+
 
     public void dropItem(Item item) {
         if (getGameController().getPlayer().getAllItemsInBag().contains(item)) {

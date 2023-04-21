@@ -45,7 +45,7 @@ public class GameController {
     }
 
     public void runGame() {
-        CommandFactory commandFactory = new CommandFactory();
+        CommandFactory commandFactory = CommandFactory.getInstance();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
