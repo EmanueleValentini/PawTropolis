@@ -39,9 +39,9 @@ public class GetCommand extends Command {
     }
 
     public boolean getItem(Item item) {
-        if (getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
+        if (getGameController().getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
                 (getGameController().getPlayer().addItemToBag(item))){
-                getRoomController().getCurrentRoom().removeItemFromRoom(item);
+                getGameController().getRoomController().getCurrentRoom().removeItemFromRoom(item);
                 return true;
         }
         return false;
@@ -49,7 +49,7 @@ public class GetCommand extends Command {
 
     public Item findItem(String itemToGet) {
         Item itemFound = null;
-        List<Item> roomItemList = getRoomController().getCurrentRoom().getRoomItemList();
+        List<Item> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
         for (Item itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equals(itemToGet)) {
                 itemFound = itemInTheRoom;

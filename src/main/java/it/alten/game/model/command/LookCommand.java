@@ -7,7 +7,7 @@ public class LookCommand extends Command {
 
     @Override
     public void execute() {
-        String description = getRoomController().getCurrentRoom().roomDescription() + "\n";
+        String description = getGameController().getRoomController().getCurrentRoom().roomDescription() + "\n";
         System.out.println(description);
     }
 }

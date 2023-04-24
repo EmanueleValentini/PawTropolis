@@ -32,7 +32,7 @@ public class DropCommand extends Command {
     public void dropItem(Item item) {
         if (getGameController().getPlayer().getAllItemsInBag().contains(item)) {
             getGameController().getPlayer().removeItemFromBag(item);
-            getRoomController().getCurrentRoom().addItemToRoom(item);
+            getGameController().getRoomController().getCurrentRoom().addItemToRoom(item);
         }
     }
     public Item findItem(String itemToDrop) {

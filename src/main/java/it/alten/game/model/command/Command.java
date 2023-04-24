@@ -9,18 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-@Getter
 @Component
 @NoArgsConstructor
 public abstract class Command {
-
-    private RoomController roomController;
-    private GameController gameController;
-
     @Autowired
-    public Command(GameController gameController, RoomController roomController) {
-        this.roomController = roomController;
-        this.gameController = gameController;
+    private GameController gameController;
+    public GameController getGameController() {
+        return gameController;
     }
 
     public abstract void execute();
