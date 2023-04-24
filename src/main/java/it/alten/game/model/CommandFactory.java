@@ -37,7 +37,7 @@ public class CommandFactory {
     //TODO: Risolvere createCommandFromString, come faccio a recuperarmi la prima chiave della mappa?
     public Command createCommandFromString(String input) {
         Map<String,List<String>> commandData = inputSplitter(input);
-        
+        commandData.containsKey()
     }
 
     private Map<String, List<String>> inputSplitter(String input) {
