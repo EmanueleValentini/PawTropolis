@@ -4,28 +4,29 @@ package it.alten.utils;
 import it.alten.game.model.command.*;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
-public final class CommandListMaker {
-    private static CommandListMaker instance;
+public final class CommandSetMaker {
 
-    private final List<Class<? extends Command>> commandList;
+    private static CommandSetMaker instance;
 
-    public static CommandListMaker getInstance() {
+    private final Set<Class<? extends Command>> commandSet;
+
+    public static CommandSetMaker getInstance() {
         if (instance == null) {
-            instance = new CommandListMaker();
+            instance = new CommandSetMaker();
         }
         return instance;
     }
 
-    private CommandListMaker() {
-        commandList = init();
+    private CommandSetMaker() {
+        commandSet = init();
     }
 
-    public List<Class<? extends Command>> init() {
-        List<Class<? extends Command>> commandClasses = new ArrayList<>();
+    public Set<Class<? extends Command>> init() {
+        Set<Class<? extends Command>> commandClasses = new HashSet<>();
         commandClasses.add(BagCommand.class);
         commandClasses.add(DropCommand.class);
         commandClasses.add(GetCommand.class);

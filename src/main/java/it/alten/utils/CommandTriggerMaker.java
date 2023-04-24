@@ -2,13 +2,15 @@ package it.alten.utils;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 public class CommandTriggerMaker {
+
     private static CommandTriggerMaker instance;
 
-    private final List<String> commandTriggerList;
+    private final Set<String> commandTriggerSet;
 
     public static CommandTriggerMaker getInstance() {
         if (instance == null) {
@@ -18,11 +20,11 @@ public class CommandTriggerMaker {
     }
 
     private CommandTriggerMaker() {
-        commandTriggerList = init();
+        commandTriggerSet = init();
     }
 
-    public List<String> init() {
-        List<String> commandTrigger = new ArrayList<>();
+    public Set<String> init() {
+        Set<String> commandTrigger = new HashSet<>();
         commandTrigger.add("bag");
         commandTrigger.add("drop");
         commandTrigger.add("get");
