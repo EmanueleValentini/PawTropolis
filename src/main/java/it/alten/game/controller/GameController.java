@@ -6,9 +6,11 @@ import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.*;
 
+@Controller
 public class GameController {
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
@@ -19,19 +21,10 @@ public class GameController {
 
     private boolean quit;
 
-    private static GameController instance;
-
     @Autowired
-    private GameController(RoomController roomController) {
+    public GameController(RoomController roomController) {
         this.roomController = roomController;
         this.quit = false;
-    }
-
-    public static GameController getInstance() {
-        if (instance == null) {
-            instance = new GameController();
-        }
-        return instance;
     }
 
     public void setQuit(boolean quit) {
