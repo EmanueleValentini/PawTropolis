@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class Service {
     @Bean
     public GameController gameController() {
-        return new GameController();
+        return new GameController(roomController());
     }
 
     @Bean
