@@ -14,3 +14,27 @@ g
 7src/main/java/it/alten/animal/model/AnimalWithTail.java,1\9\1915ea787dac149734f9c811541bccf9ce5fb42c
 ]
 -src/main/java/it/alten/animal/model/Lion.java,3\2\3281aa3c5869210cb4f6e9d524bcfd058b1e5cf3
+P
+ src/main/java/it/alten/Main.java,c\e\ceebb3d5ff105ea315fb13ab8ea80d0d6ca7434d
+Z
+*src/main/java/it/alten/game/model/Bag.java,7\b\7bd36f177aaabd77e2a154152b045cca9d26e65f
+]
+-src/main/java/it/alten/game/model/Player.java,4\f\4fa50042de84857c824c15becf973e1bc9f225a8
+[
++src/main/java/it/alten/game/model/Room.java,9\3\932f22bbf3a6f942b3c72fe4cb1471feef742116
+j
+:src/main/java/it/alten/game/controller/RoomController.java,a\3\a3a9884821ca17f5d009bd3b62e2f4a00417085c
+f
+6src/main/java/it/alten/game/model/command/Command.java,2\e\2e461e4071b0ee218b6871aa7ca4adf5e05f70d0
+i
+9src/main/java/it/alten/game/model/command/BagCommand.java,0\6\0635d4951b6a9e3f0c0cd31394c1d4efc8bffb92
+j
+:src/main/java/it/alten/game/model/command/DropCommand.java,c\2\c2c874f635d28bdea58af5c79ca08a829bbb016c
+h
+8src/main/java/it/alten/game/model/command/GoCommand.java,3\b\3b2dbe9f4719833fa424b7b3c5a403a961ac5bc2
+j
+:src/main/java/it/alten/game/model/command/LookCommand.java,2\b\2bb9fbc5f7443bb1dcf7051082842d1271baaee6
+j
+:src/main/java/it/alten/game/model/command/QuitCommand.java,6\d\6dce63e8c1b11be25402b37a2d6d721ce0a11795
+m
+=src/main/java/it/alten/game/model/command/UnknownCommand.java,9\d\9d8d8f55b6bd82add113f3948b70faaa63e8e469
