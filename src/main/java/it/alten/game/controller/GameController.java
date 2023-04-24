@@ -5,6 +5,7 @@ import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
@@ -20,8 +21,9 @@ public class GameController {
 
     private static GameController instance;
 
-    private GameController() {
-        this.roomController = RoomController.getInstance();
+    @Autowired
+    private GameController(RoomController roomController) {
+        this.roomController = roomController;
         this.quit = false;
     }
 
