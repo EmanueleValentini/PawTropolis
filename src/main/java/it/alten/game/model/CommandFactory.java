@@ -1,7 +1,9 @@
 package it.alten.game.model;
 
 import it.alten.game.model.command.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommandFactory {
 
     public Command createCommandFromString(String input) {

@@ -4,12 +4,13 @@ import it.alten.game.model.enums.Direction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Component
 public class GoCommand extends Command {
-
     private final LookCommand lookCommand = new LookCommand();
 
     private String input;
