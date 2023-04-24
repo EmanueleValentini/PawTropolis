@@ -5,12 +5,14 @@ import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.*;
 
 @Controller
+@Getter
 public class GameController {
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
