@@ -6,6 +6,7 @@ import it.alten.animal.model.Tiger;
 import it.alten.game.model.Item;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
@@ -16,18 +17,8 @@ import static it.alten.game.model.enums.Direction.getOppositeDirection;
 public class RoomController {
 
     private static Room currentRoom;
-
-    private static RoomController instance;
-
-    private RoomController() {
+    public RoomController() {
         currentRoom = createMap();
-    }
-
-    public static RoomController getInstance() {
-        if (instance == null) {
-            instance = new RoomController();
-        }
-        return instance;
     }
 
     public Room getCurrentRoom() {
