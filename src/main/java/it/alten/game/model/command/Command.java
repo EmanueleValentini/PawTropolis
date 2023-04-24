@@ -3,6 +3,7 @@ package it.alten.game.model.command;
 import it.alten.game.controller.GameController;
 import it.alten.game.controller.RoomController;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -10,12 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class Command {
 
-    private final RoomController roomController;
-    private final GameController gameController;
+    private RoomController roomController;
+    private GameController gameController;
 
-    protected Command() {
-        this.roomController = RoomController.getInstance();
-        this.gameController = GameController.getInstance();
+    @Autowired
+    public Command(GameController gameController, RoomController roomController) {
+        this.roomController = roomController;
+        this.gameController = gameController;
     }
 
     public abstract void execute();
