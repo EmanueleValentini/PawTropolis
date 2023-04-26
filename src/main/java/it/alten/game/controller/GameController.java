@@ -6,6 +6,7 @@ import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -13,11 +14,12 @@ import java.util.*;
 
 @Controller
 @Getter
+@NoArgsConstructor
 public class GameController {
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
-    private final RoomController roomController;
+    private RoomController roomController;
 
     private Player player;
 
@@ -31,6 +33,10 @@ public class GameController {
 
     public void setQuit(boolean quit) {
         this.quit = quit;
+    }
+
+    public void setRoomController(RoomController roomController) {
+        this.roomController = roomController;
     }
 
     public Player getPlayer() {
