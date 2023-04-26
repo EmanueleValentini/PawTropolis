@@ -15,6 +15,7 @@ public class Bag {
     private static final int MAX_SLOTS = 2;
     private final int maxSlots;
 
+    
     public Bag() {
         this.maxSlots = MAX_SLOTS;
         this.availableSlots = maxSlots;

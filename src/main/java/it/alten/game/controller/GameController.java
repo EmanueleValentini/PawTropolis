@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.*;
+import java.util.Scanner;
 
 @Controller
 @Getter
 @NoArgsConstructor
 public class GameController {
 
-    private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
-
     private RoomController roomController;
+
+    private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
     private Player player;
 
