@@ -2,12 +2,14 @@ package it.alten.game.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
+@Component
 public class Player {
     private String name;
     private int lifePoints;

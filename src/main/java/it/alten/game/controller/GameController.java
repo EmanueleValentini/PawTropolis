@@ -16,7 +16,6 @@ import java.util.Scanner;
 @Getter
 @NoArgsConstructor
 public class GameController {
-
     private RoomController roomController;
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
@@ -25,10 +24,14 @@ public class GameController {
 
     private boolean quit;
 
+    private CommandFactory commandFactory;
+
     @Autowired
     public GameController(RoomController roomController) {
         this.roomController = roomController;
+        this.commandFactory = getCommandFactory();
         this.quit = false;
+
     }
 
     public void setQuit(boolean quit) {
@@ -48,7 +51,6 @@ public class GameController {
     }
 
     public void runGame() {
-        CommandFactory commandFactory = new CommandFactory();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();

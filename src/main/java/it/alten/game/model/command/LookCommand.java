@@ -1,8 +1,5 @@
 package it.alten.game.model.command;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class LookCommand extends Command {
 
     @Override

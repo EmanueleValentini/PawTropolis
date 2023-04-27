@@ -1,8 +1,4 @@
 package it.alten.game.model.command;
-
-import org.springframework.stereotype.Component;
-
-@Component
 public class BagCommand extends Command {
 
     @Override
