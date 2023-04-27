@@ -76,6 +76,7 @@ public class Room {
         return message;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
