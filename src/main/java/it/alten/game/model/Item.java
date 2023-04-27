@@ -10,7 +10,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
-@Component
 public class Item {
     private String name;
     private String description;

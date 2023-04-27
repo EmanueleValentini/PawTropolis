@@ -5,6 +5,7 @@ import it.alten.game.model.enums.Direction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -12,7 +13,6 @@ import java.util.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@Component
 public class Room {
     private String name;
 
@@ -45,12 +45,9 @@ public class Room {
         return adjacentRoomsList.remove(direction);
     }
 
-
-
     public Room getAdjacentRoom(Direction direction) {
         return adjacentRoomsList.get(direction);
     }
-
 
     public void removeItemFromRoom(Item item) {
         roomItemList.remove(item);

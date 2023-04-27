@@ -14,7 +14,6 @@ import java.util.Scanner;
 
 @Controller
 @Getter
-@NoArgsConstructor
 public class GameController {
     private RoomController roomController;
 
@@ -27,11 +26,16 @@ public class GameController {
     private CommandFactory commandFactory;
 
     @Autowired
-    public GameController(RoomController roomController) {
-        this.roomController = roomController;
-        this.commandFactory = getCommandFactory();
+    private GameController() {
+        this.roomController = RoomController.getInstance();
+        this.commandFactory = CommandFactory.getInstance();
         this.quit = false;
+    }
 
+    private static GameController instance = new GameController();
+
+    public static GameController getInstance() {
+        return instance;
     }
 
     public void setQuit(boolean quit) {

@@ -10,7 +10,6 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@Component
 public class Bag {
     private List<Item> inventory;
     private int availableSlots;

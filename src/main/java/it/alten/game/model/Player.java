@@ -9,7 +9,6 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@Component
 public class Player {
     private String name;
     private int lifePoints;
