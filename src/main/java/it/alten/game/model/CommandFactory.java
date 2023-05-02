@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 public class CommandFactory {
-    private static CommandFactory instance = new CommandFactory();
+    private static final CommandFactory instance = new CommandFactory();
 
     public static CommandFactory getInstance() {
         return instance;

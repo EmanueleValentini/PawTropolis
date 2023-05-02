@@ -13,7 +13,7 @@ public abstract class Command {
     private GameController gameController;
 
     @Autowired
-    public Command() {
+    protected Command() {
         this.gameController = GameController.getInstance();
     }
 
