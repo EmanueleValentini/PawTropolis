@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Bag {
     private List<Item> inventory;
     private int availableSlots;
-    private static final int MAX_SLOTS = 2;
+    private static final int MAX_SLOTS = 5;
     private final int maxSlots;
 
 

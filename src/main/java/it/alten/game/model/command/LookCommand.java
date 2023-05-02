@@ -7,11 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class LookCommand extends Command {
 
-    private final GameController gameController;
     private final RoomController roomController;
 
     public LookCommand() {
-        this.gameController = GameController.getInstance();
+
         this.roomController = RoomController.getInstance();
     }
 
