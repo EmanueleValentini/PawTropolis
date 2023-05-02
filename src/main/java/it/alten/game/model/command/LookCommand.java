@@ -1,6 +1,5 @@
 package it.alten.game.model.command;
 
-import it.alten.game.controller.GameController;
 import it.alten.game.controller.RoomController;
 import org.springframework.stereotype.Component;
 
