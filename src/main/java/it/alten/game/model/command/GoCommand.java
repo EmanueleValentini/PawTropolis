@@ -20,25 +20,25 @@ public class GoCommand extends Command {
     @Override
     public void execute() {
 
-        
+        Map<Direction, Room> adjacentRooms = GameController.getInstance().getRoomController().getCurrentRoom().getAdjacentRoomsList();
         String direction = input.replace("go ", "");
         if (direction.equalsIgnoreCase("north") &&
-        GameController.getInstance().getRoomController().getCurrentRoom().getAdjacentRoomsList().containsKey(Direction.NORTH)) {
+        adjacentRooms.containsKey(Direction.NORTH)) {
             GameController.getInstance().changeRoom(Direction.NORTH);
             lookCommand.execute();
 
         } else if (direction.equalsIgnoreCase("south") &&
-                GameController.getInstance().getRoomController().getCurrentRoom().getAdjacentRoomsList().containsKey(Direction.SOUTH)) {
+                adjacentRooms.containsKey(Direction.SOUTH)) {
             GameController.getInstance().changeRoom(Direction.SOUTH);
             lookCommand.execute();
 
         } else if (direction.equalsIgnoreCase("east") &&
-                GameController.getInstance().getRoomController().getCurrentRoom().getAdjacentRoomsList().containsKey(Direction.EAST)) {
+                adjacentRooms.containsKey(Direction.EAST)) {
             GameController.getInstance().changeRoom(Direction.EAST);
             lookCommand.execute();
 
         } else if (direction.equalsIgnoreCase("west") &&
-                GameController.getInstance().getRoomController().getCurrentRoom().getAdjacentRoomsList().containsKey(Direction.WEST)) {
+                adjacentRooms.containsKey(Direction.WEST)) {
             GameController.getInstance().changeRoom(Direction.WEST);
             lookCommand.execute();
 
