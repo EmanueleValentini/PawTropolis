@@ -1,8 +1,6 @@
 package it.alten;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.controller.RoomController;
-import it.alten.game.model.CommandFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
