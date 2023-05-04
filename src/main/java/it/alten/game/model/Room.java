@@ -26,6 +26,7 @@ public class Room {
 
     @OneToMany
     private Map<Direction, Room> adjacentRoomsList;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -103,11 +104,5 @@ public class Room {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getId() {
-        return id;
-    }
 }
