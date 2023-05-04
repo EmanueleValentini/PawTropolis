@@ -34,7 +34,7 @@ public class DropCommand extends Command {
         }
     }
     public Item findItem(String itemToDrop) {
-        Item itemFound = null;
+        Item itemFound;
         List<Item> bagItemList = getGameController().getPlayer().getAllItemsInBag();
         for (Item itemInTheBag : bagItemList) {
             if (itemInTheBag.getName().equals(itemToDrop)) {
@@ -42,7 +42,7 @@ public class DropCommand extends Command {
                 return itemFound;
             }
         }
-        return itemFound;
+        return null;
     }
 
 }

@@ -47,7 +47,7 @@ public class GetCommand extends Command {
     }
 
     public Item findItem(String itemToGet) {
-        Item itemFound = null;
+        Item itemFound;
         List<Item> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
         for (Item itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equals(itemToGet)) {
@@ -55,6 +55,6 @@ public class GetCommand extends Command {
                 return itemFound;
             }
         }
-        return itemFound;
+        return null;
     }
 }
