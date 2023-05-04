@@ -1,5 +1,6 @@
 package it.alten.game.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,12 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@Entity
 public class Bag {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private int id;
+    @OneToMany
     private List<Item> inventory;
     private int availableSlots;
     private static final int MAX_SLOTS = 5;
@@ -57,4 +63,11 @@ public class Bag {
     }
 
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
