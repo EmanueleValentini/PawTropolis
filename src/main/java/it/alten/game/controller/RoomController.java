@@ -6,7 +6,6 @@ import it.alten.animal.model.Tiger;
 import it.alten.game.model.Item;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
