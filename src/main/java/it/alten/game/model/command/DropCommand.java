@@ -3,6 +3,7 @@ package it.alten.game.model.command;
 import it.alten.game.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Component
 @AllArgsConstructor
+@NoArgsConstructor
 public class DropCommand extends Command {
 
     private String input;

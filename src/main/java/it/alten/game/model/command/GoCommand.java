@@ -4,12 +4,14 @@ import it.alten.game.controller.GameController;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Map;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class GoCommand extends Command {
 
     private String input;
