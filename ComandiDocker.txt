@@ -1,0 +1,7 @@
+docker run --name postgres -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=pawtropolis -p 5432:5432 library/postgres -d postgres
+
+docker exec -it postgres bash
+
+psql -U root pawtropolis
+
+CREATE DATABASE pawtropolis;
