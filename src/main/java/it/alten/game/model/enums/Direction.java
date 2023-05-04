@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Getter
-@Component
-
 public enum Direction {
     NORTH("north"),
     WEST("west"),
