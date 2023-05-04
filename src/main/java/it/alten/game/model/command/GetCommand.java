@@ -20,7 +20,7 @@ public class GetCommand extends Command {
     public void execute() {
         String itemToGet = input.replace("get ", "");
 
-        if (!getGameController().getPlayer().getBag().isFull()) {
+        if (getGameController().getPlayer().getBag().isSlotsAvailable()) {
             if (findItem(itemToGet) != null) {
                 Item itemPresentToGet = findItem(itemToGet);
                 if (getItem(itemPresentToGet)){

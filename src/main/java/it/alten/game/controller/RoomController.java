@@ -71,7 +71,7 @@ public class RoomController {
                 .build();
         bossRoom.addAnimalToRoom(eagle1);
 
-        terminiStation.addItemToRoom(new Item("scudo", "scudo rotondo", 2));
+        terminiStation.addItemToRoom(new Item("scudo", "scudo rotondo", 1));
         terminiStation.addItemToRoom(new Item("siringa", "ti cura di 50hp e ti fa...forse non ti cura", 1));
         Tiger tiger1 = Tiger.builder()
                 .name("Amal")
@@ -94,7 +94,7 @@ public class RoomController {
                 .tailLength(2.1)
                 .build();
         thiefCity.addAnimalToRoom(lion2);
-        thiefCity.addItemToRoom(new Item("orologio", "Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai", 2));
+        thiefCity.addItemToRoom(new Item("orologio", "Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai", 1));
         thiefCity.addItemToRoom(new Item("elmo", "ti protegge dagli headshot", 1));
 
         Lion lion3 = Lion.builder()

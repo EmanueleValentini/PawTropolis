@@ -24,7 +24,7 @@ public class Bag {
 
 
     public void addItem(Item item) {
-        if (!isFull() && availableSlots >= item.getRequestedSlots()) {
+        if (availableSlots >= item.getRequestedSlots()) {
             inventory.add(item);
             availableSlots -= item.getRequestedSlots();
         }
@@ -38,8 +38,8 @@ public class Bag {
 
     }
 
-    public boolean isFull() {
-        return availableSlots <= 0;
+    public boolean isSlotsAvailable() {
+        return availableSlots > 0;
     }
 
 
