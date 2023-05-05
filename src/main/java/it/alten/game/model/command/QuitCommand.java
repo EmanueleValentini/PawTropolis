@@ -1,12 +1,8 @@
 package it.alten.game.model.command;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @AllArgsConstructor
-
 public class QuitCommand extends Command {
 
     @Override
