@@ -4,13 +4,11 @@ import it.alten.game.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Component
 @AllArgsConstructor
 public class GetCommand extends Command {
 
