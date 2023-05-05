@@ -24,10 +24,10 @@ public class GetCommand extends Command {
                 if (getItem(itemPresentToGet)){
                     System.out.println("Hai preso " + itemToGet);
                 } else {
-                    System.out.println(itemToGet + " Non entra nella borsa");
+                    System.out.println(itemToGet + " non c'entra nella borsa");
                 }
             } else {
-                System.out.println("Non c'è");
+                System.out.println("Guarda che non ce sta st'oggetto");
             }
         } else {
             System.out.println("La borsa è piena");

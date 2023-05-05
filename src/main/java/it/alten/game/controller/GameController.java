@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
-@Controller
+
 @Getter
+@Controller
 public class GameController {
     private final RoomController roomController;
 

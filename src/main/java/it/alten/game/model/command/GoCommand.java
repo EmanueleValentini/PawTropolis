@@ -47,7 +47,7 @@ public class GoCommand extends Command {
 
         } else {
 
-            System.out.println("E do la vedi la porta???");
+            System.out.println("A MONGOLOIDE NON SAI SCRIVE");
             lookCommand.execute();
         }
     }
