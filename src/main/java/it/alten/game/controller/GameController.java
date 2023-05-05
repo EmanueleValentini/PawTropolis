@@ -14,7 +14,7 @@ import java.util.Scanner;
 @Controller
 @Getter
 public class GameController {
-    private RoomController roomController;
+    private final RoomController roomController;
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
@@ -22,7 +22,7 @@ public class GameController {
 
     private boolean quit;
 
-    private CommandFactory commandFactory;
+    private final CommandFactory commandFactory;
 
     @Autowired
     private GameController() {
@@ -39,14 +39,6 @@ public class GameController {
 
     public void setQuit(boolean quit) {
         this.quit = quit;
-    }
-
-    public void setRoomController(RoomController roomController) {
-        this.roomController = roomController;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     public Room changeRoom(Direction direction) {
