@@ -6,7 +6,7 @@ import it.alten.animal.model.Tiger;
 import it.alten.game.model.Item;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
@@ -14,25 +14,17 @@ import java.time.LocalDate;
 import static it.alten.game.model.enums.Direction.getOppositeDirection;
 
 @Controller
+@Data
 public class RoomController {
 
     private static Room currentRoom;
 
 
-    private RoomController() {
-        currentRoom = createMap();
+    public RoomController() {
+         createMap();
     }
 
-
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
-
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
-
-    private static Room createMap() {
+    private static void createMap() {
 
         Room entrance = new Room("DAJE ROMA DAJE");
         Room bossRoom = new Room("La stanza del Boss");
@@ -120,7 +112,6 @@ public class RoomController {
         connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
         connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
         connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH);
-        return entrance;
     }
 
     private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
