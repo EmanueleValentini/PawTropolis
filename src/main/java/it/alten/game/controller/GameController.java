@@ -5,16 +5,21 @@ import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
 @Controller
-@Getter
+@Data
 public class GameController {
+
     private RoomController roomController;
+
+    private final CommandFactory commandFactory;
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
@@ -22,20 +27,13 @@ public class GameController {
 
     private boolean quit;
 
-    private CommandFactory commandFactory;
-
     @Autowired
-    private GameController() {
-        this.roomController = RoomController.getInstance();
-        this.commandFactory = CommandFactory.getInstance();
+    public GameController(RoomController roomController, CommandFactory commandFactory) {
+        this.roomController = roomController;
+        this.commandFactory = commandFactory;
         this.quit = false;
     }
 
-    private static GameController instance = new GameController();
-
-    public static GameController getInstance() {
-        return instance;
-    }
 
     public void setQuit(boolean quit) {
         this.quit = quit;

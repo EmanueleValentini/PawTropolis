@@ -7,11 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 public class CommandFactory {
-    private static final CommandFactory instance = new CommandFactory();
 
-    public static CommandFactory getInstance() {
-        return instance;
-    }
 
     public Command createCommandFromString(String input) {
         input = input.toLowerCase();

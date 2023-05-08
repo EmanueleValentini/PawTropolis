@@ -9,7 +9,7 @@ public class LookCommand extends Command {
 
     public LookCommand() {
 
-        this.roomController = RoomController.getInstance();
+        this.roomController = getGameController().getRoomController();
     }
 
     @Override

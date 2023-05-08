@@ -17,16 +17,12 @@ import static it.alten.game.model.enums.Direction.getOppositeDirection;
 public class RoomController {
 
     private static Room currentRoom;
-    private static RoomController instance = new RoomController();
 
-    @Autowired
+
     private RoomController() {
         currentRoom = createMap();
     }
 
-    public static RoomController getInstance() {
-        return instance;
-    }
 
     public Room getCurrentRoom() {
         return currentRoom;

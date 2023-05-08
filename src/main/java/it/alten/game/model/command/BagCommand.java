@@ -1,10 +1,15 @@
 package it.alten.game.model.command;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 
-@AllArgsConstructor
+
+@Component
 public class BagCommand extends Command {
+
+
+
 
     @Override
     public void execute() {
