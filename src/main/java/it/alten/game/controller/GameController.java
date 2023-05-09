@@ -51,11 +51,11 @@ public class GameController {
         String playerName = scanner.nextLine();
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
-        System.out.println(roomController.getCurrentRoom().roomDescription());
+        System.out.println(getRoomController().getCurrentRoom().roomDescription());
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String input = scanner.nextLine();
-            Command command = commandFactory.createCommandFromString(input);
+            Command command = getCommandFactory().createCommandFromString(input);
             command.execute();
         }
     }
