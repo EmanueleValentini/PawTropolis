@@ -1,11 +1,11 @@
 package it.alten.game.model;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @NoArgsConstructor(force = true)
-public class Player {
+public class Player implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -55,8 +55,5 @@ public class Player {
         return lifePoints == player.lifePoints && Objects.equals(name, player.name) && Objects.equals(bag, player.bag);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, lifePoints, bag);
-    }
+
 }

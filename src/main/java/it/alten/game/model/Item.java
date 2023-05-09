@@ -1,14 +1,15 @@
 package it.alten.game.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Item {
+public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -38,10 +39,7 @@ public class Item {
         return requestedSlots == item.requestedSlots && Objects.equals(name, item.name) && Objects.equals(description, item.description);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, description, requestedSlots);
-    }
+
 
     @Override
     public String toString() {

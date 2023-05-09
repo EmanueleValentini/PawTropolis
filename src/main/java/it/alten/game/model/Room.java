@@ -3,12 +3,9 @@ package it.alten.game.model;
 import it.alten.animal.model.Animal;
 import it.alten.game.model.enums.Direction;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-
+import java.io.Serializable;
 import java.util.*;
 
 @Getter
@@ -16,7 +13,8 @@ import java.util.*;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-public class Room {
+@Builder
+public class Room implements Serializable {
     private String name;
 
     @OneToMany
@@ -32,7 +30,6 @@ public class Room {
     private int id;
 
     public Room(String name){
-
         this.name = name;
         this.roomItemList = new ArrayList<>();
         this.animalList = new ArrayList<>();
@@ -92,11 +89,6 @@ public class Room {
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
         return Objects.equals(name, room.name) && Objects.equals(roomItemList, room.roomItemList) && Objects.equals(animalList, room.animalList) && Objects.equals(adjacentRoomsList, room.adjacentRoomsList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, roomItemList, animalList, adjacentRoomsList);
     }
 
     @Override

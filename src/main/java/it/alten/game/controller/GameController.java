@@ -2,7 +2,6 @@ package it.alten.game.controller;
 
 import it.alten.game.model.CommandFactory;
 import it.alten.game.model.Player;
-import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.enums.Direction;
 import lombok.Data;
@@ -15,9 +14,9 @@ import java.util.Scanner;
 @Data
 public class GameController {
 
-    private RoomController roomController;
+    private final RoomController roomController;
 
-    private CommandFactory commandFactory;
+    private final CommandFactory commandFactory;
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
@@ -41,8 +40,8 @@ public class GameController {
         return player;
     }
 
-    public Room changeRoom(Direction direction) {
-        return RoomController.changeRoom(direction);
+    public void changeRoom(Direction direction) {
+        roomController.changeRoom(direction);
     }
 
     public void runGame() {
@@ -51,7 +50,7 @@ public class GameController {
         String playerName = scanner.nextLine();
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
-        System.out.println(getRoomController().getCurrentRoom().roomDescription());
+        System.out.println(roomController.getCurrentRoom().roomDescription());
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String input = scanner.nextLine();

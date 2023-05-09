@@ -1,9 +1,10 @@
 package it.alten.game.model;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class Bag {
+public class Bag implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -57,10 +58,6 @@ public class Bag {
         return availableSlots == bag.availableSlots && maxSlots == bag.maxSlots && Objects.equals(inventory, bag.inventory);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(inventory, availableSlots, maxSlots);
-    }
 
 
     public void setId(int id) {

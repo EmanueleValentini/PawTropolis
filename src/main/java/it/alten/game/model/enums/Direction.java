@@ -3,8 +3,6 @@ package it.alten.game.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Getter

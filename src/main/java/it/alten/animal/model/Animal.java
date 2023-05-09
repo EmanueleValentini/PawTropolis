@@ -1,18 +1,22 @@
 package it.alten.animal.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
 @SuperBuilder
 @Entity
 @NoArgsConstructor
-public abstract class Animal {
+public abstract class Animal implements Serializable {
 
     private String name;
 
