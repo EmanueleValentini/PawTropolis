@@ -1,5 +1,7 @@
 package it.alten.game.model.command;
 
+import it.alten.game.controller.GameController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -7,7 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BagCommand extends Command {
 
-
+    @Autowired
+    public BagCommand(GameController gameController) {
+        super(gameController);
+    }
 
 
     @Override

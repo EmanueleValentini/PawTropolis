@@ -41,8 +41,12 @@ public class GameController {
         return player;
     }
 
-    public Room changeRoom(Direction direction) {
-        return RoomController.changeRoom(direction);
+    public Room getCurrentRoom() {
+        return roomController.getCurrentRoom();
+    }
+
+    public void changeRoom(Direction direction) {
+        roomController.changeRoom(direction);
     }
 
     public void runGame() {

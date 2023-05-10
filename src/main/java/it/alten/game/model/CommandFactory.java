@@ -1,7 +1,11 @@
 package it.alten.game.model;
 
+import it.alten.Application;
+import it.alten.game.controller.GameController;
 import it.alten.game.model.command.*;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,22 +13,32 @@ import org.springframework.stereotype.Component;
 public class CommandFactory {
 
 
+
+    private ApplicationContext context;
+
+    @Autowired
+    private CommandFactory(ApplicationContext context) {
+
+        this.context = context;
+
+    }
+
     public Command createCommandFromString(String input) {
         input = input.toLowerCase();
         if (input.startsWith("go")) {
-            return new GoCommand(input);
+            return context.getBean(GoCommand.class);
         } else if (input.startsWith("get")) {
-            return new GetCommand(input);
+            return context.getBean(GetCommand.class);
         } else if (input.startsWith("drop")) {
-            return new DropCommand(input);
+            return context.getBean(DropCommand.class);
         } else if (input.startsWith("look")) {
-            return new LookCommand();
+            return context.getBean(LookCommand.class);
         } else if (input.startsWith("bag")) {
-            return new BagCommand();
+            return context.getBean(BagCommand.class);
         } else if (input.startsWith("quit")) {
-            return new QuitCommand();
+            return context.getBean(QuitCommand.class);
         } else {
-            return new UnknownCommand();
+            return context.getBean(UnknownCommand.class);
         }
     }
 }

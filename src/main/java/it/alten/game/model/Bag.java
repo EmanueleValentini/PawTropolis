@@ -49,19 +49,6 @@ public class Bag {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bag bag = (Bag) o;
-        return availableSlots == bag.availableSlots && maxSlots == bag.maxSlots && Objects.equals(inventory, bag.inventory);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(inventory, availableSlots, maxSlots);
-    }
-
 
     public void setId(int id) {
         this.id = id;

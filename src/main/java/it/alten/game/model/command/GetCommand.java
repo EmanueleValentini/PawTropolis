@@ -1,20 +1,35 @@
 package it.alten.game.model.command;
 
+import it.alten.game.controller.GameController;
 import it.alten.game.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
+@Component
 public class GetCommand extends Command {
 
     private String input;
+
+    public GetCommand(GameController gameController, String input) {
+        super(gameController);
+        this.input = input;
+    }
+
+    @Autowired
+    public GetCommand(GameController gameController) {
+        super(gameController);
+
+    }
 
     @Override
     public void execute() {

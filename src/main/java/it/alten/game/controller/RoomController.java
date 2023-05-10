@@ -10,6 +10,7 @@ import lombok.Data;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import static it.alten.game.model.enums.Direction.getOppositeDirection;
 
@@ -17,14 +18,18 @@ import static it.alten.game.model.enums.Direction.getOppositeDirection;
 @Data
 public class RoomController {
 
-    private static Room currentRoom;
+    private Room currentRoom;
 
 
     public RoomController() {
-         createMap();
+         this.currentRoom = createMap();
     }
 
-    private static void createMap() {
+    public Map<Direction, Room> getMap () {
+
+        return currentRoom.getAdjacentRoomsList();
+    }
+    private Room createMap() {
 
         Room entrance = new Room("DAJE ROMA DAJE");
         Room bossRoom = new Room("La stanza del Boss");
@@ -112,6 +117,7 @@ public class RoomController {
         connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
         connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
         connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH);
+        return entrance;
     }
 
     private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
@@ -124,13 +130,11 @@ public class RoomController {
         room2.connectRoom(room1, getOppositeDirection(direction));
     }
 
-    public static Room changeRoom(Direction direction) {
+    public void changeRoom(Direction direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
-            return currentRoom;
         }
-        return null;
     }
 
 }

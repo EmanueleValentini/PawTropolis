@@ -1,14 +1,18 @@
 package it.alten.game.model.command;
 
+import it.alten.game.controller.GameController;
 import it.alten.game.controller.RoomController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class LookCommand extends Command {
 
     private final RoomController roomController;
 
-    public LookCommand() {
-
+    @Autowired
+    public LookCommand(GameController gameController) {
+        super(gameController);
         this.roomController = getGameController().getRoomController();
     }
 
@@ -18,3 +22,4 @@ public class LookCommand extends Command {
         System.out.println(description);
     }
 }
+

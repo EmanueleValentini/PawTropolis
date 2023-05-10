@@ -1,10 +1,13 @@
 package it.alten.game.model.command;
 
+import it.alten.game.controller.GameController;
 import it.alten.game.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,9 +15,22 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class DropCommand extends Command {
 
     private String input;
+
+
+    public DropCommand(GameController gameController,String input) {
+        super(gameController);
+        this.input = input;
+    }
+    @Autowired
+    public DropCommand(GameController gameController) {
+        super(gameController);
+
+    }
+
     @Override
     public void execute() {
         String itemToDrop = input.replace("drop ", "");

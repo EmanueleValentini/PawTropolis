@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Data
 public abstract class Command {
 
-    private GameController gameController;
+    protected GameController gameController;
 
     @Autowired
     protected Command(GameController gameController) {
