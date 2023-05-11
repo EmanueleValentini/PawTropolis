@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Component
 @NoArgsConstructor
 public class CommandFactory {
 
 
-
+    protected Map<String, List<String>> commands;
     private ApplicationContext context;
 
     @Autowired
@@ -37,5 +41,12 @@ public class CommandFactory {
         } else {
             return context.getBean(UnknownCommand.class);
         }
+    }
+
+    public Map<String, List<String>> commandMaker(String input) {
+        List<String> tokens = List.of(input.split(" "));
+        String commandName = tokens.get(0);
+        List<String> parameters = tokens.subList(1, tokens.size());
+        return new HashMap<>(commandName, parameters);
     }
 }
