@@ -1,7 +1,5 @@
 package it.alten.game.model;
 
-import it.alten.Application;
-import it.alten.game.controller.GameController;
 import it.alten.game.model.command.*;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ public class CommandFactory {
 
     @Autowired
     private CommandFactory(ApplicationContext context) {
-
         this.context = context;
 
     }
