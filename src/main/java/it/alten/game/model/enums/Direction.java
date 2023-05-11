@@ -3,8 +3,9 @@ package it.alten.game.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
@@ -31,5 +32,21 @@ public enum Direction {
                 return NOT_VALID;
             }
         }
+    }
+
+    public static Direction of (String s) {
+        List<Direction> directions = new ArrayList<>();
+        directions.add(NORTH);
+        directions.add(EAST);
+        directions.add(WEST);
+        directions.add(SOUTH);
+        directions.add(NOT_VALID);
+        Direction askedDirection = NOT_VALID;
+        for (Direction direction: directions) {
+            if (s.equalsIgnoreCase(direction.getName())) {
+                askedDirection = direction;
+            }
+        }
+        return askedDirection;
     }
 }
