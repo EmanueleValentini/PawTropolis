@@ -21,6 +21,7 @@ public class CommandFactory {
     @Autowired
     private CommandFactory(ApplicationContext context) {
         this.context = context;
+        this.commands = new HashMap<>();
 
     }
 
@@ -47,6 +48,8 @@ public class CommandFactory {
         List<String> tokens = List.of(input.split(" "));
         String commandName = tokens.get(0);
         List<String> parameters = tokens.subList(1, tokens.size());
-        return new HashMap<>(commandName, parameters);
+        Map<String, List<String>> command = new HashMap<>();
+        command.put(commandName, parameters);
+        return command;
     }
 }
