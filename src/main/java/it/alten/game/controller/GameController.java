@@ -45,8 +45,8 @@ public class GameController {
         return roomController.getCurrentRoom();
     }
 
-    public void changeRoom(Direction direction) {
-        roomController.changeRoom(direction);
+    public boolean changeRoom(Direction direction) {
+        return roomController.changeRoom(direction);
     }
 
     public void runGame() {

@@ -130,11 +130,13 @@ public class RoomController {
         room2.connectRoom(room1, getOppositeDirection(direction));
     }
 
-    public void changeRoom(Direction direction) {
+    public boolean changeRoom(Direction direction) {
         Room nextRoom = currentRoom.getAdjacentRoom(direction);
         if (nextRoom != null) {
             currentRoom = nextRoom;
+            return true;
         }
+        return false;
     }
 
 }
