@@ -25,23 +25,11 @@ public class CommandFactory {
 
     }
 
+    //TODO: Crea i set di keyword e classi che devono essere istanziate, crea un controllo se la List è vuota per capire se è un command o un parametrizedCommand
     public Command createCommandFromString(String input) {
         input = input.toLowerCase();
-        if (input.startsWith("go")) {
-            return context.getBean(GoCommand.class);
-        } else if (input.startsWith("get")) {
-            return context.getBean(GetCommand.class);
-        } else if (input.startsWith("drop")) {
-            return context.getBean(DropCommand.class);
-        } else if (input.startsWith("look")) {
-            return context.getBean(LookCommand.class);
-        } else if (input.startsWith("bag")) {
-            return context.getBean(BagCommand.class);
-        } else if (input.startsWith("quit")) {
-            return context.getBean(QuitCommand.class);
-        } else {
-            return context.getBean(UnknownCommand.class);
-        }
+        Map<String,List<String>> command = commandMaker(input);
+
     }
 
     public Map<String, List<String>> commandMaker(String input) {
