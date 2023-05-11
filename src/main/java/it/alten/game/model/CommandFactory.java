@@ -54,13 +54,13 @@ public class CommandFactory {
         input = input.toLowerCase();
         commands = commandMaker(input);
         List<String> parameters = getParameters(input);
-        Command actualCommand;
+        Command actualCommand = (Command) context.getBean(getKeyWord(input));
 
         try {
-            if (parameters.isEmpty()) {
+            if (actualCommand instanceof ParametrizedCommand) {
+                ((ParametrizedCommand) actualCommand).setParameters(parameters);
+            } else {
                 actualCommand = (Command) context.getBean(getKeyWord(input));
-            } else if (!parameters.isEmpty()) {
-                actualCommand = (ParametrizedCommand) context.getBean(getKeyWord(input));
             }
         } catch (Exception e) {
             actualCommand = context.getBean(UnknownCommand.class);
