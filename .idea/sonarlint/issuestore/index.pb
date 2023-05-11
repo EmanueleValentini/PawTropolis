@@ -23,12 +23,6 @@ Z
 [
 +src/main/java/it/alten/game/model/Room.java,9\3\932f22bbf3a6f942b3c72fe4cb1471feef742116
 j
-:src/main/java/it/alten/game/controller/RoomController.java,a\3\a3a9884821ca17f5d009bd3b62e2f4a00417085c
-j
-:src/main/java/it/alten/game/model/command/DropCommand.java,c\2\c2c874f635d28bdea58af5c79ca08a829bbb016c
-j
-:src/main/java/it/alten/game/model/command/LookCommand.java,2\b\2bb9fbc5f7443bb1dcf7051082842d1271baaee6
-j
 :src/main/java/it/alten/game/model/command/QuitCommand.java,6\d\6dce63e8c1b11be25402b37a2d6d721ce0a11795
 m
 =src/main/java/it/alten/game/model/command/UnknownCommand.java,9\d\9d8d8f55b6bd82add113f3948b70faaa63e8e469
