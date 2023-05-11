@@ -1,13 +1,15 @@
-package it.alten.utils;
+package it.alten.game.utils;
 
 
 import it.alten.game.model.command.*;
-import lombok.Getter;
+import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
+@Data
+@Component
 public final class CommandSetMaker {
 
     private final Set<Class<? extends Command>> commandSet;

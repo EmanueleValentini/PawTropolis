@@ -1,14 +1,14 @@
 package it.alten.game.utils;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@Component
 public class CommandTriggerMaker {
-
-
 
     private final Set<String> commandTriggerSet;
 
