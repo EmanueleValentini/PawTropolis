@@ -4,7 +4,6 @@ import it.alten.game.controller.GameController;
 import it.alten.game.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,26 +13,20 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Component
-public class DropCommand extends Command {
-
-    private String input;
-
-
-    public DropCommand(GameController gameController,String input) {
-        super(gameController);
-        this.input = input;
-    }
+public class DropCommand extends ParametrizedCommand {
     @Autowired
-    public DropCommand(GameController gameController) {
+    protected DropCommand(GameController gameController) {
         super(gameController);
+    }
 
+    protected DropCommand(GameController gameController, List<String> parameters) {
+        super(gameController,parameters);
     }
 
     @Override
     public void execute() {
-        String itemToDrop = input.replace("drop ", "");
+        String itemToDrop = String.join(" ",parameters);
         if(findItem(itemToDrop) != null){
             dropItem(findItem(itemToDrop));
             System.out.println("Hai droppato " + itemToDrop);
@@ -42,13 +35,13 @@ public class DropCommand extends Command {
         }
     }
 
-
     public void dropItem(Item item) {
         if (getGameController().getPlayer().getAllItemsInBag().contains(item)) {
             getGameController().getPlayer().removeItemFromBag(item);
             getGameController().getRoomController().getCurrentRoom().addItemToRoom(item);
         }
     }
+
     public Item findItem(String itemToDrop) {
         Item itemFound;
         List<Item> bagItemList = getGameController().getPlayer().getAllItemsInBag();
@@ -60,5 +53,4 @@ public class DropCommand extends Command {
         }
         return null;
     }
-
 }
