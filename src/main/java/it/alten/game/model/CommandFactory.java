@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 public class CommandFactory {
-
-
     public Command createCommandFromString(String input) {
         input = input.toLowerCase();
         if (input.startsWith("go")) {

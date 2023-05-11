@@ -7,9 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class BagCommand extends Command {
 
-
-
-
     @Override
     public void execute() {
         if (getGameController().getPlayer().getAllItemsInBag().isEmpty()) {

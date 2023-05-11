@@ -10,7 +10,6 @@ public class LookCommand extends Command {
     private final RoomController roomController;
 
     public LookCommand() {
-
         this.roomController = super.getGameController().getRoomController();
     }
 
