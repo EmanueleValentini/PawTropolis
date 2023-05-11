@@ -5,7 +5,7 @@ import it.alten.game.controller.RoomController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("look")
 public class LookCommand extends Command {
 
     private final RoomController roomController;

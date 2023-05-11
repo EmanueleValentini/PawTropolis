@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Component
+@Component("go")
 public class GoCommand extends ParametrizedCommand {
 
     @Autowired

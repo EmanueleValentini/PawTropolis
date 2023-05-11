@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
-@Component
+@Component("quit")
 public class QuitCommand extends Command {
 
     @Autowired

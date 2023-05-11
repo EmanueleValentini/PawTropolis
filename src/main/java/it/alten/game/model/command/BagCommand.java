@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 
-@Component
+@Component("bag")
 public class BagCommand extends Command {
 
     @Autowired

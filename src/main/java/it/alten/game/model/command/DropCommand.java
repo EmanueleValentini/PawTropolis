@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@Component
+@Component("drop")
 public class DropCommand extends ParametrizedCommand {
     @Autowired
     protected DropCommand(GameController gameController) {

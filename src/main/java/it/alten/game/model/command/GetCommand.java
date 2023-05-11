@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 
 @NoArgsConstructor
-@Component
+@Component("get")
 public class GetCommand extends ParametrizedCommand {
 
     @Autowired
