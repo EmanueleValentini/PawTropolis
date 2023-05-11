@@ -33,7 +33,7 @@ public class BeanTest {
     }
 
     @Test
-    public void testGameController() {
+    public void testGameController() throws Exception {
         assertNotNull(commandFactory.createCommandFromString("go").getGameController());
     }
 }
