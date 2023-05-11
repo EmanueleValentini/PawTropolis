@@ -36,4 +36,6 @@ public final class CommandSetMaker {
         commandClasses.add(UnknownCommand.class);
         return commandClasses;
     }
+
+    public Set<Command> setInitializer
 }

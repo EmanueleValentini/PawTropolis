@@ -55,7 +55,7 @@ public class GameController {
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String input = scanner.nextLine();
-            Command command = commandFactory.createCommandFromString(input);
+            Class <? extends Command> command = commandFactory.createCommandFromString(input);
             command.execute();
         }
     }

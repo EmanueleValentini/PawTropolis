@@ -24,14 +24,8 @@ Z
 +src/main/java/it/alten/game/model/Room.java,9\3\932f22bbf3a6f942b3c72fe4cb1471feef742116
 j
 :src/main/java/it/alten/game/controller/RoomController.java,a\3\a3a9884821ca17f5d009bd3b62e2f4a00417085c
-f
-6src/main/java/it/alten/game/model/command/Command.java,2\e\2e461e4071b0ee218b6871aa7ca4adf5e05f70d0
-i
-9src/main/java/it/alten/game/model/command/BagCommand.java,0\6\0635d4951b6a9e3f0c0cd31394c1d4efc8bffb92
 j
 :src/main/java/it/alten/game/model/command/DropCommand.java,c\2\c2c874f635d28bdea58af5c79ca08a829bbb016c
-h
-8src/main/java/it/alten/game/model/command/GoCommand.java,3\b\3b2dbe9f4719833fa424b7b3c5a403a961ac5bc2
 j
 :src/main/java/it/alten/game/model/command/LookCommand.java,2\b\2bb9fbc5f7443bb1dcf7051082842d1271baaee6
 j
