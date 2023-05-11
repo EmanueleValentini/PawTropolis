@@ -15,21 +15,18 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @Component
-public class GoCommand extends Command {
+public class GoCommand extends ParametrizedCommand {
 
     private String input;
-
-    private LookCommand lookCommand;
 
     public GoCommand(String input) {
         this.input = input;
     }
 
     @Autowired
-    public GoCommand(GameController gameController, LookCommand lookCommand) {
+    public GoCommand(GameController gameController) {
 
         super(gameController);
-        this.lookCommand = lookCommand;
     }
 
     public GoCommand(GameController gameController, String input) {
@@ -44,27 +41,26 @@ public class GoCommand extends Command {
         if (direction.equalsIgnoreCase("north") &&
         adjacentRooms.containsKey(Direction.NORTH)) {
             getGameController().changeRoom(Direction.NORTH);
-            lookCommand.execute();
+
 
         } else if (direction.equalsIgnoreCase("south") &&
                 adjacentRooms.containsKey(Direction.SOUTH)) {
             getGameController().changeRoom(Direction.SOUTH);
-            lookCommand.execute();
+
 
         } else if (direction.equalsIgnoreCase("east") &&
                 adjacentRooms.containsKey(Direction.EAST)) {
             getGameController().changeRoom(Direction.EAST);
-            lookCommand.execute();
+
 
         } else if (direction.equalsIgnoreCase("west") &&
                 adjacentRooms.containsKey(Direction.WEST)) {
             getGameController().changeRoom(Direction.WEST);
-            lookCommand.execute();
+
 
         } else {
-
             System.out.println("E do la vedi la porta???");
-            lookCommand.execute();
+
         }
     }
 }
