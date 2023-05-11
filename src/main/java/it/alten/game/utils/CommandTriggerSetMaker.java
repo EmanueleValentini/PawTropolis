@@ -8,11 +8,11 @@ import java.util.Set;
 
 @Data
 @Component
-public class CommandTriggerMaker {
+public class CommandTriggerSetMaker {
 
     private final Set<String> commandTriggerSet;
 
-    private CommandTriggerMaker() {
+    private CommandTriggerSetMaker() {
         commandTriggerSet = init();
     }
 
