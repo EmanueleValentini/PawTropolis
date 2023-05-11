@@ -17,5 +17,6 @@ public class QuitCommand extends Command {
     @Override
     public void execute() {
         getGameController().setQuit(true);
+        System.out.println("Spero di non rivederti mai più, CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!");
     }
 }
