@@ -49,7 +49,7 @@ public class GameController {
         return roomController.changeRoom(direction);
     }
 
-    public void runGame() throws Exception {
+    public void runGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();

@@ -50,7 +50,7 @@ public class CommandFactory {
         return commandPairs;
     }
 
-    public Command createCommandFromString(String input) throws Exception {
+    public Command createCommandFromString(String input) {
         input = input.toLowerCase();
         commands = commandMaker(input);
         List<String> parameters = getParameters(input);

@@ -30,6 +30,7 @@ public class Player {
 
 
     public boolean addItemToBag(Item item) {
+        assert bag != null;
         if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
 
             bag.addItem(item);
@@ -40,10 +41,12 @@ public class Player {
     }
 
     public void removeItemFromBag(Item item) {
+        assert bag != null;
         bag.removeItem(item);
     }
 
     public List<Item> getAllItemsInBag() {
+        assert bag != null;
         return bag.getInventory();
     }
 

@@ -25,10 +25,6 @@ public class RoomController {
          this.currentRoom = createMap();
     }
 
-    public Map<Direction, Room> getMap () {
-
-        return currentRoom.getAdjacentRoomsList();
-    }
     private Room createMap() {
 
         Room entrance = new Room("DAJE ROMA DAJE");
