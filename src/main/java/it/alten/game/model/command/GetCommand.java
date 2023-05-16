@@ -59,7 +59,7 @@ public class GetCommand extends ParametrizedCommand {
         Item itemFound;
         List<Item> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
         for (Item itemInTheRoom : roomItemList) {
-            if (itemInTheRoom.getName().equals(itemToGet)) {
+            if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
                 itemFound = itemInTheRoom;
                 return itemFound;
             }

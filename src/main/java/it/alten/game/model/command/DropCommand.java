@@ -46,7 +46,7 @@ public class DropCommand extends ParametrizedCommand {
         Item itemFound;
         List<Item> bagItemList = getGameController().getPlayer().getAllItemsInBag();
         for (Item itemInTheBag : bagItemList) {
-            if (itemInTheBag.getName().equals(itemToDrop)) {
+            if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheBag;
                 return itemFound;
             }
