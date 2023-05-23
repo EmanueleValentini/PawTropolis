@@ -1,2 +1,13 @@
-package it.alten.game.repository;public interface ItemRepository {
+package it.alten.game.repository;
+
+import it.alten.game.model.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface ItemRepository extends JpaRepository<Item,Integer> {
+
+    Optional<Item> findItemByName(String name);
 }
