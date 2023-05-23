@@ -1,2 +1,14 @@
-package it.alten.game.model.dto;public class ItemDto {
+package it.alten.game.model.dto;
+
+import lombok.Data;
+
+@Data
+public class ItemDto {
+
+    private String name;
+
+    private String description;
+
+    private int requestedSlots;
+
 }
