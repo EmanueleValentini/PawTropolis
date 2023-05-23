@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class ItemServiceImpl implements ItemService{
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     @Autowired
     public ItemServiceImpl(ItemRepository itemRepository) {
