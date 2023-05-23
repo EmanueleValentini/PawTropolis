@@ -41,12 +41,13 @@ CREATE TABLE Player(
 );
 
 CREATE TABLE Room_Connection(
+    id serial PRIMARY KEY NOT NULL,
     id_room1 serial NOT NULL,
     id_room2 serial NOT NULL,
     direction varchar(10) NOT NULL,
     FOREIGN KEY (id_room1) REFERENCES Room(id),
     FOREIGN KEY (id_room2) REFERENCES Room(id),
-    PRIMARY KEY (id_room1, id_room2)
+    CONSTRAINT uc_room_pairing UNIQUE (id_room1,id_room2)
 );
 
 CREATE TABLE Lion(
@@ -132,6 +133,27 @@ INSERT INTO Room_Connection (id_room1, id_room2, direction)
 SELECT 2, 6, direction
 FROM Direction
 WHERE Direction.name = 'EAST';
+
+INSERT INTO Room_Connection (id_room1, id_room2, direction)
+SELECT 5, 1, direction
+FROM Direction
+WHERE Direction.name = 'WEST';
+INSERT INTO Room_Connection (id_room1, id_room2, direction)
+SELECT 4, 1, direction
+FROM Direction
+WHERE Direction.name = 'NORTH';
+INSERT INTO Room_Connection (id_room1, id_room2, direction)
+SELECT 2, 5, direction
+FROM Direction
+WHERE Direction.name = 'WEST';
+INSERT INTO Room_Connection (id_room1, id_room2, direction)
+SELECT 3, 4, direction
+FROM Direction
+WHERE Direction.name = 'EAST';
+INSERT INTO Room_Connection (id_room1, id_room2, direction)
+SELECT 6, 2, direction
+FROM Direction
+WHERE Direction.name = 'WEST';
 
 INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Giancarlo','sushi',56,2.3,4.4,'2000-2-12',1,2.8);
 INSERT INTO Eagle(name,favFood,age,weight,height,dateOfJoin,id_room,wingSpan) VALUES('l aquila assassina','umani',1000,3.3,6.8,'2000-2-12',2,3);
