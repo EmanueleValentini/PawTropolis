@@ -1,3 +1,7 @@
+CREATE DATABASE pawtropolis;
+
+\c pawtropolis;
+
 CREATE TABLE Room(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL
@@ -22,7 +26,7 @@ CREATE TABLE ItemInBag(
     name varchar(20) NOT NULL,
     description varchar(255),
     requestedSlots smallint NOT NULL,
-    id_room int NOT NULL,
+    id_bag int NOT NULL,
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 
@@ -32,22 +36,23 @@ CREATE TABLE Player(
     lifePoints int NOT NULL,
     last_visited_room int,
     id_bag int NOT NULL,
-    FOREIGN KEY (last_visited_room) REFERENCES Room(id)
+    FOREIGN KEY (last_visited_room) REFERENCES Room(id),
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 
 CREATE TABLE Room_Connection(
-    id_room1 serial PRIMARY KEY NOT NULL
-    id_room2 serial PRIMARY KEY NOT NULL,
+    id_room1 serial NOT NULL,
+    id_room2 serial NOT NULL,
     direction varchar(10) NOT NULL,
     FOREIGN KEY (id_room1) REFERENCES Room(id),
-    FOREIGN KEY (id_room2) REFERENCES Room(id)
+    FOREIGN KEY (id_room2) REFERENCES Room(id),
+    PRIMARY KEY (id_room1, id_room2)
 );
 
 CREATE TABLE Lion(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
-    favFood varchar(20),
+    favFood varchar(100),
     age smallint,
     weight float,
     height float,
@@ -60,7 +65,7 @@ CREATE TABLE Lion(
 CREATE TABLE Tiger(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
-    favFood varchar(20),
+    favFood varchar(100),
     age smallint,
     weight float,
     height float,
@@ -73,7 +78,7 @@ CREATE TABLE Tiger(
 CREATE TABLE Eagle(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
-    favFood varchar(20),
+    favFood varchar(100),
     age smallint,
     weight float,
     height float,
@@ -128,16 +133,9 @@ SELECT 2, 6, direction
 FROM Direction
 WHERE Direction.name = 'EAST';
 
--- INSERT INTO Room_Connection(id_room1,id_room2,direction) VALUES(1,5,'EAST');
--- INSERT INTO Room_Connection(id_room1,id_room2,direction) VALUES(1,4,'SOUTH');
--- INSERT INTO Room_Connection(id_room1,id_room2,direction) VALUES(5,2,'EAST');
--- INSERT INTO Room_Connection(id_room1,id_room2,direction) VALUES(4,3,'WEST');
--- INSERT INTO Room_Connection(id_room1,id_room2,direction) VALUES(2,6,'NORTH');
-
 INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Giancarlo','sushi',56,2.3,4.4,'2000-2-12',1,2.8);
-INSERT INTO Eagle(name,favFood,age,weight,height,dateOfJoin,id_room,wingSpan) VALUES('l acquila assassina','umani',1000,3.3,6.8,'2000-2-12',2,3,4);
+INSERT INTO Eagle(name,favFood,age,weight,height,dateOfJoin,id_room,wingSpan) VALUES('l aquila assassina','umani',1000,3.3,6.8,'2000-2-12',2,3);
 INSERT INTO Tiger(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Amal','indiano',24,70,1.2,'2000-2-12',3,4.1);
-INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Amal','indiano',56,2.3,4.4,'2000-2-12',1,2.8);
+INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Evil Amal','indiano',56,2.3,4.4,'2000-2-12',1,2.8);
 INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Calogero','tè al limone',56,2.3,4.4,'2000-2-12',1,2.8);
 INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Salvatore','er sambucone molinari',56,2.3,4.4,'2000-2-12',1,2.8);
-
