@@ -24,6 +24,8 @@ public class CommandTriggerSetMaker {
         commandTrigger.add("go");
         commandTrigger.add("look");
         commandTrigger.add("quit");
+        commandTrigger.add("mori");
+        commandTrigger.add("daje");
         commandTrigger.add(null);
         return commandTrigger;
     }

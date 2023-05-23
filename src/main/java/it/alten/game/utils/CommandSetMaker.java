@@ -26,6 +26,8 @@ public final class CommandSetMaker {
         commandClasses.add(GoCommand.class);
         commandClasses.add(LookCommand.class);
         commandClasses.add(QuitCommand.class);
+        commandClasses.add(MoriCommand.class);
+        commandClasses.add(DajeCommand.class);
         commandClasses.add(UnknownCommand.class);
         return commandClasses;
     }
