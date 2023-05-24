@@ -16,7 +16,7 @@ public class Bag {
     @Id
     private int id;
     @OneToMany
-    private List<Item> inventory;
+    private List<ItemInBag> inventory;
     private int availableSlots;
     private static final int MAX_SLOTS = 5;
     private final int maxSlots;
@@ -29,14 +29,14 @@ public class Bag {
     }
 
 
-    public void addItem(Item item) {
+    public void addItem(ItemInBag item) {
         if (availableSlots >= item.getRequestedSlots()) {
             inventory.add(item);
             availableSlots -= item.getRequestedSlots();
         }
     }
 
-    public void removeItem(Item item) {
+    public void removeItem(ItemInBag item) {
         if (inventory.contains(item)) {
             inventory.remove(item);
             availableSlots += item.getRequestedSlots();

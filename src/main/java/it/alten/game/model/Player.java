@@ -7,7 +7,6 @@ import lombok.Setter;
 
 
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -29,7 +28,7 @@ public class Player {
     }
 
 
-    public boolean addItemToBag(Item item) {
+    public boolean addItemToBag(ItemInBag item) {
         assert bag != null;
         if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
 
@@ -40,12 +39,12 @@ public class Player {
 
     }
 
-    public void removeItemFromBag(Item item) {
+    public void removeItemFromBag(ItemInBag item) {
         assert bag != null;
         bag.removeItem(item);
     }
 
-    public List<Item> getAllItemsInBag() {
+    public List<ItemInBag> getAllItemsInBag() {
         assert bag != null;
         return bag.getInventory();
     }

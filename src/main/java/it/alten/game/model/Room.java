@@ -20,8 +20,8 @@ public class Room {
     private String name;
 
     @OneToMany(mappedBy = "room")
-    private List<Item> roomItemList;
-    @OneToMany(mappedBy = "animal")
+    private List<ItemInRoom> roomItemList;
+    @OneToMany
     private List<Animal> animalList;
 
     @OneToMany
@@ -58,7 +58,7 @@ public class Room {
         return adjacentRoomsList.get(direction);
     }
 
-    public void removeItemFromRoom(Item item) {
+    public void removeItemFromRoom(ItemInRoom item) {
         roomItemList.remove(item);
     }
 
@@ -67,7 +67,7 @@ public class Room {
         animalList.add(animal);
     }
 
-    public void addItemToRoom(Item item) {
+    public void addItemToRoom(ItemInRoom item) {
         roomItemList.add(item);
     }
 

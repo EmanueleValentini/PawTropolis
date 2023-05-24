@@ -2,6 +2,8 @@ package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
 import it.alten.game.model.Item;
+import it.alten.game.model.ItemInBag;
+import it.alten.game.model.ItemInRoom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,8 +50,8 @@ public class GetCommand extends ParametrizedCommand {
 
     public boolean getItem(Item item) {
         if (getGameController().getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
-                (getGameController().getPlayer().addItemToBag(item))){
-                getGameController().getRoomController().getCurrentRoom().removeItemFromRoom(item);
+                (getGameController().getPlayer().addItemToBag((ItemInBag) item))){
+                getGameController().getRoomController().getCurrentRoom().removeItemFromRoom((ItemInRoom) item);
                 return true;
         }
         return false;
@@ -57,7 +59,7 @@ public class GetCommand extends ParametrizedCommand {
 
     public Item findItem(String itemToGet) {
         Item itemFound;
-        List<Item> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
+        List<ItemInRoom> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
         for (Item itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
                 itemFound = itemInTheRoom;

@@ -2,6 +2,8 @@ package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
 import it.alten.game.model.Item;
+import it.alten.game.model.ItemInBag;
+import it.alten.game.model.ItemInRoom;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,14 +39,14 @@ public class DropCommand extends ParametrizedCommand {
 
     public void dropItem(Item item) {
         if (getGameController().getPlayer().getAllItemsInBag().contains(item)) {
-            getGameController().getPlayer().removeItemFromBag(item);
-            getGameController().getRoomController().getCurrentRoom().addItemToRoom(item);
+            getGameController().getPlayer().removeItemFromBag((ItemInBag) item);
+            getGameController().getRoomController().getCurrentRoom().addItemToRoom((ItemInRoom) item);
         }
     }
 
     public Item findItem(String itemToDrop) {
         Item itemFound;
-        List<Item> bagItemList = getGameController().getPlayer().getAllItemsInBag();
+        List<ItemInBag> bagItemList = getGameController().getPlayer().getAllItemsInBag();
         for (Item itemInTheBag : bagItemList) {
             if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheBag;
