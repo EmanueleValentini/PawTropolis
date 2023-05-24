@@ -1,49 +1,46 @@
 package it.alten.game.controller;
 
-import it.alten.animal.model.Eagle;
-import it.alten.animal.model.Lion;
-import it.alten.animal.model.Tiger;
-import it.alten.game.model.Item;
 import it.alten.game.model.Room;
-import it.alten.game.model.enums.Direction;
+import it.alten.game.service.RoomService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.time.LocalDate;
-import java.util.Map;
-
-import static it.alten.game.model.enums.Direction.getOppositeDirection;
 
 @Controller
 @Data
 public class RoomController {
 
-    private Room currentRoom;
+    private final RoomService roomService;
 
+    private Room currentroom;
 
-    public RoomController() {
-         ;
+    @Autowired
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
     }
 
-
-
-    private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
-        room1.connectRoom(room2, direction1);
-        room2.connectRoom(room1, direction2);
+    private Room retrieveMap() {
+        return roomService.findById(1);
     }
+//TODO: caricare tutte le stanze del db, e gestirne lo spostamento
 
-    private static void connectRooms(Room room1, Room room2, Direction direction) {
-        room1.connectRoom(room2, direction);
-        room2.connectRoom(room1, getOppositeDirection(direction));
-    }
-
-    public boolean changeRoom(Direction direction) {
-        Room nextRoom = currentRoom.getAdjacentRoom(direction);
-        if (nextRoom != null) {
-            currentRoom = nextRoom;
-            return true;
-        }
-        return false;
-    }
+//    private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
+//        room1.connectRoom(room2, direction1);
+//        room2.connectRoom(room1, direction2);
+//    }
+//
+//    private static void connectRooms(Room room1, Room room2, Direction direction) {
+//        room1.connectRoom(room2, direction);
+//        room2.connectRoom(room1, getOppositeDirection(direction));
+//    }
+//
+//    public boolean changeRoom(Direction direction) {
+//        Room nextRoom = currentRoom.getAdjacentRoom(direction);
+//        if (nextRoom != null) {
+//            currentRoom = nextRoom;
+//            return true;
+//        }
+//        return false;
+//    }
 
 }
