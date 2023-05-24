@@ -21,9 +21,13 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     private List<ItemInRoom> roomItemList;
+
+    //TODO: lista di liste o almeno ci proviamo
     @OneToMany
     private List<Animal> animalList;
 
+
+    //TODO: vedi n'po'che devi fa, è molto tricky dice Crostian
     @OneToMany
     private Map<Direction, Room> adjacentRoomsList;
 
