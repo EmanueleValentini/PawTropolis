@@ -11,9 +11,9 @@ public class RoomDto {
 
     private String name;
 
-    private List<Integer> roomItemListID;
+    private List<Integer> item_ID;
 
-    private List<Integer> animalListID;
+    private List<Integer> animal_ID;
 
-    private Map<Integer, Integer> adjacentRoomsListID;
+    private Map<Integer, Integer> adjacentRoom_ID;
 }

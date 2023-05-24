@@ -3,7 +3,7 @@ package it.alten.game.model.dto;
 import lombok.Data;
 
 @Data
-public class ItemDto {
+public abstract class ItemDto {
 
     private String name;
 
