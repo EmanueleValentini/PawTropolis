@@ -19,9 +19,9 @@ import java.util.*;
 public class Room {
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "room")
     private List<Item> roomItemList;
-    @OneToMany
+    @OneToMany(mappedBy = "animal")
     private List<Animal> animalList;
 
     @OneToMany

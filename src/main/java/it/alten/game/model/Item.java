@@ -1,9 +1,6 @@
 package it.alten.game.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,9 @@ public class Item {
     private String name;
     private String description;
     private int requestedSlots;
+    @ManyToOne
+    @JoinColumn(name = "id_room")
+    private Room room;
 
     public Item(String name, String description, int requestedSlots) {
         this.name = name;
