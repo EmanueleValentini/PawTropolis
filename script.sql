@@ -112,6 +112,7 @@ INSERT INTO Direction(name) VALUES('NORTH');
 INSERT INTO Direction(name) VALUES('SOUTH');
 INSERT INTO Direction(name) VALUES('EAST');
 INSERT INTO Direction(name) VALUES('WEST');
+INSERT into Direction(name) VALUES ('NOT_VALID');
 
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
 SELECT 1, 5, direction
