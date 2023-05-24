@@ -39,51 +39,51 @@ public class Room {
         this.adjacentRoomsList = new EnumMap<>(Direction.class);
 
     }
-    public void connectRoom(Room room, Direction direction) {
-
-        adjacentRoomsList.put(direction, room);
-    }
-
-    public Room unconnectRoom(Room room) {
-
-        return adjacentRoomsList.values().remove(room)?room:null;
-    }
-
-    public Room unconnectRoom(Direction direction) {
-
-        return adjacentRoomsList.remove(direction);
-    }
-
-    public Room getAdjacentRoom(Direction direction) {
-        return adjacentRoomsList.get(direction);
-    }
-
-    public void removeItemFromRoom(ItemInRoom item) {
-        roomItemList.remove(item);
-    }
-
-    public void addAnimalToRoom(Animal animal) {
-
-        animalList.add(animal);
-    }
-
-    public void addItemToRoom(ItemInRoom item) {
-        roomItemList.add(item);
-    }
-
-    public String roomDescription() {
-        String message = "Sei nella stanza " + getName();
-        if(!getRoomItemList().isEmpty()){
-            message += "\nCi sono questi oggetti: " + getRoomItemList();
-        }
-        if (!getAnimalList().isEmpty()){
-            message += "\nCi sono questi npc: " + getAnimalList();
-        }
-        if (!getAdjacentRoomsList().isEmpty()){
-            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
-        }
-        return message;
-    }
+//    public void connectRoom(Room room, Direction direction) {
+//
+//        adjacentRoomsList.put(direction, room);
+//    }
+//
+//    public Room unconnectRoom(Room room) {
+//
+//        return adjacentRoomsList.values().remove(room)?room:null;
+//    }
+//
+//    public Room unconnectRoom(Direction direction) {
+//
+//        return adjacentRoomsList.remove(direction);
+//    }
+//
+//    public Room getAdjacentRoom(Direction direction) {
+//        return adjacentRoomsList.get(direction);
+//    }
+//
+//    public void removeItemFromRoom(ItemInRoom item) {
+//        roomItemList.remove(item);
+//    }
+//
+//    public void addAnimalToRoom(Animal animal) {
+//
+//        animalList.add(animal);
+//    }
+//
+//    public void addItemToRoom(ItemInRoom item) {
+//        roomItemList.add(item);
+//    }
+//
+//    public String roomDescription() {
+//        String message = "Sei nella stanza " + getName();
+//        if(!getRoomItemList().isEmpty()){
+//            message += "\nCi sono questi oggetti: " + getRoomItemList();
+//        }
+//        if (!getAnimalList().isEmpty()){
+//            message += "\nCi sono questi npc: " + getAnimalList();
+//        }
+//        if (!getAdjacentRoomsList().isEmpty()){
+//            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
+//        }
+//        return message;
+//    }
 
 
     @Override

@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import java.util.List;
-
 @Getter
 @Setter
 @Entity
@@ -28,28 +25,25 @@ public class Player {
     }
 
 
-    public boolean addItemToBag(ItemInBag item) {
-        assert bag != null;
-        if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
-
-            bag.addItem(item);
-            return true;
-        }
-        return false;
-
-    }
-
-    public void removeItemFromBag(ItemInBag item) {
-        assert bag != null;
-        bag.removeItem(item);
-    }
-
-    public List<ItemInBag> getAllItemsInBag() {
-        assert bag != null;
-        return bag.getInventory();
-    }
-
-
-
+//    public boolean addItemToBag(ItemInBag item) {
+//        assert bag != null;
+//        if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
+//
+//            bag.addItem(item);
+//            return true;
+//        }
+//        return false;
+//
+//    }
+//
+//    public void removeItemFromBag(ItemInBag item) {
+//        assert bag != null;
+//        bag.removeItem(item);
+//    }
+//
+//    public List<ItemInBag> getAllItemsInBag() {
+//        assert bag != null;
+//        return bag.getInventory();
+//    }
 
 }

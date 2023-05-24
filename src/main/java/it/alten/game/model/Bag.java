@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -29,32 +28,23 @@ public class Bag {
     }
 
 
-    public void addItem(ItemInBag item) {
-        if (availableSlots >= item.getRequestedSlots()) {
-            inventory.add(item);
-            availableSlots -= item.getRequestedSlots();
-        }
-    }
+//    public void addItem(ItemInBag item) {
+//        if (availableSlots >= item.getRequestedSlots()) {
+//            inventory.add(item);
+//            availableSlots -= item.getRequestedSlots();
+//        }
+//    }
+//
+//    public void removeItem(ItemInBag item) {
+//        if (inventory.contains(item)) {
+//            inventory.remove(item);
+//            availableSlots += item.getRequestedSlots();
+//        }
+//
+//    }
+//
+//    public boolean isSlotsAvailable() {
+//        return availableSlots > 0;
+//    }
 
-    public void removeItem(ItemInBag item) {
-        if (inventory.contains(item)) {
-            inventory.remove(item);
-            availableSlots += item.getRequestedSlots();
-        }
-
-    }
-
-    public boolean isSlotsAvailable() {
-        return availableSlots > 0;
-    }
-
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
 }
