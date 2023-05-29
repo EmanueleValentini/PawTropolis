@@ -1,7 +1,7 @@
 package it.alten.game.controller;
 
 import it.alten.game.model.Item;
-import it.alten.game.service.ItemInBagService;
+import it.alten.game.service.ItemService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Controller;
 @Data
 public class ItemController {
 
-    private final ItemInBagService itemInBagService;
+    private final ItemService itemService;
 
     @Autowired
-    public ItemController(ItemInBagService itemInBagService) {
-        this.itemInBagService = itemInBagService;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
     public Class<? extends Item>  findByName(String name) {
-        return itemInBagService.findByName(name);
+        return itemService.findByName(name);
     }
 }
