@@ -1,8 +1,9 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.*;
-import it.alten.game.model.dto.ItemDto;
+import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.Room;
+import it.alten.game.model.dto.ItemInBagDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -53,7 +54,7 @@ public class GetCommand extends ParametrizedCommand {
         List<ItemInRoom> availableItems = getGameController().getPlayer().getCurrentRoom().getRoomItemList();
         if (availableItems.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
-            ItemDto itemToGet = modelMapper.map(item, ItemDto.class);
+            ItemInBagDto itemToGet = modelMapper.map(item, ItemInBagDto.class);
             gameController.getItemInBagController().getItemInBagService().save(itemToGet);
             gameController.getItemInRoomController().getItemInRoomService().deleteById(item.getId());
             return true;

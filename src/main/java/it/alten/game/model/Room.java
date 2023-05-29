@@ -15,6 +15,7 @@ import java.util.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Room {
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "room")
@@ -22,11 +23,13 @@ public class Room {
 
     //TODO: lista di liste o almeno ci proviamo
     @OneToMany
+    @PrimaryKeyJoinColumn
     private List<Animal> animalList;
 
 
     //TODO: vedi n'po'che devi fa, è molto tricky dice Crostian
     @OneToMany
+    @PrimaryKeyJoinColumn
     private Map<Direction, Room> adjacentRoomsList;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

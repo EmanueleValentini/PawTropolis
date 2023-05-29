@@ -13,5 +13,5 @@ public class BagDto {
 
     private final int maxSlots;
 
-    private List<Integer> items_ID;
+    private List<Integer> idItems;
 }

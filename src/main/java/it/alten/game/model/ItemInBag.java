@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class ItemInBag extends Item{
 
     @ManyToOne
@@ -18,8 +18,17 @@ public class ItemInBag extends Item{
     private Bag bag;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "requestedSlots")
+    private int requestedSlots;
     public ItemInBag(String name, String description, int requestedSlots, Bag bag) {
         super(name, description, requestedSlots);
         this.bag = bag;

@@ -15,11 +15,15 @@ import java.util.List;
 public class Bag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "id")
     private int id;
-    @OneToMany
+    @OneToMany (mappedBy = "bag")
     private List<ItemInBag> inventory;
+    @Column(name = "availableSlots")
     private int availableSlots;
+
     private static final int MAX_SLOTS = 5;
+    @Column(name = "maxSlots")
     private final int maxSlots;
 
 

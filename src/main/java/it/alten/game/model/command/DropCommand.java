@@ -3,7 +3,7 @@ package it.alten.game.model.command;
 import it.alten.game.controller.GameController;
 import it.alten.game.model.Bag;
 import it.alten.game.model.ItemInBag;
-import it.alten.game.model.dto.ItemDto;
+import it.alten.game.model.dto.ItemInBagDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ public class DropCommand extends ParametrizedCommand {
         List<ItemInBag> inventory = getGameController().getBagController().getInventory(getGameController().getPlayer().getBag());
         if (inventory.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
-            ItemDto itemToDrop = modelMapper.map(item, ItemDto.class);
+            ItemInBagDto itemToDrop = modelMapper.map(item, ItemInBagDto.class);
             gameController.getItemInRoomController().getItemInRoomService().save(itemToDrop);
             gameController.getItemInBagController().getItemInBagService().deleteById(item.getId());
             return true;
