@@ -2,12 +2,12 @@ CREATE DATABASE pawtropolis;
 
 \c pawtropolis;
 
-CREATE TABLE Room(
+CREATE TABLE room(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL
 );
 
-CREATE TABLE ItemInRoom(
+CREATE TABLE item_in_room(
     id serial PRIMARY KEY NOT NULL,
     name varchar(20) NOT NULL,
     description varchar(255),
@@ -16,12 +16,13 @@ CREATE TABLE ItemInRoom(
     FOREIGN KEY (id_room) REFERENCES Room(id)
 );
 
-CREATE TABLE Bag(
+CREATE TABLE bag(
     id  serial PRIMARY KEY NOT NULL,
-    maxSlots smallint NOT NULL
+    maxSlots smallint NOT NULL,
+    availableSlots smallint
 );
 
-CREATE TABLE ItemInBag(
+CREATE TABLE item_in_bag(
     id serial PRIMARY KEY NOT NULL,
     name varchar(20) NOT NULL,
     description varchar(255),
@@ -30,7 +31,7 @@ CREATE TABLE ItemInBag(
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 
-CREATE TABLE Player(
+CREATE TABLE player(
     id serial PRIMARY KEY NOT NULL,
     name varchar(20) NOT NULL,
     lifePoints int NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE Player(
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 
-CREATE TABLE Room_Connection(
+CREATE TABLE room_connection(
     id serial PRIMARY KEY NOT NULL,
     id_room1 serial NOT NULL,
     id_room2 serial NOT NULL,
@@ -50,7 +51,7 @@ CREATE TABLE Room_Connection(
     CONSTRAINT uc_room_pairing UNIQUE (id_room1,id_room2)
 );
 
-CREATE TABLE Lion(
+CREATE TABLE lion(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
     favFood varchar(100),
@@ -63,7 +64,7 @@ CREATE TABLE Lion(
     FOREIGN KEY (id_room) REFERENCES Room(id)
 );
 
-CREATE TABLE Tiger(
+CREATE TABLE tiger(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
     favFood varchar(100),
@@ -76,7 +77,7 @@ CREATE TABLE Tiger(
     FOREIGN KEY (id_room) REFERENCES Room(id)
 );
 
-CREATE TABLE Eagle(
+CREATE TABLE eagle(
     id serial PRIMARY KEY NOT NULL,
     name varchar(30) NOT NULL,
     favFood varchar(100),
@@ -89,7 +90,7 @@ CREATE TABLE Eagle(
     FOREIGN KEY (id_room) REFERENCES Room(id)
 );
 
-CREATE TABLE Direction(
+CREATE TABLE direction(
     id serial PRIMARY KEY NOT NULL,
     name varchar(10) NOT NULL
 );
