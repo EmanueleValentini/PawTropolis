@@ -1,6 +1,7 @@
 package it.alten.game.service;
 
 import it.alten.game.model.Item;
+import it.alten.game.model.ItemInBag;
 import it.alten.game.model.dto.ItemDto;
 import it.alten.game.repository.ItemRepository;
 import org.modelmapper.ModelMapper;
@@ -26,8 +27,8 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public Item findByName(String name) {
-        Optional<Item> itemOptional = itemRepository.findItemByName(name);
+    public Class<? extends Item> findByName(String name) {
+        Optional<Class<? extends Item>> itemOptional = itemRepository.findItemByName(name);
         return itemOptional.orElse(null);
     }
 
@@ -40,7 +41,10 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public boolean deleteById(int id) {
         try {
-            itemRepository.deleteById(id);
+            Item itemToDelete = itemRepository.findById(id).orElse(null);
+            if (itemToDelete instanceof ItemInBag) {
+                itemRepository.deleteById(id);
+            }
             return true;
         } catch (Exception e) {
             return false;

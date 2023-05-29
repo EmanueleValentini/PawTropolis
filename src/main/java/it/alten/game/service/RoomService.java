@@ -4,6 +4,8 @@ import it.alten.game.model.Room;
 import it.alten.game.model.dto.RoomDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface RoomService {
 
@@ -14,4 +16,6 @@ public interface RoomService {
     Room findById (int id);
 
     boolean deleteById (int id);
+
+    List<Room> findAll();
 }

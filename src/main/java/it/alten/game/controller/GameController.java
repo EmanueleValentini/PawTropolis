@@ -21,14 +21,28 @@ public class GameController {
 
     private static final int DEFAULT_STARTING_LIFE_POINTS = 42;
 
+    private final PlayerController playerController;
+
+    private final ItemInBagController itemInBagController;
+
+    private final ItemInRoomController itemInRoomController;
+
+    private final BagController bagController;
+
     private Player player;
 
     private boolean quit;
 
+    private Room currentRoom;
+
     @Autowired
-    public GameController(RoomController roomController, CommandFactory commandFactory) {
+    public GameController(RoomController roomController, CommandFactory commandFactory, PlayerController playerController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController, BagController bagController) {
         this.roomController = roomController;
         this.commandFactory = commandFactory;
+        this.playerController = playerController;
+        this.itemInBagController = itemInBagController;
+        this.itemInRoomController = itemInRoomController;
+        this.bagController = bagController;
         this.quit = false;
     }
 
@@ -42,12 +56,11 @@ public class GameController {
         return player;
     }
 
-    public Room getCurrentRoom() {
-        return roomController.getCurrentRoom();
-    }
-
     public boolean changeRoom(Direction direction) {
-        return roomController.changeRoom(direction);
+        if (playerController.getPlayerService().updateCurrentRoomById(player.getId(), player)){
+            return true;
+        }
+        return false;
     }
 
     public void runGame() {
@@ -55,8 +68,9 @@ public class GameController {
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
         player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
+        player.setCurrentRoom(roomController.getRoomService().findById(1));
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
-        System.out.println(getRoomController().getCurrentRoom().roomDescription());
+        System.out.println(playerController.getCurrentRoom(player.getId()).roomDescription());
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String input = scanner.nextLine();

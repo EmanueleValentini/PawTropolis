@@ -1,12 +1,13 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.Item;
+import it.alten.game.model.Bag;
 import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.dto.ItemDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,17 +38,23 @@ public class DropCommand extends ParametrizedCommand {
         }
     }
 
-    public void dropItem(Item item) {
-        if (getGameController().getPlayer().getAllItemsInBag().contains(item)) {
-            getGameController().getPlayer().removeItemFromBag((ItemInBag) item);
-            getGameController().getRoomController().getCurrentRoom().addItemToRoom((ItemInRoom) item);
+    public boolean dropItem(ItemInBag item) {
+        List<ItemInBag> inventory = getGameController().getBagController().getInventory(getGameController().getPlayer().getBag());
+        if (inventory.contains(item)){
+            ModelMapper modelMapper = new ModelMapper();
+            ItemDto itemToDrop = modelMapper.map(item, ItemDto.class);
+            gameController.getItemInRoomController().getItemInRoomService().save(itemToDrop);
+            gameController.getItemInBagController().getItemInBagService().deleteById(item.getId());
+            return true;
         }
+        return false;
     }
 
-    public Item findItem(String itemToDrop) {
-        Item itemFound;
-        List<ItemInBag> bagItemList = getGameController().getPlayer().getAllItemsInBag();
-        for (Item itemInTheBag : bagItemList) {
+    public ItemInBag findItem(String itemToDrop) {
+        ItemInBag itemFound;
+        Bag bag = getGameController().getPlayer().getBag();
+        List<ItemInBag> bagItemList = bag.getInventory();
+        for (ItemInBag itemInTheBag : bagItemList) {
             if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheBag;
                 return itemFound;

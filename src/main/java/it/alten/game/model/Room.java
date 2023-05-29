@@ -3,10 +3,7 @@ package it.alten.game.model;
 import it.alten.animal.model.Animal;
 import it.alten.game.model.enums.Direction;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 import java.util.*;
@@ -16,6 +13,7 @@ import java.util.*;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Room {
     private String name;
 
@@ -75,19 +73,19 @@ public class Room {
 //        roomItemList.add(item);
 //    }
 //
-//    public String roomDescription() {
-//        String message = "Sei nella stanza " + getName();
-//        if(!getRoomItemList().isEmpty()){
-//            message += "\nCi sono questi oggetti: " + getRoomItemList();
-//        }
-//        if (!getAnimalList().isEmpty()){
-//            message += "\nCi sono questi npc: " + getAnimalList();
-//        }
-//        if (!getAdjacentRoomsList().isEmpty()){
-//            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
-//        }
-//        return message;
-//    }
+    public String roomDescription() {
+        String message = "Sei nella stanza " + getName();
+        if(!getRoomItemList().isEmpty()){
+            message += "\nCi sono questi oggetti: " + getRoomItemList();
+        }
+        if (!getAnimalList().isEmpty()){
+            message += "\nCi sono questi npc: " + getAnimalList();
+        }
+        if (!getAdjacentRoomsList().isEmpty()){
+            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
+        }
+        return message;
+    }
 
 
     @Override

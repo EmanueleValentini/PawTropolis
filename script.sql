@@ -34,9 +34,9 @@ CREATE TABLE Player(
     id serial PRIMARY KEY NOT NULL,
     name varchar(20) NOT NULL,
     lifePoints int NOT NULL,
-    last_visited_room int,
+    id_room int NOT NULL,
     id_bag int NOT NULL,
-    FOREIGN KEY (last_visited_room) REFERENCES Room(id),
+    FOREIGN KEY (id_room) REFERENCES Room(id),
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 

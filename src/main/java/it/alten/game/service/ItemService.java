@@ -9,7 +9,7 @@ public interface ItemService {
 
     Item save (ItemDto itemDto);
 
-    Item findByName (String name);
+    Class<? extends Item> findByName (String name);
 
     Item findById (int id);
 

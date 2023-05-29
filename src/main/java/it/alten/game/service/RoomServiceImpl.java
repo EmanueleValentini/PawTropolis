@@ -5,9 +5,12 @@ import it.alten.game.model.dto.RoomDto;
 import it.alten.game.repository.RoomRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
+@Service
 public class RoomServiceImpl implements RoomService{
 
     private final RoomRepository roomRepository;
@@ -45,5 +48,10 @@ public class RoomServiceImpl implements RoomService{
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public List<Room> findAll() {
+        return roomRepository.findAll();
     }
 }

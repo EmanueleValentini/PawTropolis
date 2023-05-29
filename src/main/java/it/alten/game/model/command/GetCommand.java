@@ -1,12 +1,12 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.Item;
-import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.*;
+import it.alten.game.model.dto.ItemDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,10 +31,11 @@ public class GetCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         String itemToGet = String.join(" ",parameters);
-        if (getGameController().getPlayer().getBag().isSlotsAvailable()) {
+        if (getGameController().getPlayer().getBag().getAvailableSlots() > 0) {
             if (findItem(itemToGet) != null) {
-                Item itemPresentToGet = findItem(itemToGet);
-                if (getItem(itemPresentToGet)){
+                ItemInRoom itemPresentToGet = findItem(itemToGet);
+                if (getItem(itemPresentToGet) &&
+                        itemPresentToGet.getRequestedSlots() < getGameController().getPlayer().getBag().getAvailableSlots()){
                     System.out.println("Hai preso " + itemToGet);
                 } else {
                     System.out.println(itemToGet + " Non entra nella borsa");
@@ -48,20 +49,24 @@ public class GetCommand extends ParametrizedCommand {
 
     }
 
-    public boolean getItem(Item item) {
-        if (getGameController().getRoomController().getCurrentRoom().getRoomItemList().contains(item) &&
-                (getGameController().getPlayer().addItemToBag((ItemInBag) item))){
-                getGameController().getRoomController().getCurrentRoom().removeItemFromRoom((ItemInRoom) item);
-                return true;
+    public boolean getItem(ItemInRoom item) {
+        List<ItemInRoom> availableItems = getGameController().getPlayer().getCurrentRoom().getRoomItemList();
+        if (availableItems.contains(item)){
+            ModelMapper modelMapper = new ModelMapper();
+            ItemDto itemToGet = modelMapper.map(item, ItemDto.class);
+            gameController.getItemInBagController().getItemInBagService().save(itemToGet);
+            gameController.getItemInRoomController().getItemInRoomService().deleteById(item.getId());
+            return true;
         }
         return false;
     }
 
-    public Item findItem(String itemToGet) {
-        Item itemFound;
-        List<ItemInRoom> roomItemList = getGameController().getRoomController().getCurrentRoom().getRoomItemList();
-        for (Item itemInTheRoom : roomItemList) {
-            if (itemInTheRoom.getName().equalsIgnoreCase(itemToGet)) {
+    public ItemInRoom findItem(String itemToDrop) {
+        ItemInRoom itemFound;
+        Room room = getGameController().getPlayer().getCurrentRoom();
+        List<ItemInRoom> roomItemList = room.getRoomItemList();
+        for (ItemInRoom itemInTheRoom : roomItemList) {
+            if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheRoom;
                 return itemFound;
             }

@@ -1,6 +1,7 @@
 package it.alten.game.model;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor(force = true)
+@EqualsAndHashCode
 public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -17,33 +19,12 @@ public class Player {
     private int lifePoints;
     @OneToOne
     private final Bag bag;
+    @OneToOne
+    private Room currentRoom;
 
     public Player(String name, int lifePoints) {
         this.name = name;
         this.lifePoints = lifePoints;
         this.bag = new Bag();
     }
-
-
-//    public boolean addItemToBag(ItemInBag item) {
-//        assert bag != null;
-//        if (bag.getAvailableSlots() >= item.getRequestedSlots()) {
-//
-//            bag.addItem(item);
-//            return true;
-//        }
-//        return false;
-//
-//    }
-//
-//    public void removeItemFromBag(ItemInBag item) {
-//        assert bag != null;
-//        bag.removeItem(item);
-//    }
-//
-//    public List<ItemInBag> getAllItemsInBag() {
-//        assert bag != null;
-//        return bag.getInventory();
-//    }
-
 }
