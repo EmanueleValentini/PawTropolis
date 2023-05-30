@@ -2,7 +2,7 @@
 
 # Funzione per gestire l'errore
 handle_error() {
-  echo "Si è verificato un errore durante l'esecuzione del comando: $1"
+  echo "Si e verificato un errore durante l'esecuzione del comando: $1"
   exit 1
 }
 
