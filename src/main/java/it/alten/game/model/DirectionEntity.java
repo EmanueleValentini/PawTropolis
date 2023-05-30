@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Table(name = "direction")
 @Entity
 @AllArgsConstructor
@@ -20,4 +22,7 @@ public class DirectionEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "name")
     private Direction direction;
+
+    @OneToMany(mappedBy = "direction")
+    private List<RoomConnection> roomConnections;
 }

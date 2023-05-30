@@ -3,14 +3,11 @@ package it.alten.game.model;
 import it.alten.animal.model.Eagle;
 import it.alten.animal.model.Lion;
 import it.alten.animal.model.Tiger;
-import it.alten.game.model.enums.Direction;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter
@@ -34,11 +31,9 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Lion> lionList;
 
-
-    //TODO: vedi n'po'che devi fa, è molto tricky dice Crostian
     @OneToMany
     @PrimaryKeyJoinColumn
-    private Map<Direction, Room> connection;
+    private List<RoomConnection> connection;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -51,7 +46,7 @@ public class Room {
         this.lionList = new ArrayList<>();
         this.eagleList = new ArrayList<>();
         this.tigerList = new ArrayList<>();
-        this.connection = new EnumMap<>(Direction.class);
+        this.connection = new ArrayList<>();
 
     }
 //    public void connectRoom(Room room, Direction direction) {
