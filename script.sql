@@ -95,71 +95,71 @@ CREATE TABLE direction(
     name varchar(10) NOT NULL
 );
 
-INSERT INTO Room(name) VALUES('DAJE ROMA DAJE'); 
-INSERT INTO Room(name) VALUES('LA STANZA DEL BOSS'); 
-INSERT INTO Room(name) VALUES('VIALE MARCONI'); 
-INSERT INTO Room(name) VALUES('NAPOLI'); 
-INSERT INTO Room(name) VALUES('DRUGVILLE'); 
-INSERT INTO Room(name) VALUES('SECCO REFRESH'); 
+INSERT INTO room(name) VALUES('DAJE ROMA DAJE');
+INSERT INTO room(name) VALUES('LA STANZA DEL BOSS');
+INSERT INTO room(name) VALUES('VIALE MARCONI');
+INSERT INTO room(name) VALUES('NAPOLI');
+INSERT INTO room(name) VALUES('DRUGVILLE');
+INSERT INTO room(name) VALUES('SECCO REFRESH');
 
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('excalibur','la famosa spada nella roccia che re Artù dovette estrarre per diventare re di Camelot, per poi sposare Ginevra e farsela rubare da Lancillotto',1,1);
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('scudo','scudo rotondo',1,2);
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('siringa','ti cura di 50hp e ti fa...forse non ti cura',1,2);
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('orologio','Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai',1,3);
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('elmo','ti protegge dagli headshot',1,3);
-INSERT INTO ItemInRoom(name,description,requestedSlots,id_room) VALUES('soldi','i soldi quelli veri',1,4);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('excalibur','la famosa spada nella roccia che re Artù dovette estrarre per diventare re di Camelot, per poi sposare Ginevra e farsela rubare da Lancillotto',1,1);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('scudo','scudo rotondo',1,2);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('siringa','ti cura di 50hp e ti fa...forse non ti cura',1,2);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('orologio','Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai',1,3);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('elmo','ti protegge dagli headshot',1,3);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('soldi','i soldi quelli veri',1,4);
 
-INSERT INTO Direction(name) VALUES('NORTH');
-INSERT INTO Direction(name) VALUES('SOUTH');
-INSERT INTO Direction(name) VALUES('EAST');
-INSERT INTO Direction(name) VALUES('WEST');
-INSERT into Direction(name) VALUES ('NOT_VALID');
+INSERT INTO direction(name) VALUES('NORTH');
+INSERT INTO direction(name) VALUES('SOUTH');
+INSERT INTO direction(name) VALUES('EAST');
+INSERT INTO direction(name) VALUES('WEST');
+INSERT into direction(name) VALUES ('NOT_VALID');
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 1, 5, direction
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'EAST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 1, 4, direction
-FROM Direction
-WHERE Direction.name = 'SOUTH';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'SOUTH';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 5, 2, direction
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'EAST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 4, 3, direction
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'WEST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 2, 6, direction
-FROM Direction
-WHERE Direction.name = 'EAST';
+FROM direction
+WHERE direction.name = 'EAST';
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 5, 1, direction
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'WEST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 4, 1, direction
-FROM Direction
-WHERE Direction.name = 'NORTH';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'NORTH';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 2, 5, direction
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'WEST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 3, 4, direction
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
+FROM direction
+WHERE direction.name = 'EAST';
+INSERT INTO room_connection (id_room1, id_room2, direction)
 SELECT 6, 2, direction
-FROM Direction
-WHERE Direction.name = 'WEST';
+FROM direction
+WHERE direction.name = 'WEST';
 
-INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Giancarlo','sushi',56,2.3,4.4,'2000-2-12',1,2.8);
-INSERT INTO Eagle(name,favFood,age,weight,height,dateOfJoin,id_room,wingSpan) VALUES('l aquila assassina','umani',1000,3.3,6.8,'2000-2-12',2,3);
-INSERT INTO Tiger(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Amal','indiano',24,70,1.2,'2000-2-12',3,4.1);
-INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Evil Amal','indiano',56,2.3,4.4,'2000-2-12',1,2.8);
-INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Calogero','tè al limone',56,2.3,4.4,'2000-2-12',1,2.8);
-INSERT INTO Lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Salvatore','er sambucone molinari',56,2.3,4.4,'2000-2-12',1,2.8);
+INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Giancarlo','sushi',56,2.3,4.4,'2000-2-12',1,2.8);
+INSERT INTO eagle(name,favFood,age,weight,height,dateOfJoin,id_room,wingSpan) VALUES('l aquila assassina','umani',1000,3.3,6.8,'2000-2-12',2,3);
+INSERT INTO tiger(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Amal','indiano',24,70,1.2,'2000-2-12',3,4.1);
+INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Evil Amal','indiano',56,2.3,4.4,'2000-2-12',1,2.8);
+INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Calogero','tè al limone',56,2.3,4.4,'2000-2-12',1,2.8);
+INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Salvatore','er sambucone molinari',56,2.3,4.4,'2000-2-12',1,2.8);
