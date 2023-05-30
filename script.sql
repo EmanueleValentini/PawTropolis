@@ -103,7 +103,7 @@ INSERT INTO room(name) VALUES('DRUGVILLE');
 INSERT INTO room(name) VALUES('SECCO REFRESH');
 
 INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('excalibur','la famosa spada nella roccia che re Artù dovette estrarre per diventare re di Camelot, per poi sposare Ginevra e farsela rubare da Lancillotto',1,1);
-INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('scudo','scudo rotondo',1,2);
+INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('scudo','scudo super resistente',1,2);
 INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('siringa','ti cura di 50hp e ti fa...forse non ti cura',1,2);
 INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('orologio','Oggetto rarissimo, conservalo bene nel taschino dietro dello zaino che non hai',1,3);
 INSERT INTO item_in_room(name,description,requestedSlots,id_room) VALUES('elmo','ti protegge dagli headshot',1,3);
