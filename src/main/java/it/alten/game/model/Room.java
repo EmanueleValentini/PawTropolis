@@ -1,12 +1,16 @@
 package it.alten.game.model;
 
-import it.alten.animal.model.Animal;
+import it.alten.animal.model.Eagle;
+import it.alten.animal.model.Lion;
+import it.alten.animal.model.Tiger;
 import it.alten.game.model.enums.Direction;
 import jakarta.persistence.*;
 import lombok.*;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -21,10 +25,14 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<ItemInRoom> roomItemList;
 
-    //TODO: lista di liste o almeno ci proviamo
-    @OneToMany
-    @PrimaryKeyJoinColumn
-    private List<Animal> animalList;
+    @OneToMany(mappedBy = "room")
+    private List<Eagle> eagleList;
+
+    @OneToMany(mappedBy = "room")
+    private List<Tiger> tigerList;
+
+    @OneToMany(mappedBy = "room")
+    private List<Lion> lionList;
 
 
     //TODO: vedi n'po'che devi fa, è molto tricky dice Crostian
@@ -40,7 +48,9 @@ public class Room {
 
         this.name = name;
         this.roomItemList = new ArrayList<>();
-        this.animalList = new ArrayList<>();
+        this.lionList = new ArrayList<>();
+        this.eagleList = new ArrayList<>();
+        this.tigerList = new ArrayList<>();
         this.adjacentRoomsList = new EnumMap<>(Direction.class);
 
     }
@@ -81,8 +91,16 @@ public class Room {
         if(!getRoomItemList().isEmpty()){
             message += "\nCi sono questi oggetti: " + getRoomItemList();
         }
-        if (!getAnimalList().isEmpty()){
-            message += "\nCi sono questi npc: " + getAnimalList();
+        if (!getLionList().isEmpty() || !getTigerList().isEmpty() || !getEagleList().isEmpty()) {
+            if (!getLionList().isEmpty()) {
+                message += "\nCi sono questi leoni: " + getLionList();
+            }
+            if (!getTigerList().isEmpty()) {
+                message += "\nCi sono queste tigri: " + getTigerList();
+            }
+            if (!getEagleList().isEmpty()) {
+                message += "\nCi sono queste aquile: " + getEagleList();
+            }
         }
         if (!getAdjacentRoomsList().isEmpty()){
             message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
