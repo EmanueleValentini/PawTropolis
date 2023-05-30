@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "room_connection")
+@Table(name = "room_connection",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"id_room1", "id_room2"}, name = "uc_room_pairing"))
 public class RoomConnection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "id_room1")

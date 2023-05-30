@@ -31,10 +31,6 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Lion> lionList;
 
-    @OneToMany
-    @PrimaryKeyJoinColumn
-    private List<RoomConnection> connection;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -46,8 +42,6 @@ public class Room {
         this.lionList = new ArrayList<>();
         this.eagleList = new ArrayList<>();
         this.tigerList = new ArrayList<>();
-        this.connection = new ArrayList<>();
-
     }
 //    public void connectRoom(Room room, Direction direction) {
 //
@@ -96,9 +90,6 @@ public class Room {
             if (!getEagleList().isEmpty()) {
                 message += "\nCi sono queste aquile: " + getEagleList();
             }
-        }
-        if (!getConnection().isEmpty()){
-            message += "\nPuoi spostarti verso: " + getConnection();
         }
         return message;
     }
