@@ -1,6 +1,5 @@
 package it.alten.game.model.enums;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
