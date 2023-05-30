@@ -25,6 +25,6 @@ public class RoomConnection {
     private Room room2;
 
     @ManyToOne
-    @JoinColumn(name = "direction")
+    @JoinColumn(name = "id_direction")
     private DirectionEntity direction;
 }

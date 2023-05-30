@@ -19,11 +19,11 @@ public class Bag {
     private int id;
     @OneToMany (mappedBy = "bag")
     private List<ItemInBag> inventory;
-    @Column(name = "availableSlots")
+    @Column(name = "availableslots")
     private int availableSlots;
 
     private static final int MAX_SLOTS = 5;
-    @Column(name = "maxSlots")
+    @Column(name = "maxslots")
     private final int maxSlots;
 
 

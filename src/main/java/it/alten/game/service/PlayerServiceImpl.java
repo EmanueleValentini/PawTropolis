@@ -32,7 +32,7 @@ public class PlayerServiceImpl implements PlayerService{
     public Room findPlayerCurrentRoom(int id) {
         Player player = playerRepository.findById(id).orElse(null);
         if (player != null){
-            return player.getCurrentRoom();
+            return player.getRoom();
         }
         else {
             return null;
@@ -43,7 +43,7 @@ public class PlayerServiceImpl implements PlayerService{
     public boolean updateCurrentRoomById(int id, Player player) {
         Player playerFound = playerRepository.findById(id).orElse(null);
         if (playerFound != null) {
-            playerFound.setCurrentRoom(player.getCurrentRoom());
+            playerFound.setRoom(player.getRoom());
             PlayerDto playerDto = playerMapper.toDTO(player);
             save(playerDto);
             return true;

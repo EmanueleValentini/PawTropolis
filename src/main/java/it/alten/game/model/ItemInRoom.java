@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Table(name = "item_in_room")
 public class ItemInRoom extends Item{
 
     @ManyToOne
@@ -26,7 +27,7 @@ public class ItemInRoom extends Item{
     @Column(name = "description")
     private String description;
 
-    @Column(name = "requestedSlots")
+    @Column(name = "requestedslots")
     private int requestedSlots;
 
     public ItemInRoom(String name, String description, int requestedSlots, Room room) {

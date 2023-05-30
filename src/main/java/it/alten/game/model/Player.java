@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor(force = true)
 @EqualsAndHashCode
+@Table(name = "player")
 public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -18,16 +19,14 @@ public class Player {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "lifePoints")
+    @Column(name = "lifepoints")
     private int lifePoints;
     @OneToOne
-    @PrimaryKeyJoinColumn
-    @MapsId
+    @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
     @OneToOne
-    @PrimaryKeyJoinColumn
-    @MapsId
-    private Room currentRoom;
+    @PrimaryKeyJoinColumn(name = "id_room")
+    private Room room;
     public Player(String name, int lifePoints) {
         this.name = name;
         this.lifePoints = lifePoints;

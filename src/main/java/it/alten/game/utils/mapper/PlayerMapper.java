@@ -33,13 +33,13 @@ public class PlayerMapper {
             Optional<Room> roomOptional = roomRepository.findById(playerDto.getRoom());
             if (roomOptional.isPresent()) {
                 Room room = roomOptional.get();
-                player.setCurrentRoom(room);
+                player.setRoom(room);
             }
         } else {
             Optional<Room> roomOptional = roomRepository.findById(1);
             if (roomOptional.isPresent()) {
                 Room room = roomOptional.get();
-                player.setCurrentRoom(room);
+                player.setRoom(room);
             }
         }
         return player;
@@ -49,8 +49,8 @@ public class PlayerMapper {
         PlayerDto playerDto = new PlayerDto();
         playerDto.setName(player.getName());
         playerDto.setLifePoints(player.getLifePoints());
-        if (player.getCurrentRoom() != null) {
-            playerDto.setRoom(player.getCurrentRoom().getId());
+        if (player.getRoom() != null) {
+            playerDto.setRoom(player.getRoom().getId());
         }
         if (player.getBag() != null){
             playerDto.setBag(player.getBag().getId());

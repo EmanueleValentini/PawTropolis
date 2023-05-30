@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Table(name = "item_in_bag")
 public class ItemInBag extends Item{
 
     @ManyToOne
@@ -27,7 +28,7 @@ public class ItemInBag extends Item{
     @Column(name = "description")
     private String description;
 
-    @Column(name = "requestedSlots")
+    @Column(name = "requestedslots")
     private int requestedSlots;
     public ItemInBag(String name, String description, int requestedSlots, Bag bag) {
         super(name, description, requestedSlots);
