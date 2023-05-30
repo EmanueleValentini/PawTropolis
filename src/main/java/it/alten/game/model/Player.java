@@ -28,7 +28,6 @@ public class Player {
     @PrimaryKeyJoinColumn
     @MapsId
     private Room currentRoom;
-
     public Player(String name, int lifePoints) {
         this.name = name;
         this.lifePoints = lifePoints;
