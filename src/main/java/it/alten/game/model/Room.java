@@ -38,7 +38,7 @@ public class Room {
     //TODO: vedi n'po'che devi fa, è molto tricky dice Crostian
     @OneToMany
     @PrimaryKeyJoinColumn
-    private Map<Direction, Room> adjacentRoomsList;
+    private Map<Direction, Room> connection;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -51,7 +51,7 @@ public class Room {
         this.lionList = new ArrayList<>();
         this.eagleList = new ArrayList<>();
         this.tigerList = new ArrayList<>();
-        this.adjacentRoomsList = new EnumMap<>(Direction.class);
+        this.connection = new EnumMap<>(Direction.class);
 
     }
 //    public void connectRoom(Room room, Direction direction) {
@@ -102,8 +102,8 @@ public class Room {
                 message += "\nCi sono queste aquile: " + getEagleList();
             }
         }
-        if (!getAdjacentRoomsList().isEmpty()){
-            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
+        if (!getConnection().isEmpty()){
+            message += "\nPuoi spostarti verso: " + getConnection();
         }
         return message;
     }
