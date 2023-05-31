@@ -1,5 +1,6 @@
 package it.alten.game.service;
 
+import it.alten.game.model.Item;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.ItemInBagDto;
@@ -41,11 +42,10 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
-    public ItemInRoom save(ItemInBagDto item) {
-        ModelMapper modelMapper = new ModelMapper();
-        ItemInRoom itemSaved = modelMapper.map(item,ItemInRoom.class);
-        itemInRoomRepository.save(itemSaved);
-        return itemSaved;
+    public ItemInRoom save(Item item) {
+        
+        return itemInRoomRepository.save((ItemInRoom) item);
+
     }
 
     @Override

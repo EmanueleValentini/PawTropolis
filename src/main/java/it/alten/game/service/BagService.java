@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface BagService {
 
-    Bag save (BagDto bagDto);
+    Bag save (Bag bag);
 
     List<Bag> findAll ();
 }

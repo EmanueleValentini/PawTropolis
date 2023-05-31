@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PlayerService {
 
-    Player save (PlayerDto playerDto);
+    Player save (Player player);
 
     boolean updateCurrentRoomById (int id, Player player);
 }

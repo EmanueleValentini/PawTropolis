@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface RoomService {
 
-    Room save (RoomDto roomDto);
+    Room save (Room room);
 
     Room findByName (String name);
 

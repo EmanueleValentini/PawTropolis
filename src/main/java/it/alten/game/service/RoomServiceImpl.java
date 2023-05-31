@@ -21,11 +21,9 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public Room save(RoomDto roomDto) {
-        ModelMapper modelMapper = new ModelMapper();
-        Room roomSaved = modelMapper.map(roomDto,Room.class);
-        roomRepository.save(roomSaved);
-        return roomSaved;
+    public Room save(Room room) {
+        roomRepository.save(room);
+        return room;
     }
 
     @Override

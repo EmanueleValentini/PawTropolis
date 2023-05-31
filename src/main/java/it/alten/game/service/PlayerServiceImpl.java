@@ -22,11 +22,8 @@ public class PlayerServiceImpl implements PlayerService{
     }
 
     @Override
-    public Player save(PlayerDto playerDto) {
-        ModelMapper modelMapper = new ModelMapper();
-        Player player = modelMapper.map(playerDto, Player.class);
+    public Player save(Player player) {
         playerRepository.save(player);
-
         return player;
     }
 

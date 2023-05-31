@@ -21,11 +21,9 @@ public class BagServiceImpl implements BagService{
     }
 
     @Override
-    public Bag save(BagDto bagDto) {
-        ModelMapper modelMapper = new ModelMapper();
-        Bag bagSaved = modelMapper.map(bagDto,Bag.class);
-        bagRepository.save(bagSaved);
-        return bagSaved;
+    public Bag save(Bag bag) {
+
+        return bagRepository.save(bag);
     }
 
     @Override
