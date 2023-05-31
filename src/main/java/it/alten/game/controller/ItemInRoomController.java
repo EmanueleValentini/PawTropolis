@@ -31,4 +31,8 @@ public class ItemInRoomController {
     public ItemInRoom save(ItemInBagDto item) {
         return itemInRoomService.save(item);
     }
+
+    public void deleteById(int id) {
+        itemInRoomService.deleteById(id);
+    }
 }

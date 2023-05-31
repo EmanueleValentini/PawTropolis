@@ -11,6 +11,5 @@ public class PlayerDto {
 
     private int id_bag;
 
-    private int id_room;
 
 }

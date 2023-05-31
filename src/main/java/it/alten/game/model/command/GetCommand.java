@@ -1,12 +1,11 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
+import it.alten.game.controller.ItemInBagController;
+import it.alten.game.controller.ItemInRoomController;
+import it.alten.game.controller.RoomController;
 import it.alten.game.model.ItemInRoom;
-import it.alten.game.model.Room;
 import it.alten.game.model.dto.ItemInBagDto;
-import it.alten.game.service.ItemInBagService;
-import it.alten.game.service.ItemInRoomService;
-import it.alten.game.service.RoomService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,25 +21,27 @@ import java.util.List;
 @Component("get")
 public class GetCommand extends ParametrizedCommand {
 
-    private final ItemInRoomService itemInRoomService;
+    private final ItemInRoomController itemInRoomController;
 
-    private final ItemInBagService itemInBagService;
+    private final ItemInBagController itemInBagController;
 
-    private  final RoomService roomService;
+    private  final RoomController roomController;
 
     @Autowired
-    public GetCommand(GameController gameController, ItemInBagService itemInBagService, ItemInRoomService itemInRoomService, RoomService roomService) {
+    public GetCommand(GameController gameController, ItemInRoomController itemInRoomController, ItemInBagController itemInBagController, RoomController roomController) {
         super(gameController);
-        this.itemInRoomService = itemInRoomService;
-        this.itemInBagService = itemInBagService;
-        this.roomService = roomService;
+
+        this.itemInRoomController = itemInRoomController;
+        this.itemInBagController = itemInBagController;
+        this.roomController = roomController;
     }
 
-    public GetCommand(GameController gameController, List<String> parameters, ItemInBagService itemInBagService, ItemInRoomService itemInRoomService, RoomService roomService) {
+    public GetCommand(GameController gameController, List<String> parameters, ItemInRoomController itemInRoomController, ItemInBagController itemInBagController, RoomController roomController) {
         super(gameController,parameters);
-        this.itemInRoomService = itemInRoomService;
-        this.itemInBagService = itemInBagService;
-        this.roomService = roomService;
+
+        this.itemInRoomController = itemInRoomController;
+        this.itemInBagController = itemInBagController;
+        this.roomController = roomController;
     }
 
     @Override
@@ -65,12 +66,12 @@ public class GetCommand extends ParametrizedCommand {
     }
 
     public boolean getItem(ItemInRoom item) {
-        List<ItemInRoom> availableItems = itemInRoomService.findAllByRoom(roomService.findByPlayer(true));
+        List<ItemInRoom> availableItems = itemInRoomController.findAllByRoom(roomController.findByPlayer(true));
         if (availableItems.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
             ItemInBagDto itemToGet = modelMapper.map(item, ItemInBagDto.class);
-            itemInBagService.save(itemToGet);
-            itemInRoomService.deleteById(item.getId());
+            itemInBagController.save(itemToGet);
+            itemInRoomController.deleteById(item.getId());
             return true;
         }
         return false;
@@ -78,7 +79,7 @@ public class GetCommand extends ParametrizedCommand {
 
     public ItemInRoom findItem(String itemToDrop) {
         ItemInRoom itemFound;
-        List<ItemInRoom> roomItemList = itemInRoomService.findAllByRoom(roomService.findByPlayer(true));
+        List<ItemInRoom> roomItemList = itemInRoomController.findAllByRoom(roomController.findByPlayer(true));
         for (ItemInRoom itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheRoom;

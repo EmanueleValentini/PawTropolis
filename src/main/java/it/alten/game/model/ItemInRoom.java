@@ -14,12 +14,14 @@ import lombok.Setter;
 @Table(name = "item_in_room")
 public class ItemInRoom extends Item{
 
-    @ManyToOne
-    @JoinColumn(name = "id_room")
-    private Room room;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_room")
+    private Room room;
+
 
     @Column(name = "name")
     private String name;
