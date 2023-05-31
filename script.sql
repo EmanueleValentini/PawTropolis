@@ -33,7 +33,7 @@ CREATE TABLE item_in_bag(
 
 CREATE TABLE player(
     id serial PRIMARY KEY NOT NULL,
-    name varchar(20) NOT NULL,
+    name varchar(255) NOT NULL,
     lifePoints int NOT NULL,
     id_room int NOT NULL,
     id_bag int NOT NULL,
@@ -144,3 +144,9 @@ INSERT INTO tiger(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) 
 INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Evil Amal','indiano',56,2.3,4.4,'2000-2-12',1,2.8);
 INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Calogero','tè al limone',56,2.3,4.4,'2000-2-12',1,2.8);
 INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) VALUES('Salvatore','er sambucone molinari',56,2.3,4.4,'2000-2-12',1,2.8);
+
+INSERT INTO bag(maxSlots, availableSlots) VALUES (5,5);
+
+INSERT INTO player(name,lifePoints,id_room,id_bag) VALUES ('testa de cazzo non hai scelto il nome', 42, 1, 1);
+
+INSERT INTO item_in_bag(name, description, requestedSlots, id_bag) VALUES ('Ben-Venuto', 'un foglio con scritto porcodio', 1, 1)
