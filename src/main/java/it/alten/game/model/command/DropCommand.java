@@ -1,9 +1,11 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.Bag;
+import it.alten.game.controller.ItemInBagController;
+import it.alten.game.controller.ItemInRoomController;
 import it.alten.game.model.ItemInBag;
 import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.service.ItemInRoomService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,13 +20,26 @@ import java.util.List;
 @AllArgsConstructor
 @Component("drop")
 public class DropCommand extends ParametrizedCommand {
+
+    private final ItemInBagController itemInBagController;
+
+    private final ItemInRoomController itemInRoomController;
+
     @Autowired
-    protected DropCommand(GameController gameController) {
+    protected DropCommand(GameController gameController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController) {
         super(gameController);
+
+
+        this.itemInBagController = itemInBagController;
+        this.itemInRoomController = itemInRoomController;
     }
 
-    protected DropCommand(GameController gameController, List<String> parameters) {
+    protected DropCommand(GameController gameController, List<String> parameters, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController) {
         super(gameController,parameters);
+
+        this.itemInBagController = itemInBagController;
+        this.itemInRoomController = itemInRoomController;
+
     }
 
     @Override
@@ -38,22 +53,19 @@ public class DropCommand extends ParametrizedCommand {
         }
     }
 
-    public boolean dropItem(ItemInBag item) {
-        List<ItemInBag> inventory = getGameController().getBagController().getInventory(getGameController().getPlayer().getBag());
+    public void dropItem(ItemInBag item) {
+        List<ItemInBag> inventory = itemInBagController.findAll();
         if (inventory.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
             ItemInBagDto itemToDrop = modelMapper.map(item, ItemInBagDto.class);
-            gameController.getItemInRoomController().getItemInRoomService().save(itemToDrop);
-            gameController.getItemInBagController().getItemInBagService().deleteById(item.getId());
-            return true;
+            itemInRoomController.save(itemToDrop);
+            itemInBagController.deleteById(item.getId());
         }
-        return false;
     }
 
     public ItemInBag findItem(String itemToDrop) {
         ItemInBag itemFound;
-        Bag bag = getGameController().getPlayer().getBag();
-        List<ItemInBag> bagItemList = bag.getInventory();
+        List<ItemInBag> bagItemList = itemInBagController.findAll();
         for (ItemInBag itemInTheBag : bagItemList) {
             if (itemInTheBag.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheBag;

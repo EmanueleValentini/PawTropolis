@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ItemInBagServiceImpl implements ItemInBagService {
 
@@ -45,6 +47,10 @@ public class ItemInBagServiceImpl implements ItemInBagService {
         return itemSaved;
     }
 
+    @Override
+    public List<ItemInBag> findAll() {
+        return itemInBagRepository.findAll();
+    }
 
 
 }

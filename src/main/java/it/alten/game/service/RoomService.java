@@ -18,4 +18,6 @@ public interface RoomService {
     boolean deleteById (int id);
 
     List<Room> findAll();
+
+    Room findByPlayer(boolean isIn);
 }

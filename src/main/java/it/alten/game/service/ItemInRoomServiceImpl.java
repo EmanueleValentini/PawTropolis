@@ -1,11 +1,14 @@
 package it.alten.game.service;
 
 import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.Room;
 import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.repository.ItemInRoomRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ItemInRoomServiceImpl implements ItemInRoomService {
@@ -43,5 +46,15 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
         ItemInRoom itemSaved = modelMapper.map(item,ItemInRoom.class);
         itemInRoomRepository.save(itemSaved);
         return itemSaved;
+    }
+
+    @Override
+    public List<ItemInRoom> findAll() {
+        return itemInRoomRepository.findAll();
+    }
+
+    @Override
+    public List<ItemInRoom> findAllByRoom(Room room) {
+        return itemInRoomRepository.findAllByRoom(room);
     }
 }

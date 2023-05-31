@@ -29,7 +29,7 @@ public class BagServiceImpl implements BagService{
     }
 
     @Override
-    public List<ItemInBag> findAllItem(Bag bag) {
-        return bag.getInventory();
+    public List<Bag> findAll() {
+        return bagRepository.findAll();
     }
 }

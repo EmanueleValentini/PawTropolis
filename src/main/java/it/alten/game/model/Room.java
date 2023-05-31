@@ -35,6 +35,9 @@ public class Room {
     @Id
     private int id;
 
+    @Column(name = "isplayerin")
+    private boolean player;
+
     public Room(String name){
 
         this.name = name;
@@ -43,62 +46,11 @@ public class Room {
         this.eagleList = new ArrayList<>();
         this.tigerList = new ArrayList<>();
     }
-//    public void connectRoom(Room room, Direction direction) {
-//
-//        adjacentRoomsList.put(direction, room);
-//    }
-//
-//    public Room unconnectRoom(Room room) {
-//
-//        return adjacentRoomsList.values().remove(room)?room:null;
-//    }
-//
-//    public Room unconnectRoom(Direction direction) {
-//
-//        return adjacentRoomsList.remove(direction);
-//    }
-//
-//    public Room getAdjacentRoom(Direction direction) {
-//        return adjacentRoomsList.get(direction);
-//    }
-//
-//    public void removeItemFromRoom(ItemInRoom item) {
-//        roomItemList.remove(item);
-//    }
-//
-//    public void addAnimalToRoom(Animal animal) {
-//
-//        animalList.add(animal);
-//    }
-//
-//    public void addItemToRoom(ItemInRoom item) {
-//        roomItemList.add(item);
-//    }
-//
-    public String roomDescription() {
-        String message = "Sei nella stanza " + getName();
-        if(!getRoomItemList().isEmpty()){
-            message += "\nCi sono questi oggetti: " + getRoomItemList();
-        }
-        if (!getLionList().isEmpty() || !getTigerList().isEmpty() || !getEagleList().isEmpty()) {
-            if (!getLionList().isEmpty()) {
-                message += "\nCi sono questi leoni: " + getLionList();
-            }
-            if (!getTigerList().isEmpty()) {
-                message += "\nCi sono queste tigri: " + getTigerList();
-            }
-            if (!getEagleList().isEmpty()) {
-                message += "\nCi sono queste aquile: " + getEagleList();
-            }
-        }
-        return message;
-    }
 
 
     @Override
     public String toString() {
         return name;
     }
-
 
 }

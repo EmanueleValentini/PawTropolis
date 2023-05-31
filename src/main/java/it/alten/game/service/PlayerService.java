@@ -11,7 +11,5 @@ public interface PlayerService {
 
     Player save (PlayerDto playerDto);
 
-    Room findPlayerCurrentRoom (int id);
-
     boolean updateCurrentRoomById (int id, Player player);
 }

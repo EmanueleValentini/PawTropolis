@@ -9,7 +9,8 @@ public class PlayerDto {
 
     private int lifePoints;
 
-    private int bag;
+    private int id_bag;
 
-    private int room;
+    private int id_room;
+
 }

@@ -21,7 +21,5 @@ public class BagController {
         this.bagService = bagService;
     }
 
-    public List<ItemInBag> getInventory(Bag bag){
-        return bagService.findAllItem(bag);
-    }
+
 }

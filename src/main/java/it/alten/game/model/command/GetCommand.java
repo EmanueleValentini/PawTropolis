@@ -4,8 +4,11 @@ import it.alten.game.controller.GameController;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.service.ItemInBagService;
+import it.alten.game.service.ItemInRoomService;
+import it.alten.game.service.RoomService;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +18,29 @@ import java.util.List;
 
 @Getter
 @Setter
-
-@NoArgsConstructor
+@AllArgsConstructor
 @Component("get")
 public class GetCommand extends ParametrizedCommand {
 
+    private final ItemInRoomService itemInRoomService;
+
+    private final ItemInBagService itemInBagService;
+
+    private  final RoomService roomService;
+
     @Autowired
-    public GetCommand(GameController gameController) {
+    public GetCommand(GameController gameController, ItemInBagService itemInBagService, ItemInRoomService itemInRoomService, RoomService roomService) {
         super(gameController);
+        this.itemInRoomService = itemInRoomService;
+        this.itemInBagService = itemInBagService;
+        this.roomService = roomService;
     }
 
-    public GetCommand(GameController gameController, List<String> parameters) {
+    public GetCommand(GameController gameController, List<String> parameters, ItemInBagService itemInBagService, ItemInRoomService itemInRoomService, RoomService roomService) {
         super(gameController,parameters);
+        this.itemInRoomService = itemInRoomService;
+        this.itemInBagService = itemInBagService;
+        this.roomService = roomService;
     }
 
     @Override
@@ -51,12 +65,12 @@ public class GetCommand extends ParametrizedCommand {
     }
 
     public boolean getItem(ItemInRoom item) {
-        List<ItemInRoom> availableItems = getGameController().getPlayer().getRoom().getRoomItemList();
+        List<ItemInRoom> availableItems = itemInRoomService.findAllByRoom(roomService.findByPlayer(true));
         if (availableItems.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
             ItemInBagDto itemToGet = modelMapper.map(item, ItemInBagDto.class);
-            gameController.getItemInBagController().getItemInBagService().save(itemToGet);
-            gameController.getItemInRoomController().getItemInRoomService().deleteById(item.getId());
+            itemInBagService.save(itemToGet);
+            itemInRoomService.deleteById(item.getId());
             return true;
         }
         return false;
@@ -64,8 +78,7 @@ public class GetCommand extends ParametrizedCommand {
 
     public ItemInRoom findItem(String itemToDrop) {
         ItemInRoom itemFound;
-        Room room = getGameController().getPlayer().getRoom();
-        List<ItemInRoom> roomItemList = room.getRoomItemList();
+        List<ItemInRoom> roomItemList = itemInRoomService.findAllByRoom(roomService.findByPlayer(true));
         for (ItemInRoom itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheRoom;

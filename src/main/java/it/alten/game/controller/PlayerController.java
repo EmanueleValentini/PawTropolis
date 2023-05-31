@@ -17,7 +17,5 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    public Room getCurrentRoom(int id) {
-        return playerService.findPlayerCurrentRoom(id);
-    }
+
 }

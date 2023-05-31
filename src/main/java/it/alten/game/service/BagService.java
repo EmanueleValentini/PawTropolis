@@ -12,5 +12,5 @@ public interface BagService {
 
     Bag save (BagDto bagDto);
 
-    List<ItemInBag> findAllItem (Bag bag);
+    List<Bag> findAll ();
 }

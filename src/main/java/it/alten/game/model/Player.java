@@ -1,16 +1,14 @@
 package it.alten.game.model;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor(force = true)
 @EqualsAndHashCode
+@AllArgsConstructor
 @Table(name = "player")
 public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +22,8 @@ public class Player {
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "id_room")
-    private Room room;
+
+
     public Player(String name, int lifePoints) {
         this.name = name;
         this.lifePoints = lifePoints;

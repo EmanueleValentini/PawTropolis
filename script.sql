@@ -4,7 +4,8 @@ CREATE DATABASE pawtropolis;
 
 CREATE TABLE room(
     id serial PRIMARY KEY NOT NULL,
-    name varchar(30) NOT NULL
+    name varchar(30) NOT NULL,
+    isPlayerIn boolean
 );
 
 CREATE TABLE item_in_room(
@@ -35,9 +36,7 @@ CREATE TABLE player(
     id serial PRIMARY KEY NOT NULL,
     name varchar(255) NOT NULL,
     lifePoints int NOT NULL,
-    id_room int NOT NULL,
     id_bag int NOT NULL,
-    FOREIGN KEY (id_room) REFERENCES Room(id),
     FOREIGN KEY (id_bag) REFERENCES Bag(id)
 );
 
@@ -96,7 +95,7 @@ CREATE TABLE room_connection(
     CONSTRAINT uc_room_pairing UNIQUE (id_room1,id_room2)
 );
 
-INSERT INTO room(name) VALUES('DAJE ROMA DAJE');
+INSERT INTO room(name, isPlayerIn) VALUES('DAJE ROMA DAJE',true);
 INSERT INTO room(name) VALUES('LA STANZA DEL BOSS');
 INSERT INTO room(name) VALUES('VIALE MARCONI');
 INSERT INTO room(name) VALUES('NAPOLI');
@@ -147,6 +146,6 @@ INSERT INTO lion(name,favFood,age,weight,height,dateOfJoin,id_room,tailLength) V
 
 INSERT INTO bag(maxSlots, availableSlots) VALUES (5,5);
 
-INSERT INTO player(name,lifePoints,id_room,id_bag) VALUES ('testa de cazzo non hai scelto il nome', 42, 1, 1);
+INSERT INTO player(name,lifePoints,id_bag) VALUES ('testa de cazzo non hai scelto il nome', 42, 1);
 
 INSERT INTO item_in_bag(name, description, requestedSlots, id_bag) VALUES ('Ben-Venuto', 'un foglio con scritto porcodio', 1, 1)
