@@ -56,9 +56,7 @@ public class DropCommand extends ParametrizedCommand {
     public void dropItem(ItemInBag item) {
         List<ItemInBag> inventory = itemInBagController.findAll();
         if (inventory.contains(item)){
-            ModelMapper modelMapper = new ModelMapper();
-            ItemInBagDto itemToDrop = modelMapper.map(item, ItemInBagDto.class);
-            itemInRoomController.save(itemToDrop);
+            itemInRoomController.save(item);
             itemInBagController.deleteById(item.getId());
         }
     }

@@ -68,9 +68,7 @@ public class GetCommand extends ParametrizedCommand {
     public boolean getItem(ItemInRoom item) {
         List<ItemInRoom> availableItems = itemInRoomController.findByRoom(roomController.findByPlayer(true));
         if (availableItems.contains(item)){
-            ModelMapper modelMapper = new ModelMapper();
-            ItemInBagDto itemToGet = modelMapper.map(item, ItemInBagDto.class);
-            itemInBagController.save(itemToGet);
+            itemInBagController.save(item);
             itemInRoomController.deleteById(item.getId());
             return true;
         }

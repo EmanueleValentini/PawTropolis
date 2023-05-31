@@ -1,5 +1,6 @@
 package it.alten.game.controller;
 
+import it.alten.game.model.Item;
 import it.alten.game.model.ItemInBag;
 import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.service.ItemInBagService;
@@ -23,8 +24,8 @@ public class ItemInBagController {
         return itemInBagService.findByName(name);
     }
 
-    public ItemInBag save(ItemInBagDto itemInBagDto) {
-        return itemInBagService.save(itemInBagDto);
+    public ItemInBag save(Item item) {
+        return itemInBagService.save(item);
 
     }
 
