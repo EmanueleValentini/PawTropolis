@@ -23,7 +23,7 @@ public class Player {
     private int lifePoints;
     @OneToOne
     @JoinColumn(name = "id_bag")
-    private final Bag bag;
+    private Bag bag;
     @OneToOne
     @JoinColumn(name = "id_room")
     private Room room;

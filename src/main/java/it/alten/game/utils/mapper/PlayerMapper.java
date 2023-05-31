@@ -3,6 +3,7 @@ package it.alten.game.utils.mapper;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.PlayerDto;
+import it.alten.game.repository.BagRepository;
 import it.alten.game.repository.PlayerRepository;
 import it.alten.game.repository.RoomRepository;
 import org.modelmapper.ModelMapper;
@@ -20,11 +21,14 @@ public class PlayerMapper {
 
     private final RoomRepository roomRepository;
 
+    private final BagRepository bagRepository;
+
     @Autowired
-    public PlayerMapper(ModelMapper modelMapper, PlayerRepository playerRepository, RoomRepository roomRepository) {
+    public PlayerMapper(ModelMapper modelMapper, PlayerRepository playerRepository, RoomRepository roomRepository, BagRepository bagRepository) {
         this.modelMapper = modelMapper;
         this.playerRepository = playerRepository;
         this.roomRepository = roomRepository;
+        this.bagRepository = bagRepository;
     }
 
     public Player toEntity(PlayerDto playerDto) {
@@ -65,7 +69,7 @@ public class PlayerMapper {
         if (player.getBag() != null){
             playerDto.setBag(player.getBag().getId());
         } else {
-            playerDto.setBag(playerRepository.findById(1).get().getBag().getId());
+            playerDto.setBag(1);
         }
         return  playerDto;
     }

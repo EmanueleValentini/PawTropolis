@@ -1,8 +1,10 @@
 package it.alten.game.service;
 
+import it.alten.game.model.Bag;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.PlayerDto;
+import it.alten.game.repository.BagRepository;
 import it.alten.game.repository.PlayerRepository;
 import it.alten.game.repository.RoomRepository;
 import it.alten.game.utils.mapper.PlayerMapper;
@@ -16,12 +18,15 @@ public class PlayerServiceImpl implements PlayerService{
 
     private final RoomRepository roomRepository;
 
+    private final BagRepository bagRepository;
+
     private final PlayerMapper playerMapper;
 
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository, RoomRepository roomRepository, PlayerMapper playerMapper) {
+    public PlayerServiceImpl(PlayerRepository playerRepository, RoomRepository roomRepository, BagRepository bagRepository, PlayerMapper playerMapper) {
         this.playerRepository = playerRepository;
         this.roomRepository = roomRepository;
+        this.bagRepository = bagRepository;
         this.playerMapper = playerMapper;
     }
 
@@ -60,7 +65,7 @@ public class PlayerServiceImpl implements PlayerService{
         return playerRepository.findById(id).orElse(null);
     }
 
-    
+
     @Override
     public void saveOrUpdate(PlayerDto playerDto) {
         Player player = playerRepository.findById(1).orElse(null);
@@ -75,6 +80,8 @@ public class PlayerServiceImpl implements PlayerService{
         player.setLifePoints(playerDto.getLifePoints());
         Room room = roomRepository.findById(playerDto.getRoom()).orElse(null);
         player.setRoom(room);
+        Bag bag = bagRepository.findById(playerDto.getBag()).orElse(null);
+        player.setBag(bag);
 
         playerRepository.save(player);
     }

@@ -3,6 +3,7 @@ package it.alten.game.model;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @EqualsAndHashCode
+@NoArgsConstructor
 public class Bag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -27,12 +29,13 @@ public class Bag {
 
     private static final int MAX_SLOTS = 5;
     @Column(name = "maxslots")
-    private final int maxSlots;
+    private int maxSlots;
 
 
-    public Bag() {
+    public Bag(Player player) {
         this.maxSlots = MAX_SLOTS;
         this.availableSlots = maxSlots;
         this.inventory = new ArrayList<>(MAX_SLOTS);
+        this.player = player;
     }
 }
