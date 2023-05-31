@@ -22,6 +22,9 @@ public class Bag {
     @Column(name = "availableslots")
     private int availableSlots;
 
+    @OneToOne(mappedBy = "bag")
+    private Player player;
+
     private static final int MAX_SLOTS = 5;
     @Column(name = "maxslots")
     private final int maxSlots;

@@ -22,10 +22,10 @@ public class Player {
     @Column(name = "lifepoints",nullable = false)
     private int lifePoints;
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "id_bag")
+    @JoinColumn(name = "id_bag")
     private final Bag bag;
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "id_room")
+    @JoinColumn(name = "id_room")
     private Room room;
 
     public Player(String name, int lifePoints, Bag bag, Room room) {
