@@ -57,6 +57,8 @@ public class GameController {
 
     //TODO: rifattorizza ora che si usa il db
 
+    //TODO: NON SAPEVO DOVE METTERLO ma fai un controller per la descrizione che si richiama i service degli item e animali
+
     public void setQuit(boolean quit) {
         this.quit = quit;
     }
