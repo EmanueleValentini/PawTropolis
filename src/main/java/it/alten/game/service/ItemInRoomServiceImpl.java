@@ -1,11 +1,8 @@
 package it.alten.game.service;
 
-import it.alten.game.model.Item;
-import it.alten.game.model.ItemInRoom;
-import it.alten.game.model.Room;
-import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.*;
 import it.alten.game.repository.ItemInRoomRepository;
-import org.modelmapper.ModelMapper;
+import it.alten.game.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +12,12 @@ import java.util.List;
 public class ItemInRoomServiceImpl implements ItemInRoomService {
 
     private final ItemInRoomRepository itemInRoomRepository;
+    private  final RoomRepository roomRepository;
 
     @Autowired
-    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository) {
+    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, RoomRepository roomRepository) {
         this.itemInRoomRepository = itemInRoomRepository;
+        this.roomRepository = roomRepository;
     }
 
     @Override
@@ -42,9 +41,15 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
-    public ItemInRoom save(Item item) {
-        
-        return itemInRoomRepository.save((ItemInRoom) item);
+    public ItemInRoom save(ItemInBag item) {
+        ItemInRoom itemInRoom = new ItemInRoom();
+        Room room = roomRepository.findByPlayer(true);
+        itemInRoom.setName(item.getName());
+        itemInRoom.setDescription(item.getDescription());
+        itemInRoom.setRequestedSlots(item.getRequestedSlots());
+        itemInRoom.setRoom(room);
+        return itemInRoomRepository.save(itemInRoom);
+
 
     }
 

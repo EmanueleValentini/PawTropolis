@@ -2,6 +2,7 @@ package it.alten.game.controller;
 
 import it.alten.game.model.Item;
 import it.alten.game.model.ItemInBag;
+import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.service.ItemInBagService;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class ItemInBagController {
         return itemInBagService.findByName(name);
     }
 
-    public ItemInBag save(Item item) {
+    public ItemInBag save(ItemInRoom item) {
         return itemInBagService.save(item);
 
     }

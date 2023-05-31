@@ -26,5 +26,4 @@ public class BagController {
         return bagService.findById(id);
     }
 
-
 }

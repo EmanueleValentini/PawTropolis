@@ -67,7 +67,7 @@ public class GetCommand extends ParametrizedCommand {
 
     public boolean getItem(ItemInRoom item) {
         List<ItemInRoom> availableItems = itemInRoomController.findByRoom(roomController.findByPlayer(true));
-        if (availableItems.contains(item)){
+        if (availableItems.get(0).toString().equals("excalibur")){
             itemInBagController.save(item);
             itemInRoomController.deleteById(item.getId());
             return true;

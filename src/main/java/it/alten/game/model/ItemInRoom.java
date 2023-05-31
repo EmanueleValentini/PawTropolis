@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "item_in_room")
 public class ItemInRoom extends Item{
 
@@ -40,5 +41,19 @@ public class ItemInRoom extends Item{
     public ItemInRoom(String name, String description, int requestedSlots, Room room) {
         super(name, description, requestedSlots);
         this.room = room;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ItemInRoom that = (ItemInRoom) o;
+        return id == that.id && requestedSlots == that.requestedSlots && Objects.equals(room, that.room) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id, room, name, description, requestedSlots);
     }
 }

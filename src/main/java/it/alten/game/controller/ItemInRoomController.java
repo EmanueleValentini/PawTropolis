@@ -1,6 +1,7 @@
 package it.alten.game.controller;
 
 import it.alten.game.model.Item;
+import it.alten.game.model.ItemInBag;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.ItemInBagDto;
@@ -29,7 +30,7 @@ public class ItemInRoomController {
         return itemInRoomService.findByRoom(room);
     }
 
-    public ItemInRoom save(Item item) {
+    public ItemInRoom save(ItemInBag item) {
         return itemInRoomService.save(item);
     }
 
