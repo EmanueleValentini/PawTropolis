@@ -54,7 +54,7 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
-    public List<ItemInRoom> findAllByRoom(Room room) {
-        return itemInRoomRepository.findAllByRoom(room);
+    public List<ItemInRoom> findByRoom(Room room) {
+        return itemInRoomRepository.findByRoom(room);
     }
 }

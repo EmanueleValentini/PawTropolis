@@ -66,7 +66,7 @@ public class GetCommand extends ParametrizedCommand {
     }
 
     public boolean getItem(ItemInRoom item) {
-        List<ItemInRoom> availableItems = itemInRoomController.findAllByRoom(roomController.findByPlayer(true));
+        List<ItemInRoom> availableItems = itemInRoomController.findByRoom(roomController.findByPlayer(true));
         if (availableItems.contains(item)){
             ModelMapper modelMapper = new ModelMapper();
             ItemInBagDto itemToGet = modelMapper.map(item, ItemInBagDto.class);
@@ -79,7 +79,7 @@ public class GetCommand extends ParametrizedCommand {
 
     public ItemInRoom findItem(String itemToDrop) {
         ItemInRoom itemFound;
-        List<ItemInRoom> roomItemList = itemInRoomController.findAllByRoom(roomController.findByPlayer(true));
+        List<ItemInRoom> roomItemList = itemInRoomController.findByRoom(roomController.findByPlayer(true));
         for (ItemInRoom itemInTheRoom : roomItemList) {
             if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
                 itemFound = itemInTheRoom;

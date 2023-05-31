@@ -12,5 +12,5 @@ public interface ItemInRoomService extends ItemService<ItemInRoom> {
 
     List<ItemInRoom> findAll();
 
-    List<ItemInRoom> findAllByRoom(Room room);
+    List<ItemInRoom> findByRoom(Room room);
 }

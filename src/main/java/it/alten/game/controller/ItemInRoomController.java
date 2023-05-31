@@ -24,8 +24,8 @@ public class ItemInRoomController {
         return itemInRoomService.findByName(name);
     }
 
-    public List<ItemInRoom> findAllByRoom(Room room) {
-        return itemInRoomService.findAllByRoom(room);
+    public List<ItemInRoom> findByRoom(Room room) {
+        return itemInRoomService.findByRoom(room);
     }
 
     public ItemInRoom save(ItemInBagDto item) {

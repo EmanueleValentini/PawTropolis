@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface ItemInRoomRepository extends JpaRepository<ItemInRoom,Integer> {
     Optional<ItemInRoom> findByName(String name);
 
-    List<ItemInRoom> findAllByRoom(Room room);
+    List<ItemInRoom> findByRoom(Room room);
 }
