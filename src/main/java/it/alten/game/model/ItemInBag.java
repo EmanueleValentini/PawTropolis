@@ -33,5 +33,12 @@ public class ItemInBag extends Item{
     public ItemInBag(String name, String description, int requestedSlots, Bag bag) {
         super(name, description, requestedSlots);
         this.bag = bag;
+
+    }
+
+    @Override
+    public String toString() {
+        return name;
+
     }
 }

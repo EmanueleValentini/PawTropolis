@@ -32,6 +32,11 @@ public class ItemInRoom extends Item{
     @Column(name = "requestedslots")
     private int requestedSlots;
 
+    @Override
+    public String toString() {
+     return name;
+    }
+
     public ItemInRoom(String name, String description, int requestedSlots, Room room) {
         super(name, description, requestedSlots);
         this.room = room;

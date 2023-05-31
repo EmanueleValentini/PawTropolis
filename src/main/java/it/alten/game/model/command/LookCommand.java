@@ -9,18 +9,18 @@ import org.springframework.stereotype.Component;
 @Component("look")
 public class LookCommand extends Command {
 
-    RoomService roomService;
-    private final PlayerController playerController;
+    private final RoomService roomService;
 
     @Autowired
-    public LookCommand(GameController gameController) {
+    public LookCommand(GameController gameController, RoomService roomService) {
         super(gameController);
-        this.playerController = getGameController().getPlayerController();
+        this.roomService = roomService;
+
     }
 
     @Override
     public void execute() {
-        String description = roomService.findByPlayer(true) + "\n";
+        String description = getGameController().getRoomController().roomDescription();
         System.out.println(description);
     }
 }

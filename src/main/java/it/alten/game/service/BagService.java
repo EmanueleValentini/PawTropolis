@@ -13,4 +13,6 @@ public interface BagService {
     Bag save (Bag bag);
 
     List<Bag> findAll ();
+
+    Bag findById (int id);
 }

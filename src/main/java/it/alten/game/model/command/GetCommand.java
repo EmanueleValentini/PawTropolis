@@ -47,11 +47,11 @@ public class GetCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         String itemToGet = String.join(" ",parameters);
-        if (getGameController().getPlayer().getBag().getAvailableSlots() > 0) {
+        if (getGameController().getBagController().findById(1).getAvailableSlots() > 0) {
             if (findItem(itemToGet) != null) {
                 ItemInRoom itemPresentToGet = findItem(itemToGet);
                 if (getItem(itemPresentToGet) &&
-                        itemPresentToGet.getRequestedSlots() < getGameController().getPlayer().getBag().getAvailableSlots()){
+                        itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getAvailableSlots()){
                     System.out.println("Hai preso " + itemToGet);
                 } else {
                     System.out.println(itemToGet + " Non entra nella borsa");

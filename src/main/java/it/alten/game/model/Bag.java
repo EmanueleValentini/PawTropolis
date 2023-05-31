@@ -32,4 +32,14 @@ public class Bag {
         this.availableSlots = maxSlots;
         this.inventory = new ArrayList<>(MAX_SLOTS);
     }
+
+    @Override
+    public String toString() {
+        return "Bag{" +
+                "id=" + id +
+                ", inventory=" + inventory +
+                ", availableSlots=" + availableSlots +
+                ", maxSlots=" + maxSlots +
+                '}';
+    }
 }

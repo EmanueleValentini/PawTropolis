@@ -42,7 +42,7 @@ public class RoomController {
 
         String message = "Sei nella stanza " + room.getName();
         if (!itemInRoomController.findByRoom(room).isEmpty()) {
-            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room);
+            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room).toString();
         }
         return message;
     }

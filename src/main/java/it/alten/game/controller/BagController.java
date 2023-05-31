@@ -21,5 +21,10 @@ public class BagController {
         this.bagService = bagService;
     }
 
+    public Bag findById(int id) {
+
+        return bagService.findById(id);
+    }
+
 
 }

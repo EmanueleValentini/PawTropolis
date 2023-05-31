@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BagServiceImpl implements BagService{
@@ -29,5 +30,12 @@ public class BagServiceImpl implements BagService{
     @Override
     public List<Bag> findAll() {
         return bagRepository.findAll();
+    }
+
+    @Override
+    public Bag findById(int id) {
+        Optional<Bag> opt = bagRepository.findById(id);
+
+        return opt.orElse(null);
     }
 }
