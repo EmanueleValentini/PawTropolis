@@ -6,6 +6,7 @@ import it.alten.game.model.Room;
 import it.alten.game.model.command.Command;
 import it.alten.game.model.dto.PlayerDto;
 import it.alten.game.model.enums.Direction;
+import it.alten.game.utils.mapper.BagMapper;
 import it.alten.game.utils.mapper.PlayerMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class GameController {
 
     private final PlayerMapper playerMapper;
 
+    private final BagMapper bagMapper;
+
     private Player player;
 
     private boolean quit;
@@ -40,7 +43,7 @@ public class GameController {
     private Room currentRoom;
 
     @Autowired
-    public GameController(RoomController roomController, CommandFactory commandFactory, PlayerController playerController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController, BagController bagController, PlayerMapper playerMapper) {
+    public GameController(RoomController roomController, CommandFactory commandFactory, PlayerController playerController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController, BagController bagController, PlayerMapper playerMapper, BagMapper bagMapper) {
         this.roomController = roomController;
         this.commandFactory = commandFactory;
         this.playerController = playerController;
@@ -48,6 +51,7 @@ public class GameController {
         this.itemInRoomController = itemInRoomController;
         this.bagController = bagController;
         this.playerMapper = playerMapper;
+        this.bagMapper = bagMapper;
         this.quit = false;
     }
 
@@ -72,8 +76,9 @@ public class GameController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Benvenuto a Pawtropolis come ti chiami?");
         String playerName = scanner.nextLine();
-        player = new Player (playerName,DEFAULT_STARTING_LIFE_POINTS);
+        player = playerController.getPlayerService().findById(1);
         PlayerDto playerDto = playerMapper.toDTO(player);
+        playerDto.setName(playerName);
         playerController.getPlayerService().save(playerDto);
         System.out.println("Ciao " + playerName +". Hai " + DEFAULT_STARTING_LIFE_POINTS + " Bestemmie rimaste");
         System.out.println(playerController.getCurrentRoom(player.getId()).roomDescription());

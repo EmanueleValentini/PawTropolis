@@ -9,9 +9,9 @@ public class BagDto {
 
     private int availableSlots;
 
-    private static final int MAX_SLOTS = 5;
+    private static int MAX_SLOTS;
 
-    private final int maxSlots;
+    private int maxSlots;
 
     private List<Integer> idItems;
 }

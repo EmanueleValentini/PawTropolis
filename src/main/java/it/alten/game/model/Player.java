@@ -17,9 +17,9 @@ public class Player {
     @Id
     @Column(name = "id")
     private int id;
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "lifepoints")
+    @Column(name = "lifepoints",nullable = false)
     private int lifePoints;
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_bag")
@@ -27,9 +27,11 @@ public class Player {
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_room")
     private Room room;
-    public Player(String name, int lifePoints) {
+
+    public Player(String name, int lifePoints, Bag bag, Room room) {
         this.name = name;
         this.lifePoints = lifePoints;
-        this.bag = new Bag();
+        this.bag = bag;
+        this.room = room;
     }
 }

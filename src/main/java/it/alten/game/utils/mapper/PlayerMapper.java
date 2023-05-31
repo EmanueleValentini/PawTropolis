@@ -3,7 +3,7 @@ package it.alten.game.utils.mapper;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.PlayerDto;
-import it.alten.game.repository.BagRepository;
+import it.alten.game.repository.PlayerRepository;
 import it.alten.game.repository.RoomRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,14 @@ public class PlayerMapper {
 
     private final ModelMapper modelMapper;
 
-    private final BagRepository bagRepository;
+    private final PlayerRepository playerRepository;
 
     private final RoomRepository roomRepository;
 
     @Autowired
-    public PlayerMapper(ModelMapper modelMapper, BagRepository bagRepository, RoomRepository roomRepository) {
+    public PlayerMapper(ModelMapper modelMapper, PlayerRepository playerRepository, RoomRepository roomRepository) {
         this.modelMapper = modelMapper;
-        this.bagRepository = bagRepository;
+        this.playerRepository = playerRepository;
         this.roomRepository = roomRepository;
     }
 
@@ -47,13 +47,25 @@ public class PlayerMapper {
 
     public PlayerDto toDTO (Player player) {
         PlayerDto playerDto = new PlayerDto();
-        playerDto.setName(player.getName());
-        playerDto.setLifePoints(player.getLifePoints());
+        if (player.getName() != null){
+            playerDto.setName(player.getName());
+        } else {
+            playerDto.setName(playerRepository.findById(1).get().getName());
+        }
+        if (player.getLifePoints() != 0) {
+            playerDto.setLifePoints(player.getLifePoints());
+        } else {
+            playerDto.setLifePoints(playerRepository.findById(1).get().getLifePoints());
+        }
         if (player.getRoom() != null) {
             playerDto.setRoom(player.getRoom().getId());
+        } else {
+            playerDto.setRoom(playerRepository.findById(1).get().getRoom().getId());
         }
         if (player.getBag() != null){
             playerDto.setBag(player.getBag().getId());
+        } else {
+            playerDto.setBag(playerRepository.findById(1).get().getBag().getId());
         }
         return  playerDto;
     }

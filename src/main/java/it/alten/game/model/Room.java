@@ -35,6 +35,9 @@ public class Room {
     @Id
     private int id;
 
+    @OneToOne(mappedBy = "room")
+    private Player player;
+
     public Room(String name){
 
         this.name = name;

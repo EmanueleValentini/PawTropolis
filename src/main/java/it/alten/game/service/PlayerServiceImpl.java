@@ -4,6 +4,7 @@ import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.model.dto.PlayerDto;
 import it.alten.game.repository.PlayerRepository;
+import it.alten.game.repository.RoomRepository;
 import it.alten.game.utils.mapper.PlayerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,14 @@ public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
 
+    private final RoomRepository roomRepository;
+
     private final PlayerMapper playerMapper;
 
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository, PlayerMapper playerMapper) {
+    public PlayerServiceImpl(PlayerRepository playerRepository, RoomRepository roomRepository, PlayerMapper playerMapper) {
         this.playerRepository = playerRepository;
+        this.roomRepository = roomRepository;
         this.playerMapper = playerMapper;
     }
 
@@ -49,5 +53,29 @@ public class PlayerServiceImpl implements PlayerService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Player findById(int id) {
+        return playerRepository.findById(id).orElse(null);
+    }
+
+    
+    @Override
+    public void saveOrUpdate(PlayerDto playerDto) {
+        Player player = playerRepository.findById(1).orElse(null);
+
+        if (player == null) {
+            // Player non esistente, creazione di una nuova istanza
+            player = new Player();
+        }
+
+        // Aggiornamento dei campi
+        player.setName(playerDto.getName());
+        player.setLifePoints(playerDto.getLifePoints());
+        Room room = roomRepository.findById(playerDto.getRoom()).orElse(null);
+        player.setRoom(room);
+
+        playerRepository.save(player);
     }
 }

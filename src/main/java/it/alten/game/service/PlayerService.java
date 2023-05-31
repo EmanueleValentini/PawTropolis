@@ -14,4 +14,8 @@ public interface PlayerService {
     Room findPlayerCurrentRoom (int id);
 
     boolean updateCurrentRoomById (int id, Player player);
+
+    Player findById(int id);
+
+    void saveOrUpdate(PlayerDto playerDto);
 }
