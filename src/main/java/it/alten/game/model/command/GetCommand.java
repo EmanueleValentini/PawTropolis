@@ -5,11 +5,10 @@ import it.alten.game.controller.ItemInBagController;
 import it.alten.game.controller.ItemInRoomController;
 import it.alten.game.controller.RoomController;
 import it.alten.game.model.ItemInRoom;
-import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.Room;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -50,8 +49,8 @@ public class GetCommand extends ParametrizedCommand {
         if (getGameController().getBagController().findById(1).getAvailableSlots() > 0) {
             if (findItem(itemToGet) != null) {
                 ItemInRoom itemPresentToGet = findItem(itemToGet);
-                if (getItem(itemPresentToGet) &&
-                        itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getAvailableSlots()){
+                if (itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getAvailableSlots()){
+                    getItem(itemPresentToGet);
                     System.out.println("Hai preso " + itemToGet);
                 } else {
                     System.out.println(itemToGet + " Non entra nella borsa");
@@ -66,24 +65,25 @@ public class GetCommand extends ParametrizedCommand {
     }
 
     public boolean getItem(ItemInRoom item) {
-        List<ItemInRoom> availableItems = itemInRoomController.findByRoom(roomController.findByPlayer(true));
-        if (availableItems.contains(item)){
-            itemInBagController.save(item);
-            itemInRoomController.deleteById(item.getId());
-            return true;
-        }
-        return false;
+        itemInBagController.save(item);
+        itemInRoomController.deleteById(item.getId());
+        return true;
     }
 
+//    public ItemInRoom findItem(String itemToDrop) {
+//        ItemInRoom itemFound;
+//        List<ItemInRoom> roomItemList = itemInRoomController.findByRoom(roomController.findByPlayer(true));
+//        for (ItemInRoom itemInTheRoom : roomItemList) {
+//            if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
+//                itemFound = itemInTheRoom;
+//                return itemFound;
+//            }
+//        }
+//        return null;
+//    }
+
     public ItemInRoom findItem(String itemToDrop) {
-        ItemInRoom itemFound;
-        List<ItemInRoom> roomItemList = itemInRoomController.findByRoom(roomController.findByPlayer(true));
-        for (ItemInRoom itemInTheRoom : roomItemList) {
-            if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
-                itemFound = itemInTheRoom;
-                return itemFound;
-            }
-        }
-        return null;
+        Room room = roomController.findByPlayer(true);
+        return itemInRoomController.getItemInRoomService().findByRoomAndName(room,itemToDrop);
     }
 }

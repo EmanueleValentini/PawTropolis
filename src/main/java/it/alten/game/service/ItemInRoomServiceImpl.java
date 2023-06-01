@@ -26,6 +26,11 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
+    public ItemInRoom findByRoomAndName(Room room, String name) {
+        return itemInRoomRepository.findByRoomAndName(room, name).orElse(null);
+    }
+
+    @Override
     public ItemInRoom findById(int id) {
         return itemInRoomRepository.findById(id).orElse(null);
     }

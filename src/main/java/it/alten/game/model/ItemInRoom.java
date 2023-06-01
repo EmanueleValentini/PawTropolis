@@ -1,7 +1,6 @@
 package it.alten.game.model;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -49,11 +48,11 @@ public class ItemInRoom extends Item{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         ItemInRoom that = (ItemInRoom) o;
-        return id == that.id && requestedSlots == that.requestedSlots && Objects.equals(room, that.room) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+        return requestedSlots == that.requestedSlots && Objects.equals(room, that.room) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, room, name, description, requestedSlots);
+        return Objects.hash(super.hashCode(), room, name, description, requestedSlots);
     }
 }
