@@ -27,7 +27,7 @@ sleep 2
 # Copia dello script.sql nella cartella di lavoro corrente nel container PostgreSQL
 echo "Sto copiando lo script sql nel container"
 docker cp script.sql postgres:/script.sql || handle_error "docker cp script.sql"
-echo "Ho copianto lo script sql nel container"
+echo "Ho copiato lo script sql nel container"
 
 #Delay
 echo "Attendi 5 secondi..."

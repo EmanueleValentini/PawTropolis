@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ItemInBagServiceImpl implements ItemInBagService {
@@ -27,6 +26,14 @@ public class ItemInBagServiceImpl implements ItemInBagService {
     @Override
     public ItemInBag findByName(String name) {
         return itemInBagRepository.findByName(name).orElse(null);
+    }
+
+    @Override
+    public int sumFields() {
+        if (itemInBagRepository.sumField() == 0){
+            return 0;
+        }
+        return itemInBagRepository.sumField();
     }
 
     @Override

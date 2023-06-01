@@ -1,9 +1,7 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.controller.ItemInBagController;
-import it.alten.game.controller.ItemInRoomController;
-import it.alten.game.controller.RoomController;
+import it.alten.game.model.Bag;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
 import lombok.AllArgsConstructor;
@@ -20,36 +18,23 @@ import java.util.List;
 @Component("get")
 public class GetCommand extends ParametrizedCommand {
 
-    private final ItemInRoomController itemInRoomController;
-
-    private final ItemInBagController itemInBagController;
-
-    private  final RoomController roomController;
-
     @Autowired
-    public GetCommand(GameController gameController, ItemInRoomController itemInRoomController, ItemInBagController itemInBagController, RoomController roomController) {
+    public GetCommand(GameController gameController) {
         super(gameController);
-
-        this.itemInRoomController = itemInRoomController;
-        this.itemInBagController = itemInBagController;
-        this.roomController = roomController;
     }
 
-    public GetCommand(GameController gameController, List<String> parameters, ItemInRoomController itemInRoomController, ItemInBagController itemInBagController, RoomController roomController) {
+    public GetCommand(GameController gameController, List<String> parameters) {
         super(gameController,parameters);
-
-        this.itemInRoomController = itemInRoomController;
-        this.itemInBagController = itemInBagController;
-        this.roomController = roomController;
     }
 
     @Override
     public void execute() {
         String itemToGet = String.join(" ",parameters);
-        if (getGameController().getBagController().findById(1).getAvailableSlots() > 0) {
+        Bag bag = getGameController().getBagController().findById(1);
+        if (bag.getSlots() > 0) {
             if (findItem(itemToGet) != null) {
                 ItemInRoom itemPresentToGet = findItem(itemToGet);
-                if (itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getAvailableSlots()){
+                if (itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getSlots()){
                     getItem(itemPresentToGet);
                     System.out.println("Hai preso " + itemToGet);
                 } else {
@@ -64,26 +49,17 @@ public class GetCommand extends ParametrizedCommand {
 
     }
 
-    public boolean getItem(ItemInRoom item) {
-        itemInBagController.save(item);
-        itemInRoomController.deleteById(item.getId());
-        return true;
+    public void getItem(ItemInRoom item) {
+        int bagSlots = gameController.getBagController().findById(1).getSlots();
+        int occupiedSlots = gameController.getItemInBagController().sumFields();
+        if (occupiedSlots < bagSlots && (bagSlots - occupiedSlots >= item.getRequestedSlots())) {
+                gameController.getItemInBagController().save(item);
+                gameController.getItemInRoomController().deleteById(item.getId());
+        }
     }
 
-//    public ItemInRoom findItem(String itemToDrop) {
-//        ItemInRoom itemFound;
-//        List<ItemInRoom> roomItemList = itemInRoomController.findByRoom(roomController.findByPlayer(true));
-//        for (ItemInRoom itemInTheRoom : roomItemList) {
-//            if (itemInTheRoom.getName().equalsIgnoreCase(itemToDrop)) {
-//                itemFound = itemInTheRoom;
-//                return itemFound;
-//            }
-//        }
-//        return null;
-//    }
-
     public ItemInRoom findItem(String itemToDrop) {
-        Room room = roomController.findByPlayer(true);
-        return itemInRoomController.getItemInRoomService().findByRoomAndName(room,itemToDrop);
+        Room room = gameController.getRoomController().findByPlayer(true);
+        return gameController.getItemInRoomController().findByRoomAndName(room,itemToDrop);
     }
 }

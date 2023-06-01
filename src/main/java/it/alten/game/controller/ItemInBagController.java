@@ -1,9 +1,7 @@
 package it.alten.game.controller;
 
-import it.alten.game.model.Item;
 import it.alten.game.model.ItemInBag;
 import it.alten.game.model.ItemInRoom;
-import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.service.ItemInBagService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +34,9 @@ public class ItemInBagController {
 
     public void deleteById(int id) {
         itemInBagService.deleteById(id);
+    }
+
+    public int sumFields() {
+        return itemInBagService.sumFields();
     }
 }

@@ -1,14 +1,10 @@
 package it.alten.game.service;
 
 import it.alten.game.model.Bag;
-import it.alten.game.model.ItemInBag;
-import it.alten.game.model.dto.BagDto;
 import it.alten.game.repository.BagRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,11 +21,6 @@ public class BagServiceImpl implements BagService{
     public Bag save(Bag bag) {
 
         return bagRepository.save(bag);
-    }
-
-    @Override
-    public List<Bag> findAll() {
-        return bagRepository.findAll();
     }
 
     @Override
