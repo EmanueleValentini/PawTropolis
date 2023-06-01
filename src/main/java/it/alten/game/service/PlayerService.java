@@ -1,8 +1,6 @@
 package it.alten.game.service;
 
 import it.alten.game.model.Player;
-import it.alten.game.model.Room;
-import it.alten.game.model.dto.PlayerDto;
 import org.springframework.stereotype.Service;
 
 
@@ -14,6 +12,4 @@ public interface PlayerService {
     boolean updateCurrentRoomById (int id, Player player);
 
     Player findById(int id);
-
-    void saveOrUpdate(PlayerDto playerDto);
 }
