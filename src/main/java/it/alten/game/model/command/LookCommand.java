@@ -2,6 +2,7 @@ package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
 import it.alten.game.controller.PlayerController;
+import it.alten.game.model.Room;
 import it.alten.game.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,8 @@ public class LookCommand extends Command {
 
     @Override
     public void execute() {
-        String description = getGameController().getRoomController().roomDescription();
+        Room room = gameController.getPlayer().getRoom();
+        String description = gameController.getRoomController().roomDescription(room);
         System.out.println(description);
     }
 }

@@ -17,5 +17,10 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
+    public void updateRoom(int id,Room newRoom) {
+
+        playerService.updateRoom(id,newRoom);
+    }
+
 
 }

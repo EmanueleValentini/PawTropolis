@@ -23,6 +23,9 @@ public class Player {
     @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
 
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "id_room")
+    private Room room;
 
     public Player(String name, int lifePoints) {
         this.name = name;

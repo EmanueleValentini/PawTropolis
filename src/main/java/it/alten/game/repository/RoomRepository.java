@@ -11,6 +11,6 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
 
     Optional<Room> findRoomByName (String name);
 
-    Room findByPlayer(boolean isIn);
+
 
 }

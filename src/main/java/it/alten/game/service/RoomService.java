@@ -19,5 +19,6 @@ public interface RoomService {
 
     List<Room> findAll();
 
-    Room findByPlayer(boolean isIn);
+
+
 }

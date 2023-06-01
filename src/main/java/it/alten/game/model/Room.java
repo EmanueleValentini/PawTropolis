@@ -31,14 +31,18 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Lion> lionList;
 
+    @ManyToMany
+    @JoinTable(name = "room_connection", joinColumns = @JoinColumn(name = "id_room1"), inverseJoinColumns = @JoinColumn(name = "id_room2"))
+    private List<Room> adjacentRooms;
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
 
-    @Column(name = "isplayerin")
-    private boolean player;
 
-    public Room(String name){
+
+    public Room(String name) {
 
         this.name = name;
         this.roomItemList = new ArrayList<>();

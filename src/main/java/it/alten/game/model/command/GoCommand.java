@@ -1,6 +1,7 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
+import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
 import it.alten.game.service.RoomService;
 import lombok.Getter;
@@ -31,8 +32,9 @@ public class GoCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         Direction direction = Direction.of(String.join(" ", parameters));
-        if (gameController.changeRoom()) {
-            System.out.println("Stai in " + roomService.findByPlayer(true));
+        Room currentRoom = gameController.getPlayer().getRoom();
+        if (gameController.changeRoom(currentRoom, direction)) {
+            System.out.println("Stai in " + gameController.getPlayer().getRoom().getName());
         } else {
             System.out.println("Nun ce poi annà");
         }

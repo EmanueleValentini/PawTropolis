@@ -1,6 +1,7 @@
 package it.alten.game.controller;
 
 import it.alten.game.model.Room;
+import it.alten.game.service.PlayerService;
 import it.alten.game.service.RoomService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,18 @@ public class RoomController {
 
     private final ItemInRoomController itemInRoomController;
 
+    private final PlayerService playerService;
+
+
+
 
     @Autowired
-    public RoomController(RoomService roomService, ItemInRoomController itemInRoomController) {
+    public RoomController(RoomService roomService, ItemInRoomController itemInRoomController, PlayerService playerService) {
         this.roomService = roomService;
         this.itemInRoomController = itemInRoomController;
 
+
+        this.playerService = playerService;
     }
 
     public List<Room> retrieveMap() {
@@ -32,20 +39,16 @@ public class RoomController {
         return roomService.findById(id);
     }
 
-    public Room findByPlayer(boolean isIn) {
-        return roomService.findByPlayer(isIn);
-    }
 
-    public String roomDescription() {
+    public String roomDescription(Room currentRoom) {
 
-        Room room = roomService.findByPlayer(true);
-
-        String message = "Sei nella stanza " + room.getName();
-        if (!itemInRoomController.findByRoom(room).isEmpty()) {
-            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room).toString();
+        String message = "Sei nella stanza " + playerService.findById(1).getRoom();
+        if (!itemInRoomController.findByRoom(currentRoom).isEmpty()) {
+            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(currentRoom).toString();
         }
         return message;
     }
+
     }
 
 

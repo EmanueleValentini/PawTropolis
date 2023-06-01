@@ -53,9 +53,6 @@ public class RoomServiceImpl implements RoomService{
         return roomRepository.findAll();
     }
 
-    @Override
-    public Room findByPlayer(boolean isIn) {
 
-        return roomRepository.findByPlayer(true);
-    }
+
 }

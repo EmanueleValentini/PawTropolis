@@ -7,10 +7,14 @@ import it.alten.game.model.dto.PlayerDto;
 import it.alten.game.repository.BagRepository;
 import it.alten.game.repository.PlayerRepository;
 import it.alten.game.repository.RoomRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
+@Data
 public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
@@ -53,6 +57,16 @@ public class PlayerServiceImpl implements PlayerService{
         return playerRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public void updateRoom(int id, Room newRoom) {
+        Optional<Player> optionalPlayer = playerRepository.findById(id);
+        if ((optionalPlayer.isPresent())) {
+           Player player = optionalPlayer.get();
+           player.setRoom(newRoom);
+
+        }
+
+    }
 
 
 }
