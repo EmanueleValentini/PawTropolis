@@ -19,7 +19,7 @@ CREATE TABLE item_in_room(
 
 CREATE TABLE bag(
     id  serial PRIMARY KEY NOT NULL,
-    slots smallint NOT NULL
+    slots smallint
 );
 
 CREATE TABLE item_in_bag(
