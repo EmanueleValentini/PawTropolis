@@ -15,9 +15,9 @@ public class Player {
     @Id
     @Column(name = "id")
     private int id;
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "lifepoints")
+    @Column(name = "lifepoints",nullable = false)
     private int lifePoints;
     @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn(name = "id_bag")
@@ -28,6 +28,7 @@ public class Player {
         this.name = name;
         this.lifePoints = lifePoints;
         this.bag = new Bag();
+    
     }
 
     @Override
@@ -37,4 +38,5 @@ public class Player {
                 ", lifePoints=" + lifePoints +
                 '}';
     }
+
 }

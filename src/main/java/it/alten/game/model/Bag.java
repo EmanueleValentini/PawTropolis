@@ -3,6 +3,7 @@ package it.alten.game.model;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Bag {
     @Column(name = "slots")
     private int slots;
 
+
     private static final int MAX_SLOTS = 5;
 
 
@@ -38,4 +40,5 @@ public class Bag {
                 ", availableSlots=" + slots +
                 '}';
     }
+
 }
