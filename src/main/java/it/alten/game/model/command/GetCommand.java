@@ -34,8 +34,7 @@ public class GetCommand extends ParametrizedCommand {
         if (bag.getSlots() > 0) {
             if (findItem(itemToGet) != null) {
                 ItemInRoom itemPresentToGet = findItem(itemToGet);
-                if (itemPresentToGet.getRequestedSlots() < getGameController().getBagController().findById(1).getSlots()){
-                    getItem(itemPresentToGet);
+                if (getItem(itemPresentToGet)){
                     System.out.println("Hai preso " + itemToGet);
                 } else {
                     System.out.println(itemToGet + " Non entra nella borsa");
@@ -49,13 +48,15 @@ public class GetCommand extends ParametrizedCommand {
 
     }
 
-    public void getItem(ItemInRoom item) {
+    public boolean getItem(ItemInRoom item) {
         int bagSlots = gameController.getBagController().findById(1).getSlots();
         int occupiedSlots = gameController.getItemInBagController().sumFields();
         if (occupiedSlots < bagSlots && (bagSlots - occupiedSlots >= item.getRequestedSlots())) {
                 gameController.getItemInBagController().save(item);
                 gameController.getItemInRoomController().deleteById(item.getId());
+                return true;
         }
+        return false;
     }
 
     public ItemInRoom findItem(String itemToDrop) {

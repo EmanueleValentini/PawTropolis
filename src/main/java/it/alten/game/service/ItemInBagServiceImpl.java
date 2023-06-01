@@ -29,11 +29,11 @@ public class ItemInBagServiceImpl implements ItemInBagService {
     }
 
     @Override
-    public int sumFields() {
-        if (itemInBagRepository.sumField() == 0){
+    public Integer sumFields() {
+        if (itemInBagRepository.sumFields() == null){
             return 0;
         }
-        return itemInBagRepository.sumField();
+        return itemInBagRepository.sumFields();
     }
 
     @Override

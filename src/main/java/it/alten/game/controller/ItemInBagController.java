@@ -36,7 +36,7 @@ public class ItemInBagController {
         itemInBagService.deleteById(id);
     }
 
-    public int sumFields() {
+    public Integer sumFields() {
         return itemInBagService.sumFields();
     }
 }

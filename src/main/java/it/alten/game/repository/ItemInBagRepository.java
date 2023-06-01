@@ -12,5 +12,5 @@ public interface ItemInBagRepository extends JpaRepository<ItemInBag,Integer> {
     Optional<ItemInBag> findByName(String name);
 
     @Query("SELECT SUM(requestedSlots) FROM ItemInBag")
-    int sumField();
+    Integer sumFields();
 }

@@ -13,5 +13,5 @@ public interface ItemInBagService extends ItemService<ItemInBag> {
 
     ItemInBag findByName(String name);
 
-    int sumFields();
+    Integer sumFields();
 }

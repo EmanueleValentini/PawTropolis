@@ -19,7 +19,7 @@ public class Player {
     private String name;
     @Column(name = "lifepoints")
     private int lifePoints;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
 
@@ -28,5 +28,13 @@ public class Player {
         this.name = name;
         this.lifePoints = lifePoints;
         this.bag = new Bag();
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", lifePoints=" + lifePoints +
+                '}';
     }
 }
