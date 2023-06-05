@@ -1,5 +1,3 @@
-CREATE DATABASE pawtropolis;
-
 \c pawtropolis;
 
 CREATE TABLE room

@@ -3,10 +3,8 @@ package it.alten.game.model;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,12 +23,6 @@ public class Bag {
 
 
     private static final int MAX_SLOTS = 5;
-
-
-    public Bag() {
-        this.slots = MAX_SLOTS;
-        this.inventory = new ArrayList<>(MAX_SLOTS);
-    }
 
     @Override
     public String toString() {

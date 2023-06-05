@@ -1,6 +1,6 @@
 package it.alten.game.controller;
 
-import it.alten.game.model.Room;
+import it.alten.game.model.Player;
 import it.alten.game.service.PlayerService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,12 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    public void updateRoom(int id,Room newRoom) {
+    public void save (Player player) {
+        playerService.save(player);
+    }
 
-        playerService.updateRoom(id,newRoom);
+    public Player findById (int id) {
+        return playerService.findById(id);
     }
 
 

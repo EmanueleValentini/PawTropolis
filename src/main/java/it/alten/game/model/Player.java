@@ -19,20 +19,12 @@ public class Player {
     private String name;
     @Column(name = "lifepoints",nullable = false)
     private int lifePoints;
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
-
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_room")
     private Room room;
-
-    public Player(String name, int lifePoints) {
-        this.name = name;
-        this.lifePoints = lifePoints;
-        this.bag = new Bag();
-    
-    }
 
     @Override
     public String toString() {
