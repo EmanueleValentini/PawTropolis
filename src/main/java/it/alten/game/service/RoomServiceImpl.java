@@ -54,9 +54,16 @@ public class RoomServiceImpl implements RoomService{
         return roomRepository.findAll();
     }
 
+
+
     @Override
-    public Room findRoomByPlayer(Player player) {
-        return roomRepository.findRoomByPlayer(player);
+    public Room findByIsPlayerInTrue() {
+        return roomRepository.findByIsPlayerInTrue();
+    }
+
+    @Override
+    public void updateIsPlayerInById(int id, boolean isPlayerIn) {
+        roomRepository.updateIsPlayerInById(id, isPlayerIn);
     }
 
 

@@ -39,9 +39,8 @@ public class Room {
     @Id
     private int id;
 
-    @OneToOne (mappedBy = "room")
-    private Player player;
-
+    @Column(name = "isplayerin")
+    private boolean isPlayerIn;
 
     @Override
     public String toString() {

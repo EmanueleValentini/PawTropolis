@@ -26,7 +26,5 @@ public class PlayerController {
         return playerService.findById(id);
     }
 
-    public void updatePlayerRoom (Room room) {
-        playerService.updatePlayerRoom(room);
-    }
+
 }

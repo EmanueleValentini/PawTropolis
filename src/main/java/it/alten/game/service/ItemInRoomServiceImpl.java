@@ -14,11 +14,13 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
 
     private final ItemInRoomRepository itemInRoomRepository;
     private final PlayerService playerService;
+    private final RoomService roomService;
 
     @Autowired
-    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, PlayerService playerService) {
+    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, PlayerService playerService, RoomService roomService) {
         this.itemInRoomRepository = itemInRoomRepository;
         this.playerService = playerService;
+        this.roomService = roomService;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     @Override
     public ItemInRoom save(ItemInBag item) {
         ItemInRoom itemInRoom = new ItemInRoom();
-        Room room = playerService.findById(1).getRoom();
+        Room room = roomService.findByIsPlayerInTrue();
         itemInRoom.setName(item.getName());
         itemInRoom.setDescription(item.getDescription());
         itemInRoom.setRequestedSlots(item.getRequestedSlots());

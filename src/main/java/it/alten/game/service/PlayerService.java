@@ -10,5 +10,4 @@ public interface PlayerService {
 
     Player findById(int id);
 
-    void updatePlayerRoom(Room room);
 }

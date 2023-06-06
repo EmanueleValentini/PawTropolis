@@ -22,9 +22,7 @@ public class Player {
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_bag")
     private final Bag bag;
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "id_room")
-    private Room room;
+
 
     @Override
     public String toString() {

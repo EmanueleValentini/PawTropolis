@@ -25,7 +25,7 @@ public class RoomConnection {
     @JoinColumn(name = "id_room2")
     private Room newRoom;
 
-    @Column(name = "id_direction")
+    @Column(name = "direction")
     private Direction direction;
 
     @Override

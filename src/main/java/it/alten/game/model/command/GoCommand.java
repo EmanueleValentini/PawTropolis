@@ -31,13 +31,13 @@ public class GoCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         Direction direction = Direction.of(String.join(" ", parameters));
-        Player player = gameController.getPlayerController().findById(1);
-        Room currentRoom = gameController.getRoomController().findById(player.getRoom().getId());
+        Room currentRoom = gameController.getRoomController().findByIsPlayerInTrue();
         RoomConnection roomConnection = gameController.getRoomConnectionController().findByCurrentRoomAndDirection(currentRoom,direction);
         if (roomConnection != null) {
             Room nextRoom = gameController.getRoomController().findById(roomConnection.getNewRoom().getId());
-            gameController.getPlayerController().updatePlayerRoom(nextRoom);
-            System.out.println("Stai in " + nextRoom.getName());
+            gameController.getRoomController().updateIsPlayerInById(currentRoom.getId(), false);
+            gameController.getRoomController().updateIsPlayerInById(nextRoom.getId(), true);
+            System.out.println(gameController.getRoomController().roomDescription());
         } else {
             System.out.println("Nun ce poi annà");
         }

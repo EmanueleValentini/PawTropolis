@@ -19,6 +19,9 @@ public interface RoomService {
 
     List<Room> findAll();
 
-    Room findRoomByPlayer (Player player);
+
+    Room findByIsPlayerInTrue();
+
+    void updateIsPlayerInById(int id, boolean isPlayerIn);
 
 }

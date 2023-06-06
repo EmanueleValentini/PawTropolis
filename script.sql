@@ -39,8 +39,6 @@ CREATE TABLE player
     name       varchar(255)       NOT NULL,
     lifePoints int                NOT NULL,
     id_bag     int                NOT NULL,
-    id_room    int                NOT NULL,
-    FOREIGN KEY (id_room) REFERENCES room (id),
     FOREIGN KEY (id_bag) REFERENCES Bag (id)
 );
 
@@ -88,7 +86,7 @@ CREATE TABLE eagle
 
 CREATE TABLE direction
 (
-    name varchar(10)        NOT NULL UNIQUE
+    name varchar(10)
 );
 
 CREATE TABLE room_connection
@@ -96,7 +94,7 @@ CREATE TABLE room_connection
     id           serial PRIMARY KEY NOT NULL,
     id_room1     smallint           NOT NULL,
     id_room2     smallint           NOT NULL,
-    direction    varchar(100)       NOT NULL,
+    direction    direction       NOT NULL,
     FOREIGN KEY (id_room1) REFERENCES Room (id),
     FOREIGN KEY (id_room2) REFERENCES Room (id),
     CONSTRAINT uc_room_pairing UNIQUE (id_room1, id_room2)
@@ -143,44 +141,44 @@ INSERT INTO direction(name)
 VALUES ('WEST');
 
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 1, 5, direction
+SELECT 1, 5, name
 FROM Direction
 WHERE Direction.name = 'EAST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 1, 4, direction
+SELECT 1, 4, name
 FROM Direction
 WHERE Direction.name = 'SOUTH';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 5, 2, direction
+SELECT 5, 2, name
 FROM Direction
 WHERE Direction.name = 'EAST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 4, 3, direction
+SELECT 4, 3, name
 FROM Direction
 WHERE Direction.name = 'WEST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 2, 6, direction
+SELECT 2, 6, name
 FROM Direction
 WHERE Direction.name = 'EAST';
 
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 5, 1, direction
+SELECT 5, 1, name
 FROM Direction
 WHERE Direction.name = 'WEST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 4, 1, direction
+SELECT 4, 1, name
 FROM Direction
 WHERE Direction.name = 'NORTH';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 2, 5, direction
+SELECT 2, 5, name
 FROM Direction
 WHERE Direction.name = 'WEST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 3, 4, direction
+SELECT 3, 4, name
 FROM Direction
 WHERE Direction.name = 'EAST';
 INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 6, 2, direction
+SELECT 6, 2, name
 FROM Direction
 WHERE Direction.name = 'WEST';
 
@@ -200,8 +198,8 @@ VALUES ('Salvatore', 'er sambucone molinari', 56, 2.3, 4.4, '2000-2-12', 1, 2.8)
 INSERT INTO bag(slots)
 VALUES (5);
 
-INSERT INTO player(name, lifePoints, id_bag, id_room)
-VALUES ('testa de cazzo non hai scelto il nome', 42, 1, 1);
+INSERT INTO player(name, lifePoints, id_bag)
+VALUES ('testa de cazzo non hai scelto il nome', 42, 1);
 
 INSERT INTO item_in_bag(name, description, requestedSlots, id_bag)
 VALUES ('sgrodo', 'un foglio con scritto porcodio', 1, 1)
