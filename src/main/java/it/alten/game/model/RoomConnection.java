@@ -11,7 +11,6 @@ import lombok.*;
 @EqualsAndHashCode
 @Entity
 @Table(name = "room_connection")
-@ToString
 public class RoomConnection {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +27,10 @@ public class RoomConnection {
 
     @Column(name = "id_direction")
     private Direction direction;
+
+    @Override
+    public String toString() {
+        return  newRoom.getName() +
+                " a " + direction.name();
+    }
 }

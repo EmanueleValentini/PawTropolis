@@ -36,9 +36,8 @@ public class GoCommand extends ParametrizedCommand {
         RoomConnection roomConnection = gameController.getRoomConnectionController().findByCurrentRoomAndDirection(currentRoom,direction);
         if (roomConnection != null) {
             Room nextRoom = gameController.getRoomController().findById(roomConnection.getNewRoom().getId());
-            player.setRoom(nextRoom);
-            gameController.getPlayerController().save(player);
-            System.out.println("Stai in " + gameController.getPlayer().getRoom().getName());
+            gameController.getPlayerController().updatePlayerRoom(nextRoom);
+            System.out.println("Stai in " + gameController.getPlayerController().findById(1).getRoom().getName());
         } else {
             System.out.println("Nun ce poi annà");
         }

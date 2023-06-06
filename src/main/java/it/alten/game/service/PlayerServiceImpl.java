@@ -1,30 +1,21 @@
 package it.alten.game.service;
 
 import it.alten.game.model.Player;
-import it.alten.game.repository.BagRepository;
+import it.alten.game.model.Room;
 import it.alten.game.repository.PlayerRepository;
-import it.alten.game.repository.RoomRepository;
-import lombok.Data;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Data
+@Transactional
 public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
 
-    private final RoomRepository roomRepository;
-
-    private final BagRepository bagRepository;
-
-
-
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository, RoomRepository roomRepository, BagRepository bagRepository) {
+    public PlayerServiceImpl(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
-        this.roomRepository = roomRepository;
-        this.bagRepository = bagRepository;
     }
 
     @Override
@@ -49,5 +40,10 @@ public class PlayerServiceImpl implements PlayerService{
     @Override
     public Player findById(int id) {
         return playerRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void updatePlayerRoom(Room room) {
+        playerRepository.findById(1).ifPresent(player -> player.setRoom(room));
     }
 }

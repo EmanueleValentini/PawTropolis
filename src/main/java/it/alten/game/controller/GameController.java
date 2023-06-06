@@ -69,7 +69,7 @@ public class GameController {
         player.setName(playerName);
         playerController.save(player);
         System.out.println("Ciao " + player.getName() + ". Hai " + player.getLifePoints() + " Bestemmie rimaste");
-        System.out.println(roomController.roomDescription(player.getRoom()));
+        System.out.println(roomController.roomDescription());
         while (!quit) {
             System.out.println("Che vuoi fare?");
             String input = scanner.nextLine();

@@ -20,6 +20,8 @@ public class Bag {
     private List<ItemInBag> inventory;
     @Column(name = "slots")
     private int slots;
+    @OneToOne (mappedBy = "bag")
+    private Player player;
 
 
     private static final int MAX_SLOTS = 5;

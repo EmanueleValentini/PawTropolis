@@ -1,5 +1,6 @@
 package it.alten.game.controller;
 
+import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.service.PlayerService;
 import it.alten.game.service.RoomService;
@@ -40,19 +41,22 @@ public class RoomController {
     }
 
 
-    public String roomDescription(Room currentRoom) {
+    public String roomDescription() {
 
-        String message = "Sei nella stanza " + playerService.findById(1).getRoom();
-        if (!itemInRoomController.findByRoom(currentRoom).isEmpty()) {
-            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(currentRoom).toString();
+        Player player = playerService.findById(1);
+        Room room = findRoomByPlayer(player);
+
+        String message = "Sei nella stanza " + room.getName();
+        if (!itemInRoomController.findByRoom(room).isEmpty()) {
+            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room).toString();
         }
         return message;
     }
 
+    public Room findRoomByPlayer (Player player) {
+        return roomService.findRoomByPlayer(player);
     }
-
-
-//TODO: caricare tutte le stanze del db, e gestirne lo spostamento
+}
 
 
 

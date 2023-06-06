@@ -6,7 +6,6 @@ import it.alten.animal.model.Tiger;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -40,21 +39,12 @@ public class Room {
     @Id
     private int id;
 
-
-
-    public Room(String name) {
-
-        this.name = name;
-        this.roomItemList = new ArrayList<>();
-        this.lionList = new ArrayList<>();
-        this.eagleList = new ArrayList<>();
-        this.tigerList = new ArrayList<>();
-    }
+    @OneToOne (mappedBy = "room")
+    private Player player;
 
 
     @Override
     public String toString() {
         return name;
     }
-
 }

@@ -5,12 +5,14 @@ import it.alten.game.model.ItemInBag;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.repository.BagRepository;
 import it.alten.game.repository.ItemInBagRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ItemInBagServiceImpl implements ItemInBagService {
 
     private final ItemInBagRepository itemInBagRepository;
