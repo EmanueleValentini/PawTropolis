@@ -12,5 +12,5 @@ public interface RoomConnectionService {
 
     RoomConnection findByCurrentRoomAndDirection(Room room, Direction direction);
 
-
+    RoomConnection findById(int id);
 }

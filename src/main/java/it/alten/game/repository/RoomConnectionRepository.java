@@ -15,4 +15,6 @@ public interface RoomConnectionRepository extends JpaRepository<RoomConnection,I
 
     RoomConnection findByCurrentRoomAndDirection(Room room, Direction direction);
 
+    RoomConnection findById (int id);
+
 }

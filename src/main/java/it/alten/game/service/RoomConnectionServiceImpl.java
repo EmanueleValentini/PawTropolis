@@ -31,4 +31,9 @@ public class RoomConnectionServiceImpl implements RoomConnectionService{
     public RoomConnection findByCurrentRoomAndDirection(Room room, Direction direction) {
         return roomConnectionRepository.findByCurrentRoomAndDirection(room, direction);
     }
+
+    @Override
+    public RoomConnection findById(int id) {
+        return roomConnectionRepository.findById(id);
+    }
 }

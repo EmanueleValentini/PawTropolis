@@ -51,8 +51,6 @@ public class GameController {
 
     }
 
-    //TODO: rifattorizza ora che si usa il db
-
     public void setQuit(boolean quit) {
         this.quit = quit;
     }

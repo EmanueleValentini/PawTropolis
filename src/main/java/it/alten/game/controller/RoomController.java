@@ -56,6 +56,10 @@ public class RoomController {
     public Room findRoomByPlayer (Player player) {
         return roomService.findRoomByPlayer(player);
     }
+
+    public List<Room> findAll(){
+        return roomService.findAll();
+    }
 }
 
 

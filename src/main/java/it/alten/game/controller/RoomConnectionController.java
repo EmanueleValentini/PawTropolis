@@ -30,4 +30,8 @@ public class RoomConnectionController {
         return roomConnectionService.findByCurrentRoomAndDirection(room, direction);
     }
 
+    public RoomConnection findById(int id) {
+        return roomConnectionService.findById(id);
+    }
+
 }
