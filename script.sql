@@ -3,7 +3,8 @@
 CREATE TABLE room
 (
     id   serial PRIMARY KEY NOT NULL,
-    name varchar(30)        NOT NULL
+    name varchar(30)        NOT NULL,
+    isPlayerIn boolean
 );
 
 CREATE TABLE item_in_room
@@ -101,18 +102,18 @@ CREATE TABLE room_connection
     CONSTRAINT uc_room_pairing UNIQUE (id_room1, id_room2)
 );
 
-INSERT INTO room(name)
-VALUES ('DAJE ROMA DAJE');
-INSERT INTO room(name)
-VALUES ('LA STANZA DEL BOSS');
-INSERT INTO room(name)
-VALUES ('VIALE MARCONI');
-INSERT INTO room(name)
-VALUES ('NAPOLI');
-INSERT INTO room(name)
-VALUES ('DRUGVILLE');
-INSERT INTO room(name)
-VALUES ('SECCO REFRESH');
+INSERT INTO room(name, isPlayerIn)
+VALUES ('DAJE ROMA DAJE',true);
+INSERT INTO room(name, isPlayerIn)
+VALUES ('LA STANZA DEL BOSS',false);
+INSERT INTO room(name, isPlayerIn)
+VALUES ('VIALE MARCONI',false);
+INSERT INTO room(name,isPlayerIn)
+VALUES ('NAPOLI',false);
+INSERT INTO room(name, isplayerin)
+VALUES ('DRUGVILLE',false);
+INSERT INTO room(name,isPlayerIn)
+VALUES ('SECCO REFRESH',false);
 
 INSERT INTO item_in_room(name, description, requestedSlots, id_room)
 VALUES ('excalibur',
