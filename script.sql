@@ -94,7 +94,7 @@ CREATE TABLE room_connection
     id           serial PRIMARY KEY NOT NULL,
     id_room1     smallint           NOT NULL,
     id_room2     smallint           NOT NULL,
-    direction    direction       NOT NULL,
+    direction    varchar(6)       NOT NULL,
     FOREIGN KEY (id_room1) REFERENCES Room (id),
     FOREIGN KEY (id_room2) REFERENCES Room (id),
     CONSTRAINT uc_room_pairing UNIQUE (id_room1, id_room2)
@@ -140,47 +140,17 @@ VALUES ('EAST');
 INSERT INTO direction(name)
 VALUES ('WEST');
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 1, 5, name
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 1, 4, name
-FROM Direction
-WHERE Direction.name = 'SOUTH';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 5, 2, name
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 4, 3, name
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 2, 6, name
-FROM Direction
-WHERE Direction.name = 'EAST';
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,5,'EAST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,4,'SOUTH')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,2,'EAST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,3,'WEST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,6,'EAST')
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 5, 1, name
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 4, 1, name
-FROM Direction
-WHERE Direction.name = 'NORTH';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 2, 5, name
-FROM Direction
-WHERE Direction.name = 'WEST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 3, 4, name
-FROM Direction
-WHERE Direction.name = 'EAST';
-INSERT INTO Room_Connection (id_room1, id_room2, direction)
-SELECT 6, 2, name
-FROM Direction
-WHERE Direction.name = 'WEST';
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,1,'WEST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,1,'NORTH')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,5,'WEST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (3,4,'EAST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (6,2,'WEST')
 
 INSERT INTO lion(name, favFood, age, weight, height, dateOfJoin, id_room, tailLength)
 VALUES ('Giancarlo', 'sushi', 56, 2.3, 4.4, '2000-2-12', 1, 2.8);
