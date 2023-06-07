@@ -1,5 +1,8 @@
 package it.alten.game.controller;
 
+import it.alten.animal.controller.EagleController;
+import it.alten.animal.controller.LionController;
+import it.alten.animal.controller.TigerController;
 import it.alten.game.model.CommandFactory;
 import it.alten.game.model.Player;
 import it.alten.game.model.command.Command;
@@ -36,9 +39,15 @@ public class GameController {
 
     private final PlayerMapper playerMapper;
 
+    private final LionController lionController;
+
+    private final TigerController tigerController;
+
+    private final EagleController eagleController;
+
 
     @Autowired
-    public GameController(RoomConnectionController roomConnectionController, RoomController roomController, CommandFactory commandFactory, PlayerController playerController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController, BagController bagController, PlayerMapper playerMapper) {
+    public GameController(RoomConnectionController roomConnectionController, RoomController roomController, CommandFactory commandFactory, PlayerController playerController, ItemInBagController itemInBagController, ItemInRoomController itemInRoomController, BagController bagController, PlayerMapper playerMapper, LionController lionController, TigerController tigerController, EagleController eagleController) {
         this.roomConnectionController = roomConnectionController;
         this.roomController = roomController;
         this.commandFactory = commandFactory;
@@ -47,6 +56,9 @@ public class GameController {
         this.itemInRoomController = itemInRoomController;
         this.bagController = bagController;
         this.playerMapper = playerMapper;
+        this.lionController = lionController;
+        this.tigerController = tigerController;
+        this.eagleController = eagleController;
         this.quit = false;
 
     }
