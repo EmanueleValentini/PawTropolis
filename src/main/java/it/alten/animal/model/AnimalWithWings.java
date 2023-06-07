@@ -6,14 +6,24 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDate;
 
 @Getter
-@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class AnimalWithWings extends Animal{
     private double wingspan;
 
-    public AnimalWithWings(String name, String favouriteFood, int age, LocalDate dateOfJoin, double weight, double height, int id, double wingspan) {
-        super(name, favouriteFood, age, dateOfJoin, weight, height, id);
+    private String name;
+
+    private String favouriteFood;
+
+    private int age;
+
+    private LocalDate dateOfJoin;
+
+    private double weight;
+
+    private double height;
+    public AnimalWithWings(String name, String favouriteFood, int age, LocalDate dateOfJoin, double weight, double height, double wingspan) {
+        super(name, favouriteFood, age, dateOfJoin, weight, height);
         this.wingspan = wingspan;
     }
 }

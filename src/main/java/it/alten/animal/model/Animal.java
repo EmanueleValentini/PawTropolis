@@ -3,15 +3,14 @@ package it.alten.animal.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
-@SuperBuilder
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class Animal {
@@ -27,10 +26,6 @@ public abstract class Animal {
     private double weight;
 
     private double height;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private int id;
-
 
     @Override
     public String toString() {
@@ -38,4 +33,16 @@ public abstract class Animal {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && Double.compare(animal.weight, weight) == 0 && Double.compare(animal.height, height) == 0 && Objects.equals(name, animal.name) && Objects.equals(favouriteFood, animal.favouriteFood) && Objects.equals(dateOfJoin, animal.dateOfJoin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, favouriteFood, age, dateOfJoin, weight, height);
+    }
 }
