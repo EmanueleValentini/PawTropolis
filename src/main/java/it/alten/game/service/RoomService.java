@@ -1,7 +1,7 @@
 package it.alten.game.service;
 
+import it.alten.game.model.Player;
 import it.alten.game.model.Room;
-import it.alten.game.model.dto.RoomDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +19,9 @@ public interface RoomService {
 
     List<Room> findAll();
 
-    Room findByPlayer(boolean isIn);
+
+    Room findByIsPlayerInTrue();
+
+    void updateIsPlayerInById(int id, boolean isPlayerIn);
+
 }

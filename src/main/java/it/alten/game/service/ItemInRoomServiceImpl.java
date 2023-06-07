@@ -1,8 +1,9 @@
 package it.alten.game.service;
 
-import it.alten.game.model.*;
+import it.alten.game.model.ItemInBag;
+import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.Room;
 import it.alten.game.repository.ItemInRoomRepository;
-import it.alten.game.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +13,14 @@ import java.util.List;
 public class ItemInRoomServiceImpl implements ItemInRoomService {
 
     private final ItemInRoomRepository itemInRoomRepository;
-    private  final RoomRepository roomRepository;
+    private final PlayerService playerService;
+    private final RoomService roomService;
 
     @Autowired
-    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, RoomRepository roomRepository) {
+    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, PlayerService playerService, RoomService roomService) {
         this.itemInRoomRepository = itemInRoomRepository;
-        this.roomRepository = roomRepository;
+        this.playerService = playerService;
+        this.roomService = roomService;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     @Override
     public ItemInRoom save(ItemInBag item) {
         ItemInRoom itemInRoom = new ItemInRoom();
-        Room room = roomRepository.findByPlayer(true);
+        Room room = roomService.findByIsPlayerInTrue();
         itemInRoom.setName(item.getName());
         itemInRoom.setDescription(item.getDescription());
         itemInRoom.setRequestedSlots(item.getRequestedSlots());

@@ -6,7 +6,6 @@ import it.alten.animal.model.Tiger;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,26 +30,20 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Lion> lionList;
 
+    @ManyToMany
+    @JoinTable(name = "room_connection", joinColumns = @JoinColumn(name = "id_room1"), inverseJoinColumns = @JoinColumn(name = "id_room2"))
+    private List<Room> adjacentRooms;
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
 
     @Column(name = "isplayerin")
-    private boolean player;
-
-    public Room(String name){
-
-        this.name = name;
-        this.roomItemList = new ArrayList<>();
-        this.lionList = new ArrayList<>();
-        this.eagleList = new ArrayList<>();
-        this.tigerList = new ArrayList<>();
-    }
-
+    private boolean isPlayerIn;
 
     @Override
     public String toString() {
         return name;
     }
-
 }

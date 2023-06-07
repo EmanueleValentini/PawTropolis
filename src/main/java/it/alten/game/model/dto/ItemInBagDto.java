@@ -7,5 +7,5 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ItemInBagDto extends ItemDto{
 
-    private int bag_ID;
+    private int idBag;
 }

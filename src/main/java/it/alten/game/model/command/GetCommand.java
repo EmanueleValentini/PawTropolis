@@ -60,7 +60,7 @@ public class GetCommand extends ParametrizedCommand {
     }
 
     public ItemInRoom findItem(String itemToDrop) {
-        Room room = gameController.getRoomController().findByPlayer(true);
+        Room room = gameController.getRoomController().findByIsPlayerInTrue();
         return gameController.getItemInRoomController().findByRoomAndName(room,itemToDrop);
     }
 }

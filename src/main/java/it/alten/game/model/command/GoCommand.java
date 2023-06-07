@@ -1,8 +1,10 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
+import it.alten.game.model.Player;
+import it.alten.game.model.Room;
+import it.alten.game.model.RoomConnection;
 import it.alten.game.model.enums.Direction;
-import it.alten.game.service.RoomService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +19,6 @@ import java.util.List;
 @Component("go")
 public class GoCommand extends ParametrizedCommand {
 
-    RoomService roomService;
-
     @Autowired
     public GoCommand(GameController gameController) {
         super(gameController);
@@ -31,8 +31,13 @@ public class GoCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         Direction direction = Direction.of(String.join(" ", parameters));
-        if (gameController.changeRoom()) {
-            System.out.println("Stai in " + roomService.findByPlayer(true));
+        Room currentRoom = gameController.getRoomController().findByIsPlayerInTrue();
+        RoomConnection roomConnection = gameController.getRoomConnectionController().findByCurrentRoomAndDirection(currentRoom,direction);
+        if (roomConnection != null) {
+            Room nextRoom = gameController.getRoomController().findById(roomConnection.getNewRoom().getId());
+            gameController.getRoomController().updateIsPlayerInById(currentRoom.getId(), false);
+            gameController.getRoomController().updateIsPlayerInById(nextRoom.getId(), true);
+            System.out.println(gameController.getRoomController().roomDescription());
         } else {
             System.out.println("Nun ce poi annà");
         }

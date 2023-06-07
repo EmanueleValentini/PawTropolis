@@ -1,9 +1,9 @@
 package it.alten.game.service;
 
+import it.alten.game.model.Player;
 import it.alten.game.model.Room;
-import it.alten.game.model.dto.RoomDto;
 import it.alten.game.repository.RoomRepository;
-import org.modelmapper.ModelMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class RoomServiceImpl implements RoomService{
 
     private final RoomRepository roomRepository;
@@ -53,9 +54,17 @@ public class RoomServiceImpl implements RoomService{
         return roomRepository.findAll();
     }
 
-    @Override
-    public Room findByPlayer(boolean isIn) {
 
-        return roomRepository.findByPlayer(true);
+
+    @Override
+    public Room findByIsPlayerInTrue() {
+        return roomRepository.findByIsPlayerInTrue();
     }
+
+    @Override
+    public void updateIsPlayerInById(int id, boolean isPlayerIn) {
+        roomRepository.updateIsPlayerInById(id, isPlayerIn);
+    }
+
+
 }
