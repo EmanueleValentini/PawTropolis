@@ -84,11 +84,6 @@ CREATE TABLE eagle
     FOREIGN KEY (id_room) REFERENCES Room (id)
 );
 
-CREATE TABLE direction
-(
-    name varchar(10)
-);
-
 CREATE TABLE room_connection
 (
     id           serial PRIMARY KEY NOT NULL,
@@ -130,15 +125,6 @@ INSERT INTO item_in_room(name, description, requestedSlots, id_room)
 VALUES ('elmo', 'ti protegge dagli headshot', 1, 3);
 INSERT INTO item_in_room(name, description, requestedSlots, id_room)
 VALUES ('soldi', 'i soldi quelli veri', 1, 4);
-
-INSERT INTO direction(name)
-VALUES ('NORTH');
-INSERT INTO direction(name)
-VALUES ('SOUTH');
-INSERT INTO direction(name)
-VALUES ('EAST');
-INSERT INTO direction(name)
-VALUES ('WEST');
 
 INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,5,'EAST')
 INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,4,'SOUTH')
