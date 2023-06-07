@@ -20,7 +20,7 @@ public class LookCommand extends Command {
 
     @Override
     public void execute() {
-        Room room = gameController.getPlayer().getRoom();
+
         String description = gameController.getRoomController().roomDescription();
         System.out.println(description);
     }

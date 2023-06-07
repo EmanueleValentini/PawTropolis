@@ -36,6 +36,7 @@ public class PlayerMapper {
     public PlayerDto toDto (Player player) {
         PlayerDto playerDto = new PlayerDto();
         playerDto.setName(player.getName());
+
         playerDto.setIdRoom(player.getRoom().getId());
         playerDto.setIdBag(player.getBag().getId());
         playerDto.setLifePoints(player.getLifePoints());

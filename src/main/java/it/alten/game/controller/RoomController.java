@@ -3,6 +3,7 @@ package it.alten.game.controller;
 import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.service.PlayerService;
+import it.alten.game.service.RoomConnectionService;
 import it.alten.game.service.RoomService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,19 @@ public class RoomController {
 
     private final PlayerService playerService;
 
+    private final RoomConnectionService roomConnectionService;
+
 
 
 
     @Autowired
-    public RoomController(RoomService roomService, ItemInRoomController itemInRoomController, PlayerService playerService) {
+    public RoomController(RoomService roomService, ItemInRoomController itemInRoomController, PlayerService playerService, RoomConnectionService roomConnectionService) {
         this.roomService = roomService;
         this.itemInRoomController = itemInRoomController;
 
 
         this.playerService = playerService;
+        this.roomConnectionService = roomConnectionService;
     }
 
     public List<Room> retrieveMap() {
@@ -43,22 +47,29 @@ public class RoomController {
 
     public String roomDescription() {
 
-        Player player = playerService.findById(1);
-        Room room = findRoomByPlayer(player);
+        Room room = findByIsPlayerInTrue();
 
         String message = "Sei nella stanza " + room.getName();
         if (!itemInRoomController.findByRoom(room).isEmpty()) {
             message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room).toString();
         }
+        if (!roomConnectionService.findAllByCurrentRoom(room).isEmpty()) {
+            message += "\nPuoi andare in sti posti: " + roomConnectionService.findAllByCurrentRoom(room);
+        }
         return message;
     }
 
-    public Room findRoomByPlayer (Player player) {
-        return roomService.findRoomByPlayer(player);
-    }
 
     public List<Room> findAll(){
         return roomService.findAll();
+    }
+
+    public Room findByIsPlayerInTrue() {
+        return roomService.findByIsPlayerInTrue();
+    }
+
+    public void updateIsPlayerInById(int id, boolean isPlayerIn) {
+        roomService.updateIsPlayerInById(id, isPlayerIn);
     }
 }
 

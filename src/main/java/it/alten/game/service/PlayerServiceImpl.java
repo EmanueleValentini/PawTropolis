@@ -28,8 +28,5 @@ public class PlayerServiceImpl implements PlayerService{
         return playerRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public void updatePlayerRoom(Room room) {
-        playerRepository.findById(1).ifPresent(player -> player.setRoom(room));
-    }
+
 }
