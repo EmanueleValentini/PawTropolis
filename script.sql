@@ -126,17 +126,17 @@ VALUES ('elmo', 'ti protegge dagli headshot', 1, 3);
 INSERT INTO item_in_room(name, description, requestedSlots, id_room)
 VALUES ('soldi', 'i soldi quelli veri', 1, 4);
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,5,'EAST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,4,'SOUTH')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,2,'EAST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,3,'WEST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,6,'EAST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,5,'EAST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (1,4,'SOUTH');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,2,'EAST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,3,'WEST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,6,'EAST');
 
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,1,'WEST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,1,'NORTH')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,5,'WEST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (3,4,'EAST')
-INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (6,2,'WEST')
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (5,1,'WEST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (4,1,'NORTH');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (2,5,'WEST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (3,4,'EAST');
+INSERT INTO Room_Connection (id_room1, id_room2, direction) VALUES (6,2,'WEST');
 
 INSERT INTO lion(name, favFood, age, weight, height, dateOfJoin, id_room, tailLength)
 VALUES ('Giancarlo', 'sushi', 56, 2.3, 4.4, '2000-2-12', 1, 2.8);

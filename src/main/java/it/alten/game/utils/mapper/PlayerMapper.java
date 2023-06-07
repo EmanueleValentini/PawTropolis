@@ -28,7 +28,6 @@ public class PlayerMapper {
         Player player = new Player();
         player.setName(playerDto.getName());
         player.setLifePoints(playerDto.getLifePoints());
-        player.setRoom(roomRepository.findById(playerDto.getIdRoom()).orElse(null));
         player.setBag(bagRepository.findById(playerDto.getIdBag()).orElse(null));
         return player;
     }
@@ -36,8 +35,6 @@ public class PlayerMapper {
     public PlayerDto toDto (Player player) {
         PlayerDto playerDto = new PlayerDto();
         playerDto.setName(player.getName());
-
-        playerDto.setIdRoom(player.getRoom().getId());
         playerDto.setIdBag(player.getBag().getId());
         playerDto.setLifePoints(player.getLifePoints());
         return playerDto;
