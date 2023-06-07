@@ -25,7 +25,8 @@ public class RoomConnection {
     @JoinColumn(name = "id_room2")
     private Room newRoom;
 
-    @Column(name = "id_direction")
+    @Column(name = "direction")
+    @Enumerated(EnumType.STRING)
     private Direction direction;
 
     @Override

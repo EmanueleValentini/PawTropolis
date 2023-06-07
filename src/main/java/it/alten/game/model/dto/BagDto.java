@@ -7,7 +7,9 @@ import java.util.List;
 @Data
 public class BagDto {
 
+    private List<Integer> idItems;
+
     private int slots;
 
-    private List<Integer> idItems;
+    private int idPlayer;
 }

@@ -3,7 +3,6 @@ package it.alten.game.model.dto;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Map;
 
 
 @Data
@@ -13,7 +12,11 @@ public class RoomDto {
 
     private List<Integer> idItem;
 
-    private List<Integer> idAnimal;
+    private List<Integer> idEagles;
 
-    private Map<Integer, Integer> idAdjacentRoom;
+    private List<Integer> idTigers;
+
+    private List<Integer> idLions;
+
+    private List<Integer> idAdjacentRoom;
 }

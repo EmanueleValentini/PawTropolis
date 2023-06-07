@@ -21,7 +21,7 @@ public class Player {
     private int lifePoints;
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_bag")
-    private final Bag bag;
+    private Bag bag;
     @OneToOne
     @PrimaryKeyJoinColumn(name = "id_room")
     private Room room;
