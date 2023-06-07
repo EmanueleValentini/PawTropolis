@@ -2,8 +2,10 @@ package it.alten.animal.model;
 
 import it.alten.game.model.Room;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "eagle")
-public class Eagle {
+public class Eagle extends AnimalWithWings{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

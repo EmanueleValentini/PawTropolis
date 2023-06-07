@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -17,7 +16,7 @@ import java.util.Objects;
 @Entity
 @AllArgsConstructor
 @Table(name = "lion")
-public class Lion {
+public class Lion extends AnimalWithTail{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
