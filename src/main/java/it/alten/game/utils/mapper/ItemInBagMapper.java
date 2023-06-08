@@ -39,7 +39,6 @@ public class ItemInBagMapper {
         return itemInBag;
     }
 
-
     public ItemInBag fromRoomToBag(ItemInRoomDto itemInRoomDto) {
         ItemInBag itemInBag = new ItemInBag();
         itemInBag.setBag(bagRepository.findById(1).orElse(null));

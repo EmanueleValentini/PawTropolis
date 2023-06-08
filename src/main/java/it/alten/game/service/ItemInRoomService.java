@@ -21,4 +21,6 @@ public interface ItemInRoomService extends ItemService<ItemInRoom> {
     ItemInRoomDto findByRoomAndName (Room room, String name);
 
     boolean deleteByName(String name);
+
+    ItemInRoomDto findById(int id);
 }

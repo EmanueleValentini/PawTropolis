@@ -49,8 +49,13 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
-    public ItemInRoom findById(int id) {
-        return itemInRoomRepository.findById(id).orElse(null);
+    public ItemInRoomDto findById(int id) {
+        Optional<ItemInRoom> itemInRoom = itemInRoomRepository.findById(id);
+        if (itemInRoom.isPresent()) {
+            ItemInRoom itemInRoomPresent = itemInRoom.get();
+            return itemInRoomMapper.toDto(itemInRoomPresent);
+        }
+        return null;
     }
 
     @Override

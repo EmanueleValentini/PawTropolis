@@ -43,4 +43,8 @@ public class ItemInRoomController {
     public boolean deleteByName(String name) {
         return itemInRoomService.deleteByName(name);
     }
+
+    public ItemInRoomDto findById(int id){
+        return itemInRoomService.findById(id);
+    }
 }

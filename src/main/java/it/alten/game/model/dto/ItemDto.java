@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public abstract class ItemDto {
 
+    private int id;
+
     private String name;
 
     private String description;

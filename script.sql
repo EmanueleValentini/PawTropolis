@@ -10,7 +10,7 @@ CREATE TABLE room
 CREATE TABLE item_in_room
 (
     id             serial PRIMARY KEY NOT NULL,
-    name           varchar(20)        NOT NULL,
+    name           varchar(20)        NOT NULL UNIQUE ,
     description    varchar(255),
     requestedSlots smallint           NOT NULL,
     id_room        int                NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE bag
 CREATE TABLE item_in_bag
 (
     id             serial PRIMARY KEY NOT NULL,
-    name           varchar(20)        NOT NULL,
+    name           varchar(20)        NOT NULL UNIQUE,
     description    varchar(255),
     requestedSlots smallint           NOT NULL,
     id_bag         int                NOT NULL,

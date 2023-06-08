@@ -17,4 +17,6 @@ public interface ItemInBagService extends ItemService<ItemInBag> {
     Integer sumFields();
 
     boolean deleteByName(String name);
+
+    ItemInBagDto findById(int id);
 }

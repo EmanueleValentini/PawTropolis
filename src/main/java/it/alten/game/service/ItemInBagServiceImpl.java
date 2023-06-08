@@ -47,8 +47,13 @@ public class ItemInBagServiceImpl implements ItemInBagService {
     }
 
     @Override
-    public ItemInBag findById(int id) {
-        return itemInBagRepository.findById(id).orElse(null);
+    public ItemInBagDto findById(int id) {
+        Optional<ItemInBag> itemInBag = itemInBagRepository.findById(id);
+        if (itemInBag.isPresent()) {
+            ItemInBag itemInBagPresent = itemInBag.get();
+            return itemInBagMapper.toDto(itemInBagPresent);
+        }
+        return null;
     }
 
     @Override

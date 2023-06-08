@@ -43,4 +43,8 @@ public class ItemInBagController {
     public boolean deleteByName(String name) {
         return itemInBagService.deleteByName(name);
     }
+
+    public ItemInBagDto findById(int id){
+        return itemInBagService.findById(id);
+    }
 }
