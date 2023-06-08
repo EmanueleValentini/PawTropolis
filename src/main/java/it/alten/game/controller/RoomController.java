@@ -1,6 +1,5 @@
 package it.alten.game.controller;
 
-import it.alten.animal.model.*;
 import it.alten.animal.service.EagleService;
 import it.alten.animal.service.LionService;
 import it.alten.animal.service.TigerService;
@@ -12,7 +11,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -67,7 +65,7 @@ public class RoomController {
 
 
         if (!itemInRoomController.findByRoom(room).isEmpty()) {
-            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room).toString();
+            message += "\nCi sono questi oggetti: " + itemInRoomController.findByRoom(room);
         }
         if (!roomConnectionService.findAllByCurrentRoom(room).isEmpty()) {
             message += "\nPuoi andare in sti posti: " + roomConnectionService.findAllByCurrentRoom(room);

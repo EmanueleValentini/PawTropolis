@@ -1,7 +1,7 @@
 package it.alten.game.controller;
 
-import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.service.ItemInBagService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,16 @@ public class ItemInBagController {
         this.itemInBagService = itemInBagService;
     }
 
-    public ItemInBag findByName (String name) {
+    public ItemInBagDto findByName (String name) {
         return itemInBagService.findByName(name);
     }
 
-    public ItemInBag save(ItemInRoom item) {
-        return itemInBagService.save(item);
+    public void save(ItemInRoomDto item) {
+        itemInBagService.save(item);
 
     }
 
-    public List<ItemInBag> findAll() {
+    public List<ItemInBagDto> findAll() {
         return itemInBagService.findAll();
     }
 
@@ -38,5 +38,9 @@ public class ItemInBagController {
 
     public Integer sumFields() {
         return itemInBagService.sumFields();
+    }
+
+    public boolean deleteByName(String name) {
+        return itemInBagService.deleteByName(name);
     }
 }

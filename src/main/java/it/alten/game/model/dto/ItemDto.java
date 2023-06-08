@@ -11,4 +11,8 @@ public abstract class ItemDto {
 
     private int requestedSlots;
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

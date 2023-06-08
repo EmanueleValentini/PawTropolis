@@ -2,6 +2,7 @@ package it.alten.game.utils.mapper;
 
 import it.alten.game.model.ItemInBag;
 import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.BagRepository;
 import it.alten.game.repository.ItemInBagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,15 @@ public class ItemInBagMapper {
         itemInBag.setRequestedSlots(itemInBagDto.getRequestedSlots());
         return itemInBag;
     }
+
+
+    public ItemInBag fromRoomToBag(ItemInRoomDto itemInRoomDto) {
+        ItemInBag itemInBag = new ItemInBag();
+        itemInBag.setBag(bagRepository.findById(1).orElse(null));
+        itemInBag.setDescription(itemInRoomDto.getDescription());
+        itemInBag.setName(itemInRoomDto.getName());
+        itemInBag.setRequestedSlots(itemInRoomDto.getRequestedSlots());
+        return itemInBag;
+    }
+
 }

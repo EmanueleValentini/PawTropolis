@@ -1,9 +1,9 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.Bag;
-import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
+import it.alten.game.model.dto.BagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,10 +30,10 @@ public class GetCommand extends ParametrizedCommand {
     @Override
     public void execute() {
         String itemToGet = String.join(" ",parameters);
-        Bag bag = getGameController().getBagController().findById(1);
-        if (bag.getSlots() > 0) {
+        BagDto bagDto = getGameController().getBagController().findById(1);
+        if (bagDto.getSlots() > 0) {
             if (findItem(itemToGet) != null) {
-                ItemInRoom itemPresentToGet = findItem(itemToGet);
+                ItemInRoomDto itemPresentToGet = findItem(itemToGet);
                 if (getItem(itemPresentToGet)){
                     System.out.println("Hai preso " + itemToGet);
                 } else {
@@ -48,18 +48,18 @@ public class GetCommand extends ParametrizedCommand {
 
     }
 
-    public boolean getItem(ItemInRoom item) {
+    public boolean getItem(ItemInRoomDto item) {
         int bagSlots = gameController.getBagController().findById(1).getSlots();
         int occupiedSlots = gameController.getItemInBagController().sumFields();
         if (occupiedSlots < bagSlots && (bagSlots - occupiedSlots >= item.getRequestedSlots())) {
                 gameController.getItemInBagController().save(item);
-                gameController.getItemInRoomController().deleteById(item.getId());
+                gameController.getItemInRoomController().deleteByName(item.getName());
                 return true;
         }
         return false;
     }
 
-    public ItemInRoom findItem(String itemToDrop) {
+    public ItemInRoomDto findItem(String itemToDrop) {
         Room room = gameController.getRoomController().findByIsPlayerInTrue();
         return gameController.getItemInRoomController().findByRoomAndName(room,itemToDrop);
     }

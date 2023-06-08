@@ -16,4 +16,6 @@ public interface ItemInRoomRepository extends JpaRepository<ItemInRoom,Integer> 
     List<ItemInRoom> findByRoom(Room room);
 
     Optional<ItemInRoom> findByRoomAndName(Room room, String name);
+
+    void deleteByName(String name);
 }

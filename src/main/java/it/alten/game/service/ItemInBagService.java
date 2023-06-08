@@ -1,17 +1,20 @@
 package it.alten.game.service;
 
 import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 
 import java.util.List;
 
 public interface ItemInBagService extends ItemService<ItemInBag> {
 
-    ItemInBag save (ItemInRoom item);
+    void save (ItemInRoomDto item);
 
-    List<ItemInBag> findAll();
+    List<ItemInBagDto> findAll();
 
-    ItemInBag findByName(String name);
+    ItemInBagDto findByName(String name);
 
     Integer sumFields();
+
+    boolean deleteByName(String name);
 }

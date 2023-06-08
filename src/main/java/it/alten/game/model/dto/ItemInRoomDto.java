@@ -8,4 +8,9 @@ import lombok.EqualsAndHashCode;
 public class ItemInRoomDto extends ItemDto{
 
     private int idRoom;
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

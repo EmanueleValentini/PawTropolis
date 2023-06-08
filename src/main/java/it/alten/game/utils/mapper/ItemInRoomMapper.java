@@ -1,6 +1,7 @@
 package it.alten.game.utils.mapper;
 
 import it.alten.game.model.ItemInRoom;
+import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,14 @@ public class ItemInRoomMapper {
         itemInRoomDto.setName(itemInRoom.getName());
         itemInRoomDto.setRequestedSlots(itemInRoom.getRequestedSlots());
         return itemInRoomDto;
+    }
+
+    public ItemInRoom fromBagToRoom(ItemInBagDto itemInBagDto) {
+        ItemInRoom itemInRoom = new ItemInRoom();
+        itemInRoom.setRoom(roomRepository.findByIsPlayerInTrue());
+        itemInRoom.setDescription(itemInBagDto.getDescription());
+        itemInRoom.setName(itemInBagDto.getName());
+        itemInRoom.setRequestedSlots(itemInBagDto.getRequestedSlots());
+        return itemInRoom;
     }
 }

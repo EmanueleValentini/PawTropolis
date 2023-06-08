@@ -1,7 +1,7 @@
 package it.alten.game.model.command;
 
 import it.alten.game.controller.GameController;
-import it.alten.game.model.ItemInBag;
+import it.alten.game.model.dto.ItemInBagDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,12 +37,12 @@ public class DropCommand extends ParametrizedCommand {
         }
     }
 
-    public void dropItem(ItemInBag item) {
+    public void dropItem(ItemInBagDto item) {
         gameController.getItemInRoomController().save(item);
-        gameController.getItemInBagController().deleteById(item.getId());
+        gameController.getItemInBagController().deleteByName(item.getName());
     }
 
-    public ItemInBag findItem(String itemToDrop) {
+    public ItemInBagDto findItem(String itemToDrop) {
         return gameController.getItemInBagController().findByName(itemToDrop);
     }
 }

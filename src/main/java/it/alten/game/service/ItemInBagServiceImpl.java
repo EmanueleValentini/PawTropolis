@@ -1,15 +1,17 @@
 package it.alten.game.service;
 
-import it.alten.game.model.Bag;
 import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
-import it.alten.game.repository.BagRepository;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.ItemInBagRepository;
+import it.alten.game.utils.mapper.ItemInBagMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -17,17 +19,23 @@ public class ItemInBagServiceImpl implements ItemInBagService {
 
     private final ItemInBagRepository itemInBagRepository;
 
-    private final BagRepository bagRepository;
+    private final ItemInBagMapper itemInBagMapper;
+
 
     @Autowired
-    public ItemInBagServiceImpl(ItemInBagRepository itemInBagRepository, BagRepository bagRepository) {
+    public ItemInBagServiceImpl(ItemInBagRepository itemInBagRepository, ItemInBagMapper itemInBagMapper) {
         this.itemInBagRepository = itemInBagRepository;
-        this.bagRepository = bagRepository;
+        this.itemInBagMapper = itemInBagMapper;
     }
 
     @Override
-    public ItemInBag findByName(String name) {
-        return itemInBagRepository.findByName(name).orElse(null);
+    public ItemInBagDto findByName(String name) {
+        Optional<ItemInBag> itemInBag = itemInBagRepository.findByName(name);
+        if (itemInBag.isPresent()) {
+            ItemInBag itemInBagPresent = itemInBag.get();
+            return itemInBagMapper.toDto(itemInBagPresent);
+        }
+       return null;
     }
 
     @Override
@@ -54,20 +62,31 @@ public class ItemInBagServiceImpl implements ItemInBagService {
     }
 
     @Override
-    public ItemInBag save(ItemInRoom item) {
-    ItemInBag itemInBag = new ItemInBag();
-    Bag bag = bagRepository.findById(1).orElse(null);
-    itemInBag.setName(item.getName());
-    itemInBag.setDescription(item.getDescription());
-    itemInBag.setRequestedSlots(item.getRequestedSlots());
-    itemInBag.setBag(bag);
-        return itemInBagRepository.save(itemInBag);
+    public boolean deleteByName(String name) {
+        try {
+            itemInBagRepository.deleteByName(name);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    @Override
+    public void save(ItemInRoomDto item) {
+    itemInBagRepository.save(itemInBagMapper.fromRoomToBag(item));
 
     }
 
     @Override
-    public List<ItemInBag> findAll() {
-        return itemInBagRepository.findAll();
+    public List<ItemInBagDto> findAll() {
+        List<ItemInBagDto> itemInBagDtoList = new ArrayList<>();
+        List<ItemInBag> itemInBagList = itemInBagRepository.findAll();
+        for (ItemInBag itemInBag:itemInBagList) {
+            ItemInBagDto itemInBagDto = itemInBagMapper.toDto(itemInBag);
+            itemInBagDtoList.add(itemInBagDto);
+        }
+        return itemInBagDtoList;
     }
 
 

@@ -1,8 +1,8 @@
 package it.alten.game.controller;
 
-import it.alten.game.model.ItemInBag;
-import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.service.ItemInRoomService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +20,27 @@ public class ItemInRoomController {
         this.itemInRoomService = itemInRoomService;
     }
 
-    public ItemInRoom findByName (String name) {
+    public ItemInRoomDto findByName (String name) {
         return itemInRoomService.findByName(name);
     }
 
-    public List<ItemInRoom> findByRoom(Room room) {
+    public List<ItemInRoomDto> findByRoom(Room room) {
         return itemInRoomService.findByRoom(room);
     }
 
-    public ItemInRoom save(ItemInBag item) {
-        return itemInRoomService.save(item);
+    public void save(ItemInBagDto item) {
+        itemInRoomService.save(item);
     }
 
     public void deleteById(int id) {
         itemInRoomService.deleteById(id);
     }
 
-    public ItemInRoom findByRoomAndName(Room room, String name){
+    public ItemInRoomDto findByRoomAndName(Room room, String name){
         return itemInRoomService.findByRoomAndName(room, name);
+    }
+
+    public boolean deleteByName(String name) {
+        return itemInRoomService.deleteByName(name);
     }
 }

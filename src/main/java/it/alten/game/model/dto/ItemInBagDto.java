@@ -8,4 +8,9 @@ import lombok.EqualsAndHashCode;
 public class ItemInBagDto extends ItemDto{
 
     private int idBag;
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

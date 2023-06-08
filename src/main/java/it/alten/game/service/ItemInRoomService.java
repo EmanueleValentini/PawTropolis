@@ -1,21 +1,24 @@
 package it.alten.game.service;
 
-import it.alten.game.model.ItemInBag;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 
 import java.util.List;
 
 
 public interface ItemInRoomService extends ItemService<ItemInRoom> {
 
-    ItemInRoom save(ItemInBag item);
+    void save(ItemInBagDto item);
 
-    List<ItemInRoom> findAll();
+    List<ItemInRoomDto> findAll();
 
-    List<ItemInRoom> findByRoom(Room room);
+    List<ItemInRoomDto> findByRoom(Room room);
 
-    ItemInRoom findByName (String name);
+    ItemInRoomDto findByName (String name);
 
-    ItemInRoom findByRoomAndName (Room room, String name);
+    ItemInRoomDto findByRoomAndName (Room room, String name);
+
+    boolean deleteByName(String name);
 }

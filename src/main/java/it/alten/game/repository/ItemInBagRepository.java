@@ -13,4 +13,6 @@ public interface ItemInBagRepository extends JpaRepository<ItemInBag,Integer> {
 
     @Query("SELECT SUM(requestedSlots) FROM ItemInBag")
     Integer sumFields();
+
+    void deleteByName(String name);
 }

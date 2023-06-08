@@ -1,36 +1,51 @@
 package it.alten.game.service;
 
-import it.alten.game.model.ItemInBag;
 import it.alten.game.model.ItemInRoom;
 import it.alten.game.model.Room;
+import it.alten.game.model.dto.ItemInBagDto;
+import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.ItemInRoomRepository;
+import it.alten.game.utils.mapper.ItemInRoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemInRoomServiceImpl implements ItemInRoomService {
 
     private final ItemInRoomRepository itemInRoomRepository;
-    private final PlayerService playerService;
     private final RoomService roomService;
 
+    private final ItemInRoomMapper itemInRoomMapper;
+
     @Autowired
-    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, PlayerService playerService, RoomService roomService) {
+    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, RoomService roomService, ItemInRoomMapper itemInRoomMapper) {
         this.itemInRoomRepository = itemInRoomRepository;
-        this.playerService = playerService;
         this.roomService = roomService;
+        this.itemInRoomMapper = itemInRoomMapper;
     }
 
     @Override
-    public ItemInRoom findByName(String name) {
-        return itemInRoomRepository.findByName(name).orElse(null);
+    public ItemInRoomDto findByName(String name) {
+        Optional<ItemInRoom> itemInRoom = itemInRoomRepository.findByName(name);
+        if (itemInRoom.isPresent()) {
+            ItemInRoom itemInRoomPresent = itemInRoom.get();
+            return itemInRoomMapper.toDto(itemInRoomPresent);
+        }
+        return null;
     }
 
     @Override
-    public ItemInRoom findByRoomAndName(Room room, String name) {
-        return itemInRoomRepository.findByRoomAndName(room, name).orElse(null);
+    public ItemInRoomDto findByRoomAndName(Room room, String name) {
+        Optional<ItemInRoom> itemInRoom = itemInRoomRepository.findByRoomAndName(room, name);
+        if (itemInRoom.isPresent()) {
+            ItemInRoom itemInRoomPresent = itemInRoom.get();
+            return itemInRoomMapper.toDto(itemInRoomPresent);
+        }
+        return null;
     }
 
     @Override
@@ -49,25 +64,39 @@ public class ItemInRoomServiceImpl implements ItemInRoomService {
     }
 
     @Override
-    public ItemInRoom save(ItemInBag item) {
-        ItemInRoom itemInRoom = new ItemInRoom();
-        Room room = roomService.findByIsPlayerInTrue();
-        itemInRoom.setName(item.getName());
-        itemInRoom.setDescription(item.getDescription());
-        itemInRoom.setRequestedSlots(item.getRequestedSlots());
-        itemInRoom.setRoom(room);
-        return itemInRoomRepository.save(itemInRoom);
-
-
+    public boolean deleteByName(String name) {
+        try {
+            itemInRoomRepository.deleteByName(name);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
-    public List<ItemInRoom> findAll() {
-        return itemInRoomRepository.findAll();
+    public void save(ItemInBagDto item) {
+        itemInRoomRepository.save(itemInRoomMapper.fromBagToRoom(item));
     }
 
     @Override
-    public List<ItemInRoom> findByRoom(Room room) {
-        return itemInRoomRepository.findByRoom(room);
+    public List<ItemInRoomDto> findAll() {
+        List<ItemInRoomDto> itemInRoomDtoList = new ArrayList<>();
+        List<ItemInRoom> itemInRoomList = itemInRoomRepository.findAll();
+        for (ItemInRoom itemInRoom:itemInRoomList) {
+            ItemInRoomDto itemInRoomDto = itemInRoomMapper.toDto(itemInRoom);
+            itemInRoomDtoList.add(itemInRoomDto);
+        }
+        return itemInRoomDtoList;
+    }
+
+    @Override
+    public List<ItemInRoomDto> findByRoom(Room room) {
+        List<ItemInRoomDto> itemInRoomDtoList = new ArrayList<>();
+        List<ItemInRoom> itemInRoomList = itemInRoomRepository.findByRoom(room);
+        for (ItemInRoom itemInRoom:itemInRoomList) {
+            ItemInRoomDto itemInRoomDto = itemInRoomMapper.toDto(itemInRoom);
+            itemInRoomDtoList.add(itemInRoomDto);
+        }
+        return itemInRoomDtoList;
     }
 }

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ItemService <T extends Item>{
 
-    T findByName (String name);
-
     T findById (int id);
 
     boolean deleteById (int id);
+
+    boolean deleteByName (String name);
 }
