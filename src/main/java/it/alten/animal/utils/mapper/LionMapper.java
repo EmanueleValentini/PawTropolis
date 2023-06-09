@@ -16,11 +16,12 @@ public class LionMapper {
 
     }
 
-    public void toEntity(LionDto lionDto) {
-        modelMapper.map(lionDto, Lion.class);
+    public Lion toEntity(LionDto lionDto) {
+        return modelMapper.map(lionDto, Lion.class);
+
     }
 
-    public void toDTO(Lion lion) {
-        modelMapper.map(lion, LionDto.class);
+    public LionDto toDTO(Lion lion) {
+        return modelMapper.map(lion, LionDto.class);
     }
 }

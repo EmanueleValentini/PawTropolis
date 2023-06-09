@@ -16,11 +16,12 @@ public class TigerMapper {
 
     }
 
-    public void toEntity(TigerDto tigerDto) {
-        modelMapper.map(tigerDto, Tiger.class);
+    public Tiger toEntity(TigerDto tigerDto) {
+        return modelMapper.map(tigerDto, Tiger.class);
+
     }
 
-    public void toDTO(Tiger tiger) {
-        modelMapper.map(tiger, TigerDto.class);
+    public TigerDto toDTO(Tiger tiger) {
+        return modelMapper.map(tiger, TigerDto.class);
     }
 }

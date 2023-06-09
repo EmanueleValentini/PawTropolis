@@ -19,12 +19,12 @@ public class EagleMapper {
 
     }
 
-    public void toEntity(EagleDto eagleDto) {
-        modelMapper.map(eagleDto, Eagle.class);
+    public Eagle toEntity(EagleDto eagleDto) {
+        return modelMapper.map(eagleDto, Eagle.class);
     }
 
-    public void toDTO(Bag bag) {
-        modelMapper.map(bag, BagDto.class);
+    public EagleDto toDTO(Eagle eagle) {
+        return modelMapper.map(eagle, EagleDto.class);
     }
 
 }
