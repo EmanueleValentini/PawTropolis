@@ -4,13 +4,13 @@ CREATE TABLE room
 (
     id   serial PRIMARY KEY NOT NULL,
     name varchar(30)        NOT NULL,
-    isPlayerIn boolean
+    isPlayerIn BOOLEAN      NOT NULL
 );
 
 CREATE TABLE item_in_room
 (
     id             serial PRIMARY KEY NOT NULL,
-    name           varchar(20)        NOT NULL UNIQUE ,
+    name           varchar(20)        NOT NULL,
     description    varchar(255),
     requestedSlots smallint           NOT NULL,
     id_room        int                NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE bag
 CREATE TABLE item_in_bag
 (
     id             serial PRIMARY KEY NOT NULL,
-    name           varchar(20)        NOT NULL UNIQUE,
+    name           varchar(20)        NOT NULL,
     description    varchar(255),
     requestedSlots smallint           NOT NULL,
     id_bag         int                NOT NULL,
@@ -96,17 +96,17 @@ CREATE TABLE room_connection
 );
 
 INSERT INTO room(name, isPlayerIn)
-VALUES ('DAJE ROMA DAJE',true);
+VALUES ('DAJE ROMA DAJE',TRUE);
 INSERT INTO room(name, isPlayerIn)
-VALUES ('LA STANZA DEL BOSS',false);
+VALUES ('LA STANZA DEL BOSS',FALSE);
 INSERT INTO room(name, isPlayerIn)
-VALUES ('VIALE MARCONI',false);
+VALUES ('VIALE MARCONI',FALSE);
 INSERT INTO room(name,isPlayerIn)
-VALUES ('NAPOLI',false);
-INSERT INTO room(name, isplayerin)
-VALUES ('DRUGVILLE',false);
+VALUES ('NAPOLI',FALSE);
+INSERT INTO room(name, isPlayerIn)
+VALUES ('DRUGVILLE',FALSE);
 INSERT INTO room(name,isPlayerIn)
-VALUES ('SECCO REFRESH',false);
+VALUES ('SECCO REFRESH',FALSE);
 
 INSERT INTO item_in_room(name, description, requestedSlots, id_room)
 VALUES ('excalibur',
