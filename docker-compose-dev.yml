@@ -1,0 +1,13 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: pawtropolis
+    volumes:
+      - ./scriptdev.sql:/docker-entrypoint-initdb.d/scriptdev.sql
+    restart: always
+    ports:
+      - 5432:5432
