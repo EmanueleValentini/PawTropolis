@@ -1,25 +1,18 @@
-#!/bin/bash
+@echo off
 
-echo "Seleziona l'ambiente da utilizzare: dev (sviluppo) o prod (produzione)"
+echo Seleziona l'ambiente da utilizzare: dev (sviluppo) o prod (produzione)
 
-read ambiente
+set /p ambiente=
 
-if [ "$ambiente" == "dev" ]; then
+if "%ambiente%"=="dev" (
     docker-compose -f docker-compose-dev.yml down
     docker-compose -f docker-compose-dev.yml up
     docker-compose -f docker-compose-dev.yml ps
-elif [ "$ambiente" == "prod" ]; then
+) else if "%ambiente%"=="prod" (
     docker-compose -f docker-compose-prod.yml down
     docker-compose -f docker-compose-prod.yml up
     docker-compose -f docker-compose-prod.yml ps
-else
-    echo "Ambiente inserito non valido"
-fi
 
-
-
-
-
-
-
-
+) else (
+    echo Ambiente inserito non valido
+)
