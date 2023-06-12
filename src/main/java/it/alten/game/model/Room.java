@@ -2,33 +2,29 @@ package it.alten.game.model;
 
 import it.alten.animal.model.Animal;
 import it.alten.game.model.enums.Direction;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity
 @NoArgsConstructor
 public class Room {
     private String name;
 
-    @OneToMany
     private List<Item> roomItemList;
-    @OneToMany
     private List<Animal> animalList;
 
-    @OneToMany
     private Map<Direction, Room> adjacentRoomsList;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    private Map<Direction,Door> doors;
     private int id;
 
     public Room(String name){
@@ -37,11 +33,13 @@ public class Room {
         this.roomItemList = new ArrayList<>();
         this.animalList = new ArrayList<>();
         this.adjacentRoomsList = new EnumMap<>(Direction.class);
+        this.doors = new EnumMap<>(Direction.class);
 
     }
-    public void connectRoom(Room room, Direction direction) {
+    public void connectRoom(Room room, Direction direction, Door door) {
 
         adjacentRoomsList.put(direction, room);
+        doors.put(direction,door);
     }
 
     public Room unconnectRoom(Room room) {
@@ -58,6 +56,10 @@ public class Room {
         return adjacentRoomsList.get(direction);
     }
 
+    public Door getAdjacentDoorByDirection(Direction direction) {
+        return doors.get(direction);
+    }
+
     public void removeItemFromRoom(Item item) {
         roomItemList.remove(item);
     }
@@ -71,22 +73,8 @@ public class Room {
         roomItemList.add(item);
     }
 
-    public String roomDescription() {
-        String message = "Sei nella stanza " + getName();
-        if(!getRoomItemList().isEmpty()){
-            message += "\nCi sono questi oggetti: " + getRoomItemList();
-        }
-        if (!getAnimalList().isEmpty()){
-            message += "\nCi sono questi npc: " + getAnimalList();
-        }
-        if (!getAdjacentRoomsList().isEmpty()){
-            message += "\nPuoi spostarti verso: " + getAdjacentRoomsList();
-        }
-        return message;
-    }
 
-
-    @Override
+        @Override
     public String toString() {
         return name;
     }
