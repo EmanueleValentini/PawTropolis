@@ -18,7 +18,7 @@ public class LookCommand extends Command {
 
     @Override
     public void execute() {
-        String description = roomController.getCurrentRoom().roomDescription() + "\n";
+        String description = roomController.roomDescription() + "\n";
         System.out.println(description);
     }
 }
