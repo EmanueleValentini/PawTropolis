@@ -3,6 +3,7 @@ package it.alten.game.controller;
 import it.alten.animal.model.Eagle;
 import it.alten.animal.model.Lion;
 import it.alten.animal.model.Tiger;
+import it.alten.game.model.Door;
 import it.alten.game.model.Item;
 import it.alten.game.model.Room;
 import it.alten.game.model.enums.Direction;
@@ -10,6 +11,7 @@ import lombok.Data;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 import static it.alten.game.model.enums.Direction.getOppositeDirection;
@@ -34,9 +36,13 @@ public class RoomController {
         Room terminiStation = new Room("Drug Ville");
         Room exit = new Room("Secco refresh");
 
-        entrance.addItemToRoom(new Item("excalibur",
+
+        Item excalibur = new Item("excalibur",
                 "la famosa spada nella roccia che re Artù dovette estrarre per diventare re di Camelot, per poi sposare Ginevra e farsela rubare da Lancillotto",
-                1));
+                1);
+        entrance.addItemToRoom(excalibur);
+
+        Door formEntranceToTermini = new Door(excalibur);
         Lion lion1 = Lion.builder()
                         .name("Giancarlo")
                         .favouriteFood("Sushi")
@@ -108,22 +114,27 @@ public class RoomController {
                 .build();
         exit.addAnimalToRoom(lion4);
 
-        connectRooms(entrance, terminiStation, Direction.EAST);
-        connectRooms(entrance, thiefCity, Direction.SOUTH);
-        connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST);
-        connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST);
-        connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH);
+        Door fromEntranceToThiefCity = new Door();
+        Door fromTerminiToBoss = new Door();
+        Door fromThiefToHealingFountain = new Door();
+        Door fromBossToExit = new Door();
+
+        connectRooms(entrance, terminiStation, Direction.EAST, formEntranceToTermini);
+        connectRooms(entrance, thiefCity, Direction.SOUTH, fromEntranceToThiefCity);
+        connectRooms(terminiStation, bossRoom, Direction.EAST, Direction.WEST, fromTerminiToBoss);
+        connectRooms(thiefCity, healingFountain, Direction.WEST, Direction.EAST, fromThiefToHealingFountain);
+        connectRooms(bossRoom, exit, Direction.NORTH, Direction.SOUTH, fromBossToExit);
         return entrance;
     }
 
-    private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2){
-        room1.connectRoom(room2, direction1);
-        room2.connectRoom(room1, direction2);
+    private static void connectRooms(Room room1, Room room2, Direction direction1, Direction direction2, Door door){
+        room1.connectRoom(room2, direction1, door);
+        room2.connectRoom(room1, direction2, door);
     }
 
-    private static void connectRooms(Room room1, Room room2, Direction direction) {
-        room1.connectRoom(room2, direction);
-        room2.connectRoom(room1, getOppositeDirection(direction));
+    private static void connectRooms(Room room1, Room room2, Direction direction, Door door) {
+        room1.connectRoom(room2, direction, door);
+        room2.connectRoom(room1, getOppositeDirection(direction), door);
     }
 
     public boolean changeRoom(Direction direction) {
@@ -133,6 +144,54 @@ public class RoomController {
             return true;
         }
         return false;
+    }
+
+    public StringBuilder roomDescription() {
+
+        StringBuilder message = new StringBuilder("Sei nella stanza " + currentRoom.getName());
+        if(!currentRoom.getRoomItemList().isEmpty()){
+            message.append("\nCi sono questi oggetti: ").append(currentRoom.getRoomItemList());
+        }
+        if (!currentRoom.getAnimalList().isEmpty()){
+            message.append("\nCi sono questi npc: ").append(currentRoom.getAnimalList());
+        }
+        message.append("\nPuoi andare: ").append(getDoorAndRoomMessage());
+        return message;
+    }
+
+    public String getDoorAndRoomMessage() {
+        Map<Direction, Room> directions = currentRoom.getAdjacentRoomsList();
+        List<Direction> directionList = directions.keySet().stream().toList();
+        List<Room> roomList = directions.values().stream().toList();
+        if (directions.isEmpty()) {
+            return "Empty";
+        }
+        StringBuilder doorsDescription = new StringBuilder("[");
+
+        for (int i = 0; i < directionList.size(); i++) {
+            Direction direction = directionList.get(i);
+            doorsDescription.append(direction.getName());
+            Room adjacentRoom = roomList.get(i);
+            doorsDescription.append(" ");
+            doorsDescription.append(adjacentRoom.getName());
+            Door door = currentRoom.getDoors().get(direction);
+            doorsDescription.append(getDoorState(door));
+
+            if (i < directionList.size() - 1) {
+                doorsDescription.append(", ");
+            }
+        }
+        doorsDescription.append("]");
+
+        return doorsDescription.toString();
+    }
+
+    public String getDoorState(Door door) {
+        if (door.isClosed()) {
+            return " (È chiusa cojone)";
+        } else {
+            return " (Tiratece contro che se apre)";
+        }
     }
 
 }
