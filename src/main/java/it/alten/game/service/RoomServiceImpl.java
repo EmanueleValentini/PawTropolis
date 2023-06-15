@@ -1,6 +1,5 @@
 package it.alten.game.service;
 
-import it.alten.game.model.Player;
 import it.alten.game.model.Room;
 import it.alten.game.repository.RoomRepository;
 import jakarta.transaction.Transactional;
