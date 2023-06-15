@@ -4,20 +4,16 @@ import it.alten.game.model.ItemInBag;
 import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.BagRepository;
-import it.alten.game.repository.ItemInBagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ItemInBagMapper {
 
-    private final ItemInBagRepository itemInBagRepository;
-
     private final BagRepository bagRepository;
 
     @Autowired
-    public ItemInBagMapper(ItemInBagRepository itemInBagRepository, BagRepository bagRepository) {
-        this.itemInBagRepository = itemInBagRepository;
+    public ItemInBagMapper(BagRepository bagRepository) {
         this.bagRepository = bagRepository;
     }
 

@@ -6,6 +6,7 @@ import it.alten.game.model.dto.ItemInBagDto;
 import it.alten.game.model.dto.ItemInRoomDto;
 import it.alten.game.repository.ItemInRoomRepository;
 import it.alten.game.utils.mapper.ItemInRoomMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ItemInRoomServiceImpl implements ItemInRoomService {
 
     private final ItemInRoomRepository itemInRoomRepository;
-    private final RoomService roomService;
 
     private final ItemInRoomMapper itemInRoomMapper;
 
     @Autowired
-    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, RoomService roomService, ItemInRoomMapper itemInRoomMapper) {
+    public ItemInRoomServiceImpl(ItemInRoomRepository itemInRoomRepository, ItemInRoomMapper itemInRoomMapper) {
         this.itemInRoomRepository = itemInRoomRepository;
-        this.roomService = roomService;
         this.itemInRoomMapper = itemInRoomMapper;
     }
 
